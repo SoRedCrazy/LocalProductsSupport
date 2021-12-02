@@ -1,6 +1,4 @@
 package JavaObject;
-//test de fou qui marche pas 
-//françois le goat
 
 public class Admin {
   
