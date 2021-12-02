@@ -1,8 +1,5 @@
 package JavaObject;
 
-//Alexis 
-//françois le baisé
-//julien julien julien julien
 public class Admin {
   
     private String nom;
