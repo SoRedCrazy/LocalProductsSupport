@@ -1,11 +1,8 @@
 package JavaObject;
 //test de fou qui marche pas 
-
+//françois le goat
 
 public class Admin {
-    
-   
-    private Integer idAdmin;
   
     private String nom;
  
@@ -24,14 +21,6 @@ public class Admin {
     	this.nom = nom;
     	this.prenom = prenom;
     	this.password = password;
-    }
-    
-    /**
-     * Ce getter permet d'obtenir l'ID de l'administrateur
-     * @return Une ID de type Integer
-     */
-    private Integer getIdAdmin() {
-        return this.idAdmin;
     }
     
     
