@@ -1,4 +1,5 @@
 package JavaObject;
+//Nigga
 
 public class Admin {
   
