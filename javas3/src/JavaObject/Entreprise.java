@@ -1,5 +1,5 @@
 package JavaObject;
-
+//test
 
 /**
 * @generated
