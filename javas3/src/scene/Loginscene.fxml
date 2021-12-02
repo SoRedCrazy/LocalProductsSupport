@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="480.0" prefWidth="854.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="240.0" layoutY="156.0" prefHeight="125.0" prefWidth="375.0">
+         <children>
+            <Label text="Mail ou SIV:" />
+            <TextField />
+            <Label layoutX="10.0" layoutY="10.0" text="password:" />
+            <TextField layoutX="10.0" layoutY="27.0" />
+            <Button mnemonicParsing="false" onAction="#connection" text="Button" />
+         </children>
+      </VBox>
+      <Text fill="#dd0f0f" layoutX="331.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login pages" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="34.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
