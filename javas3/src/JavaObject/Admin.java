@@ -1,5 +1,5 @@
 package JavaObject;
-//alexis
+
 public class Admin {
   
     private String nom;
