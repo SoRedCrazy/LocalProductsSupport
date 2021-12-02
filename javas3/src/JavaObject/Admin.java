@@ -1,5 +1,5 @@
 package JavaObject;
-
+//françois le baisé
 public class Admin {
   
     private String nom;
