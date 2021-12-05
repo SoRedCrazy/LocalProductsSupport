@@ -3,11 +3,6 @@ package JavaObject;
 import java.util.ArrayList;
 
 public class DAO {
-    private String url;
-    private int port;
-    private String user;
-    private String password;
-    private String databaseName;
 
     /**
      * Consctructeur
@@ -18,109 +13,9 @@ public class DAO {
      * @param password
      * @param databaseName
      */
-    public DAO(String url, int port, String user, String password, String databaseName) {
-        this.url = url;
-        this.port = port;
-        this.user = user;
-        this.password = password;
-        this.databaseName = databaseName;
-
+    public DAO() {
 
     }
-
-
-
-
-    /**
-     * Permet de retounrner l'url.
-     *
-     * @return url
-     */
-    private String getUrl() {
-        return this.url;
-    }
-
-    /**
-     * Permet de set l'url.
-     *
-     * @param url
-     */
-    private void setUrl(String url) {
-        this.url = url;
-    }
-
-    /**
-     * Permet de retourner le port.
-     *
-     * @return port
-     */
-    private int getPort() {
-        return this.port;
-    }
-
-    /**
-     * Permet de set le port.
-     *
-     * @param port
-     */
-    private void setPort(int port) {
-        this.port = port;
-    }
-
-    /**
-     * Permet de retourner le User.
-     *
-     * @return user
-     */
-    private String getUser() {
-        return this.user;
-    }
-
-    /**
-     * Permet de set le User.
-     *
-     * @param user
-     */
-    private void setUser(String user) {
-        this.user = user;
-    }
-
-    /**
-     * Permet de retourner le password.
-     *
-     * @return password
-     */
-    private String getPassword() {
-        return this.password;
-    }
-
-    /**
-     * Permet de set le password.
-     *
-     * @param password
-     */
-    private void setPassword(String password) {
-        this.password = password;
-    }
-
-    /**
-     * Permet de retourner le databaseName
-     *
-     * @return databaseName
-     */
-    private String getDatabaseName() {
-        return this.databaseName;
-    }
-
-    /**
-     * Permet de set le databaseName.
-     *
-     * @param databaseName
-     */
-    private void setDatabaseName(String databaseName) {
-        this.databaseName = databaseName;
-    }
-
 
     /**
      * Permet l'ajout d'un client dans la DAO et retourne un boolean pour savoir si la requete s'est bien déroulée.

@@ -18,8 +18,8 @@ public class Singleton {
     private Singleton() {
     	try {
     		connect = DriverManager.getConnection(
-    		"jdbc:postgresql://localhost:5432/Ecole",
-    		"postgres", "postgres");
+    		"jdbc:postgresql://212.1.208.101/u230559756_project",
+    		"u230559756_root", "Azerty37");
     		} catch (SQLException e) { e.printStackTrace();}
     }
     
