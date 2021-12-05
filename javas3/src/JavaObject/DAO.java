@@ -84,10 +84,28 @@ public class DAO {
      *
      * @param client
      * @return boolean
+     * @exception SQLException si les information en concorde pas
      */
-    public boolean delcient(Client client) {
+    public boolean delclient(Client client) {
 
-        return true;
+    	//test
+    	PreparedStatement stmt=null;
+    	int rs=-1;
+    	
+        try {
+        	stmt= this.cn.prepareStatement("DELETE FROM Client WHERE idclient=? ");
+			stmt.setInt(1, client.getIdClient());
+			rs= stmt.executeUpdate();	
+        } catch(SQLException e) {
+        	
+        }
+        
+        if(rs<0) {
+        	return false;
+        }
+        else {
+        	return true;
+        }
 
     }
 
@@ -96,15 +114,16 @@ public class DAO {
      *
      * @param client
      * @return boolean
+     * @exception SQLException si probleme d'information.
      */
 
     public boolean modifclient(Client client) {
-    	//pas finie
+    	//test
     	PreparedStatement stmt=null;
     	int rs=-1;
-        boolean action=false;
+    	
         try {
-        	stmt= this.cn.prepareStatement("UPDATE Client SET prenom=?, nom=?, numeroRue=?,rue=?, codepostal=?, ville=?, pays=? ,numerotel=?  WHERE idclient=? ");
+        	stmt= this.cn.prepareStatement("UPDATE Client SET prenom=?, nom=?, numero_de_rue=?,rue=?, code_postal=?, ville=?, pays=? ,numero_de_telephone=?  WHERE idclient=? ");
 			stmt.setString(1, client.getPrenom());
 			stmt.setString(2, client.getNom());
 			stmt.setInt(3, client.getNumeroDeRue());
@@ -114,15 +133,17 @@ public class DAO {
 			stmt.setString(7, client.getPays());
 			stmt.setInt(8, client.getNumTelephone());
 			stmt.setInt(9, client.getIdClient());
-			
-			stmt.execute();
-			rs= stmt.executeUpdate();
-			action=true;	
+			rs= stmt.executeUpdate();	
         } catch(SQLException e) {
-        	action=false;
+        	
         }
         
-        return action;
+        if(rs<0) {
+        	return false;
+        }
+        else {
+        	return true;
+        }
 
     }
 
