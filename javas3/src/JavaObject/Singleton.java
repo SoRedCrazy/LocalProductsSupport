@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import com.mysql.cj.jdbc.MysqlDataSource;
+
 public class Singleton {
     
     
@@ -14,13 +16,21 @@ public class Singleton {
      * les doublons de connexions en même temps.
      * @author gangn
      * @param connect -Connection
+     * @exception SQLException for Access denied 
      */
-    private Singleton() {
-    	try {
-    		connect = DriverManager.getConnection(
-    		"jdbc:postgresql://212.1.208.101/u230559756_project",
-    		"u230559756_root", "Azerty37");
-    		} catch (SQLException e) { e.printStackTrace();}
+    private Singleton()  {
+    
+    	MysqlDataSource ds= new MysqlDataSource();
+		ds.setUser("u230559756_root");
+		ds.setPassword("Azerty37");
+		ds.setServerName("212.1.208.101");
+        ds.setDatabaseName("u230559756_project");
+        
+        try {
+			connect= ds.getConnection();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
     }
     
    
@@ -29,8 +39,9 @@ public class Singleton {
     /**
      * Cette méthode permet de vérifier si une connexion existe avec la base de donnée.
      * @return Une connextion de type connection
+     * @throws ClassNotFoundException 
      */
-    public static Connection getInstance() {
+    public static Connection getInstance()  {
     	if(connect == null){ new Singleton();}
     	return connect; 
         
