@@ -415,8 +415,8 @@ public class Entreprise {
     * @param Commande
      * @return 
     */
-    public void ajouterCommandeTournee(Tournee t, Commande c) {
-        //TODO
+    public void ajouterCommandeTournee(Tournee t, Commande c,Client client) {
+        //ajout du Client pour sont id car une commande est lier a un client Julien 
     }
     /**
     * @generated
