@@ -150,12 +150,56 @@ public class DAO {
     /**
      * Permet l'ajout d'une entreprise dans la DAO et retourne un boolean pour savoir si la requete s'est bien déroulée.
      *
-     * @param entreprise
-     * @return boolean
+     * @param siret -Integer
+     * @param numeroDeRue -Integer
+     * @param rue -String
+     * @param codePostal -Integer
+     * @param ville -String
+     * @param pays -String
+     * @param nom -String
+     * @param prenom -String
+     * @param numTelephone -Integer
+     * @param mdp-String
+     * @param mailAdmin - String
+     * @return Entreprise
      */
-    public boolean ajouterEntreprise(Entreprise entreprise) {
+    public Entreprise ajouterEntreprise(int siret,String prenom,String nom,Integer numeroDeRue,String rue,Integer codePostal,String ville,String pays,Integer numTelephone,String motsdepasses,String mailAdmin) {
 
-        return true;
+    	//preparation 
+    	Entreprise et = null;
+    	PreparedStatement stmt=null;
+    	int rs=-1;
+    	ResultSet result;
+        try {
+        	//sql 
+        	stmt= this.cn.prepareStatement("INSERT INTO Entreprise VALUES(?,?,?,?,?,?,?,?,?,?,?)");
+			stmt.setInt(1, siret);
+			stmt.setInt(2, numeroDeRue);
+			stmt.setString(3,rue);
+			stmt.setInt(4, codePostal);
+			stmt.setString(5, ville);
+			stmt.setString(6, pays);
+			stmt.setString(7, nom);
+			stmt.setString(8, prenom);
+			stmt.setInt(9, numTelephone);
+			stmt.setString(10, motsdepasses);
+			stmt.setString(11, mailAdmin);
+			//on recupere le deroulement et excute
+			rs= stmt.executeUpdate();
+			// si infrieur a 0 ca c'est pas bien passer
+			if (rs<0) {
+		        throw new SQLException();
+		    }
+		    else {
+				et=new Entreprise(siret,numeroDeRue,rue,codePostal, ville,pays,nom,prenom,numTelephone,motsdepasses);
+		    }
+        } catch(SQLException e) {
+        	e.printStackTrace();
+        }
+       
+        // si l'objet est null sa c'est pas bien passer
+        return et;
+        	
     }
 
     /**
@@ -166,8 +210,24 @@ public class DAO {
      */
 
     public boolean supprimerEntreprise(Entreprise entreprise) {
-
-        return true;
+    	//test
+    	PreparedStatement stmt=null;
+    	int rs=-1;
+    	
+        try {
+        	stmt= this.cn.prepareStatement("DELETE FROM Entreprsie WHERE SIRET= ? ");
+			stmt.setInt(1, entreprise.getSiret());
+			rs= stmt.executeUpdate();	
+        } catch(SQLException e) {
+        	
+        }
+        
+        if(rs<0) {
+        	return false;
+        }
+        else {
+        	return true;
+        }
 
     }
 

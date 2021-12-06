@@ -23,6 +23,7 @@ public class Entreprise {
     private Vehicule vehicule;
     private Client client;
     private Tournee tournee;
+    private String mdp;
     //BRO
     /**
      * CONSTRUCTEUR
@@ -36,8 +37,9 @@ public class Entreprise {
      * @param nom -String
      * @param prenom -String
      * @param numTelephone -Integer
+     * @param mdp-String
      */
-    public Entreprise (int siret, Integer numeroDeRue, String rue, Integer codePostal, String ville, String pays, String nom, String prenom, Integer numTelephone) {
+    public Entreprise (int siret, Integer numeroDeRue, String rue, Integer codePostal, String ville, String pays, String nom, String prenom, Integer numTelephone, String mdp) {
     	this.siret=siret;
     	this.numeroDeRue=numeroDeRue;
     	this.rue=rue;
@@ -47,13 +49,30 @@ public class Entreprise {
     	this.nom=nom;
     	this.prenom=prenom;
     	this.numTelephone=numTelephone;
-    	
+    	this.mdp=mdp;
     }
     
     
-    //GETTERS AND SETTERS
-    
     /**
+     * permet d'avoir le mots de passe 
+     * 
+     * @return string 
+     */
+    
+    public String getMdp() {
+		return mdp;
+	}
+
+    /**
+     * permet de modifier le mots de passe
+     * @param String- mdp
+     */
+	public void setMdp(String mdp) {
+		this.mdp = mdp;
+	}
+
+
+	/**
     * @generated
     * Permet d'obtenir la valeur du siret.
     * @return siret -Integer
