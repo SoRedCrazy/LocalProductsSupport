@@ -86,7 +86,7 @@ public class DAO {
      *
      * @param client
      * @return boolean
-     * @exception SQLException si les information en concorde pas
+     * @exception SQLException si les information ne concorde pas
      */
     public boolean delclient(Client client) {
 
@@ -282,6 +282,7 @@ public class DAO {
      * @param poidmax int
      * @param siret int
      * @return vehicule
+     * @exception SQLException si erreur de paramettre
      */
     public Vehicule ajouterVehicule(String immatriculation,int poidmax, int siret) {
     	//preparation 
@@ -318,7 +319,7 @@ public class DAO {
      *
      * @param vehicule
      * @return boolean
-     * 
+     * @exception SQLException si erreur de paramettre
      */
     public boolean supprimerVehicule(Vehicule vehicule) {
     	PreparedStatement stmt=null;
@@ -352,11 +353,15 @@ public class DAO {
     }
 
     /**
-     * Permet l'ajout de d'une tournée
+     * Permet l'ajout de d'une tournée et ca creation
      *
-     * @param tournee
-     * @return boolean
-     * 
+     * @param Integer 
+     * @param Date 
+     * @param Time 
+     * @param Time 
+     * @param Vehicule
+     * @return Tournée
+     * @exception SQLException si erreur de paramettre
      */
     public Tournee ajouterTournee(Integer idTournee, Date date, Time horaireDebut, Time horaireFin,Vehicule vehicule) {
     	Tournee to = null;
@@ -402,6 +407,7 @@ public class DAO {
      *
      * @param tournee
      * @return boolean
+     * @exception SQLException si erreur de paramettre
      */
     public boolean modifTournee(Tournee tournee) {
 
@@ -433,6 +439,7 @@ public class DAO {
      *
      * @param tournee
      * @return boolean
+     * @exception SQLException si erreur de paramettre
      */
     public boolean supprimerTournee(Tournee tournee) {
     	PreparedStatement stmt=null;
