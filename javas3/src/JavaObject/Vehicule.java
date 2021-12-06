@@ -4,12 +4,21 @@ public class Vehicule {
     private String immatriculation;
     private Integer poidsMax;
     
-   
+    /**
+     * Constructeur d'unvehicule
+     * @param immatriculation String
+     * @param poidsMax int
+     */
+    public Vehicule(String immatriculation, Integer poidsMax) {
+		this.immatriculation = immatriculation;
+		this.poidsMax = poidsMax;
+	}
+    
     /**
     * Permet de récupérer l'immatriculation du véhicule.
     * @return immatriculation
     */
-    private String getImmatriculation() {
+    public String getImmatriculation() {
         return this.immatriculation;
     }
     
@@ -17,15 +26,16 @@ public class Vehicule {
     * Permet de définir l'immatriculation du véhicule.
     * @param immatriculation
     */
-    private void setImmatriculation(String immatriculation) {
+    public void setImmatriculation() {
         this.immatriculation = immatriculation;
     }
-    
-    /**
+   
+
+	/**
     * Permet de récupérer le poids max du véhicule.
     * @return poidsMax
     */
-    private Integer getPoidsMax() {
+    public Integer getPoidsMax() {
         return this.poidsMax;
     }
     
@@ -33,7 +43,7 @@ public class Vehicule {
     * Permet de définir le poids max du véhicule.
     * @param poidsMax
     */
-    private void setPoidsMax(Integer poidsMax) {
+    public void setPoidsMax(Integer poidsMax) {
         this.poidsMax = poidsMax;
     }
     

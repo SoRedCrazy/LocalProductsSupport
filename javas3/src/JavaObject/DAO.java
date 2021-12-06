@@ -1,10 +1,12 @@
 package JavaObject;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
+import java.sql.Time;
 import java.util.ArrayList;
 
 
@@ -118,7 +120,7 @@ public class DAO {
      */
 
     public boolean modifclient(Client client) {
-    	//test
+    	
     	PreparedStatement stmt=null;
     	int rs=-1;
     	
@@ -162,6 +164,7 @@ public class DAO {
      * @param mdp-String
      * @param mailAdmin - String
      * @return Entreprise
+     * @exception SQLException si erreur de paramettre
      */
     public Entreprise ajouterEntreprise(int siret,String prenom,String nom,Integer numeroDeRue,String rue,Integer codePostal,String ville,String pays,Integer numTelephone,String motsdepasses,String mailAdmin) {
 
@@ -207,16 +210,19 @@ public class DAO {
      *
      * @param entreprise
      * @return boolean
+     * @exception SQLException si erreur de paramettre
      */
 
     public boolean supprimerEntreprise(Entreprise entreprise) {
-    	//test
     	PreparedStatement stmt=null;
     	int rs=-1;
     	
         try {
-        	stmt= this.cn.prepareStatement("DELETE FROM Entreprsie WHERE SIRET= ? ");
+        	stmt= this.cn.prepareStatement("DELETE FROM Commande WHERE siret= ? ; DELETE FROM Tournee WHERE Imaticulation=(SELECT Imaticulation FROM Vehicule WHERE SIRET= ? ) ; DELETE FROM Vehicule WHERE SIRET= ? ; DELETE FROM Entreprise WHERE SIRET= ? ");
 			stmt.setInt(1, entreprise.getSiret());
+			stmt.setInt(2, entreprise.getSiret());
+			stmt.setInt(3, entreprise.getSiret());
+			stmt.setInt(4, entreprise.getSiret());
 			rs= stmt.executeUpdate();	
         } catch(SQLException e) {
         	
@@ -236,43 +242,158 @@ public class DAO {
      *
      * @param entreprise
      * @return boolean
+     * @exception SQLException si erreur de paramettre
      */
     public boolean modifEntreprise(Entreprise entreprise) {
+    	PreparedStatement stmt=null;
+    	int rs=-1;
+    	
+        try {
+        	stmt= this.cn.prepareStatement("UPDATE Entreprise SET Numero_de_rue= ? ,rue= ? , code_postal= ? , ville= ? , pays= ? , NOM= ? , prenom= ? , Numero_de_telephone = ?, mots_de_passes= ? WHERE SIRET= ? ");
+			stmt.setInt(1, entreprise.getNumeroDeRue());
+			stmt.setString(2, entreprise.getRue());
+			stmt.setInt(3, entreprise.getCodePostal());
+			stmt.setString(4, entreprise.getVille());
+			stmt.setString(5, entreprise.getPays());
+			stmt.setString(6, entreprise.getNom());
+			stmt.setString(7, entreprise.getPrenom());
+			stmt.setInt(8, entreprise.getNumTelephone());
+			stmt.setString(9, entreprise.getMdp());
+			stmt.setInt(10, entreprise.getSiret());
+			rs= stmt.executeUpdate();	
+        } catch(SQLException e) {
+        	
+        }
+        
+        if(rs<0) {
+        	return false;
+        }
+        else {
+        	return true;
+        }
 
-        return true;
 
     }
 
     /**
      * Permet l'ajout d'un véhicule dans la DAO et retourne un boolean pour savoir si la requete s'est bien déroulée.
      *
-     * @param vehicule
-     * @return boolean
+     * @param Immatriculation String
+     * @param poidmax int
+     * @param siret int
+     * @return vehicule
      */
-    public boolean ajouterVehicule(Vehicule vehicule) {
-        return true;
+    public Vehicule ajouterVehicule(String immatriculation,int poidmax, int siret) {
+    	//preparation 
+    	Vehicule ve = null;
+    	PreparedStatement stmt=null;
+    	int rs=-1;
+    	ResultSet result;
+        try {
+        	//sql 
+        	stmt= this.cn.prepareStatement("INSERT INTO Vehicule VALUES(?,?,?)");
+			stmt.setString(1, immatriculation);
+			stmt.setInt(2, poidmax);
+			stmt.setInt(3,siret);
+			//on recupere le deroulement et excute
+			rs= stmt.executeUpdate();
+			// si infrieur a 0 ca c'est pas bien passer
+			if (rs<0) {
+		        throw new SQLException();
+		    }
+		    else {
+				ve=new Vehicule(immatriculation,poidmax);
+		    }
+        } catch(SQLException e) {
+        	e.printStackTrace();
+        }
+       
+        // si l'objet est null sa c'est pas bien passer
+        return ve;
 
     }
 
     /**
-     * Permet la suppression dans la DAO et retourne un boolean pour savoir si la requete s'est bien déroulée.
+     * Permet la suppression de vehicule dans la DAO et retourne un boolean pour savoir si la requete s'est bien déroulée.
      *
      * @param vehicule
      * @return boolean
+     * 
      */
     public boolean supprimerVehicule(Vehicule vehicule) {
-        return true;
+    	PreparedStatement stmt=null;
+    	int rs=-1;
+    	
+        try {
+        	stmt= this.cn.prepareStatement("DELETE FROM Commande WHERE idtournee=(SELECT idtournee FROM Tournee WHERE Imaticulation= ? ) ");
+			stmt.setString(1, vehicule.getImmatriculation());
+			rs= stmt.executeUpdate();
+			
+        	stmt= this.cn.prepareStatement("DELETE FROM Tournee WHERE Imaticulation= ? ");
+			stmt.setString(1, vehicule.getImmatriculation());
+			rs+= stmt.executeUpdate();
+			
+        	stmt= this.cn.prepareStatement("DELETE FROM Vehicule WHERE Imaticulation= ? ");
+			stmt.setString(1, vehicule.getImmatriculation());
+			rs+= stmt.executeUpdate();
+			
+        } catch(SQLException e) {
+        	e.printStackTrace();
+        }
+        
+        if(rs<0) {
+        	return false;
+        }
+        else {
+        	return true;
+        }
+
 
     }
 
     /**
-     * Permet l'ajout d'un véhicule dans la DAO et retourne un boolean pour savoir si la requete s'est bien déroulée.
+     * Permet l'ajout de d'une tourn�e
      *
      * @param tournee
      * @return boolean
+     * 
      */
-    public boolean ajouterTournee(Tournee tournee) {
-        return true;
+    public Tournee ajouterTournee(Integer idTournee, Date date, Time horaireDebut, Time horaireFin,Vehicule vehicule) {
+    	Tournee to = null;
+    	PreparedStatement stmt=null;
+    	int rs=-1;
+    	ResultSet result;
+        try {
+        	//sql 
+        	stmt= this.cn.prepareStatement("INSERT INTO Tournee VALUES(0,?,?,?,?,?)");
+			stmt.setTime(1, horaireDebut);
+			stmt.setTime(2, horaireFin);
+			stmt.setDate(3,date);
+			stmt.setInt(4,0);
+			stmt.setString(5,vehicule.getImmatriculation());
+			//on recupere le deroulement et excute
+			rs= stmt.executeUpdate();
+			// si infrieur a 0 ca c'est pas bien passer
+			if (rs<0) {
+		        throw new SQLException();
+		    }
+		    else {
+		    	stmt= this.cn.prepareStatement("SELECT idtournne FROM Tournee WHERE Horaire_de_debut= ? ,Horaire_de_fin= ? ,Date= '?' ,	poid='?' , Imaticulation='?' )");
+				stmt.setTime(1, horaireDebut);
+				stmt.setTime(2, horaireFin);
+				stmt.setDate(3,date);
+				stmt.setInt(4,0);
+				stmt.setString(5,vehicule.getImmatriculation());
+				result= stmt.executeQuery();
+				result.next();
+				to=new Tournee(result.getInt("idclient"),date,horaireDebut,horaireFin,vehicule);
+		    }
+        } catch(SQLException e) {
+        	e.printStackTrace();
+        }
+       
+        // si l'objet est null sa c'est pas bien passer
+        return to;
 
     }
 
@@ -282,9 +403,28 @@ public class DAO {
      * @param tournee
      * @return boolean
      */
-    public boolean modifEntreprise(Tournee tournee) {
+    public boolean modifTournee(Tournee tournee) {
 
-        return true;
+    	PreparedStatement stmt=null;
+    	int rs=-1;
+    	
+        try {
+        	stmt= this.cn.prepareStatement("UPDATE Tournee SET Horaire_de_debut= ?,	Horaire_de_fin=?, Date=? WHERE idtournee=?");
+			stmt.setTime(1, tournee.getHoraireDebut());
+			stmt.setTime(2, tournee.getHoraireFin());
+			stmt.setDate(3, tournee.getDate());
+			stmt.setInt(4, tournee.getIdTournee());
+			rs= stmt.executeUpdate();	
+        } catch(SQLException e) {
+        	
+        }
+        
+        if(rs<0) {
+        	return false;
+        }
+        else {
+        	return true;
+        }
 
     }
 
@@ -295,7 +435,28 @@ public class DAO {
      * @return boolean
      */
     public boolean supprimerTournee(Tournee tournee) {
-        return true;
+    	PreparedStatement stmt=null;
+    	int rs=-1;
+    	
+        try {
+        	stmt= this.cn.prepareStatement("DELETE FROM Commande WHERE idtourne=?");
+			stmt.setInt(1, tournee.getIdTournee());
+			rs= stmt.executeUpdate();
+			
+        	stmt= this.cn.prepareStatement("DELETE FROM Tournee WHERE idtourne= ? ");
+			stmt.setInt(1, tournee.getIdTournee());
+			rs+= stmt.executeUpdate();
+			
+        } catch(SQLException e) {
+        	e.printStackTrace();
+        }
+        
+        if(rs<0) {
+        	return false;
+        }
+        else {
+        	return true;
+        }
 
     }
 
