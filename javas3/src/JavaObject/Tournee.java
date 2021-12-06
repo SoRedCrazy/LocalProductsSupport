@@ -9,14 +9,26 @@ public class Tournee {
     private Date date;
     private Time horaireDebut;
     private Time horaireFin;
-    private ArrayList listCommande;
+    private ArrayList<Commande> listCommande;
     private Vehicule vehicule;
+    private int poids;
 
-    /**
+    public Tournee(Integer idTournee, Date date, Time horaireDebut, Time horaireFin,Vehicule vehicule) {
+		super();
+		this.idTournee = idTournee;
+		this.date = date;
+		this.horaireDebut = horaireDebut;
+		this.horaireFin = horaireFin;
+		this.listCommande = new ArrayList<Commande>();
+		this.vehicule = vehicule;
+		this.poids=0;
+	}
+
+	/**
     * Permet de récupérer l'id de la tournée.
     * @return idTournee
     */
-    private Integer getIdTournee() {
+    public Integer getIdTournee() {
         return this.idTournee;
     }
     
@@ -24,7 +36,7 @@ public class Tournee {
     * Permet de définir l'id de la tournée.
     * @param idTournee
     */
-    private void setIdTournee(Integer idTournee) {
+    public void setIdTournee(Integer idTournee) {
         this.idTournee = idTournee;
     }
     
@@ -32,7 +44,7 @@ public class Tournee {
     * Permet de récupérer la date de la tournée.
     * @return date
     */
-    private Date getDate() {
+    public Date getDate() {
         return this.date;
     }
     
@@ -40,7 +52,7 @@ public class Tournee {
     * Permet de définir la date de la tournée.
     * @param date
     */
-    private void setDate(Date date) {
+    public void setDate(Date date) {
         this.date = date;
     }
     
@@ -48,7 +60,7 @@ public class Tournee {
     * Permet de récupérer l'horaire de début de la tournée.
     * @return horaireDebut
     */
-    private Time getHoraireDebut() {
+    public Time getHoraireDebut() {
         return this.horaireDebut;
     }
     
@@ -56,7 +68,7 @@ public class Tournee {
     * Permet de définir l'horaire de début de la tournée.
     * @param horaireDebut
     */
-    private void setHoraireDebut(Time horaireDebut) {
+    public void setHoraireDebut(Time horaireDebut) {
         this.horaireDebut = horaireDebut;
     }
     
@@ -64,7 +76,7 @@ public class Tournee {
     * Permet de récupérer l'horaire de fin de la tournée.
     * @return horaireFin
     */
-    private Time getHoraireFin() {
+    public Time getHoraireFin() {
         return this.horaireFin;
     }
     
@@ -72,7 +84,7 @@ public class Tournee {
     * Permet de définir l'horaire de fin de la tournée.
     * @param horaireFin
     */
-    private void setHoraireFin(Time horaireFin) {
+    public void setHoraireFin(Time horaireFin) {
         this.horaireFin = horaireFin;
     }
     
@@ -80,7 +92,7 @@ public class Tournee {
     * Permet de récupérer la liste des commandes d'une tournée.
     * @return listCommande
     */
-    private ArrayList getListCommande() {
+    public ArrayList getListCommande() {
         return this.listCommande;
     }
     
@@ -88,7 +100,7 @@ public class Tournee {
     * Permet de récupérer la liste des commandes d'une tournée.
     * @param listCommande
     */
-    private void setListCommande(ArrayList listCommande) {
+    public void setListCommande(ArrayList listCommande) {
         this.listCommande = listCommande;
     }
     
@@ -96,7 +108,7 @@ public class Tournee {
     * Permet de récupérer le véhicule associé à la tournée.
     * @return vehicule
     */
-    private Vehicule getVehicule() {
+    public Vehicule getVehicule() {
         return this.vehicule;
     }
     
@@ -104,7 +116,7 @@ public class Tournee {
     * Permet de définir le véhicule associé à la tournée
     * @param vehicule
     */
-    private void setVehicule(Vehicule vehicule) {
+    public void setVehicule(Vehicule vehicule) {
         this.vehicule = vehicule;
     }
 
@@ -117,6 +129,21 @@ public class Tournee {
         //TODO
     }
     /**
+     * permet de recuperer le poids de la tournee
+     * @return int poids
+     */
+    public int getPoids() {
+		return poids;
+	}
+    /**
+     * permet de sette de 
+     * @param poids
+     */
+	public void setPoids(int poids) {
+		this.poids = poids;
+	}
+
+	/**
     * Permet l'ajout d'une commande de la liste des commandes de la tournée.
     * @param commande
     */
