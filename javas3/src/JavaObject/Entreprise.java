@@ -19,7 +19,6 @@ public class Entreprise {
     private Vehicule ListVehicule;
     private Tournee ListTournee;
     private Client ListClient;
-    private String password;
     private Vehicule vehicule;
     private Client client;
     private Tournee tournee;
@@ -288,23 +287,6 @@ public class Entreprise {
         this.ListClient = ListClient;
     }
     
-    /**
-    * @generated
-    * Permet d'obtenir le mot de passe
-    * @return password -String
-    */
-    public String getPassword() {
-        return this.password;
-    }
-    
-    /**
-    * @generated
-    * Permet de modifier le mot de passe
-    * @param password -String
-    */
-    public void setPassword(String password) {
-        this.password = password;
-    }
     
     
     /**

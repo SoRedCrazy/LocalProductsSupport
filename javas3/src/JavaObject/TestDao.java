@@ -5,8 +5,8 @@ public class TestDao {
 	public static void main(String[] args) {
 		
 		DAO d=new DAO();
-		Entreprise et=new Entreprise(6516, 3, "ruegrevy", 37500, "azayh", "france", "julien", "nom", 00000, "azerty37");
-		boolean t=d.supprimerEntreprise(et);
+		Entreprise et2=new Entreprise(6516, 3, "ruegrevy", 37500, "azayh", "france", "jarod", "nom", 00000, "azerty37");
+		boolean t=d.modifEntreprise(et2);
 		
 		System.out.println(t);
 	}
