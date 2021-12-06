@@ -1,20 +1,29 @@
 package JavaObject;
 import java.sql.Date;
+import java.sql.Time;
 
 public class Commande {
 
     private Integer idCommande;
     private String libelle;
     private Integer poids;
-    private Date dateCommande;
-    private Date dateLimite;
+    private Time heuredebut;
+    private Time heurefin;
     private Client Client;
 
-    /**
+    public Commande(Integer idCommande, String libelle, Integer poids, Time heuredebut, Time heurefin, Client client) {
+		this.idCommande = idCommande;
+		this.libelle = libelle;
+		this.poids = poids;
+		this.heuredebut = heuredebut;
+		Client = client;
+	}
+
+	/**
     * Permet de récupérer l'id de la commande.
     * @return idCommande
     */
-    private Integer getIdCommande() {
+    public Integer getIdCommande() {
         return this.idCommande;
     }
     
@@ -22,7 +31,7 @@ public class Commande {
     * Permet de définir l'id de la commande.
     * @param commande
     */
-    private void setIdCommande(Integer idCommande) {
+    public void setIdCommande(Integer idCommande) {
         this.idCommande = idCommande;
     }
     
@@ -30,7 +39,7 @@ public class Commande {
     * Permet de récupérer le libéllé de la commande.
     * @return libelle
     */
-    private String getLibelle() {
+    public String getLibelle() {
         return this.libelle;
     }
     
@@ -38,7 +47,7 @@ public class Commande {
     * Permet de définir le libelle de la commande.
     * @param libelle
     */
-    private void setLibelle(String libelle) {
+    public void setLibelle(String libelle) {
         this.libelle = libelle;
     }
     
@@ -46,7 +55,7 @@ public class Commande {
     * Permet de récupérer la poids de la commande.
     * @return poids
     */
-    private Integer getPoids() {
+    public Integer getPoids() {
         return this.poids;
     }
     
@@ -54,7 +63,7 @@ public class Commande {
     * Permet de définir le poids de la commande.
     * @param poids
     */
-    private void setPoids(Integer poids) {
+    public void setPoids(Integer poids) {
         this.poids = poids;
     }
     
@@ -62,45 +71,45 @@ public class Commande {
     * Permet de récupérer la date de la commande.
     * @return dateCommande
     */
-    private Date getDateCommande() {
-        return this.dateCommande;
+    public Time getHeuredebut() {
+        return this.heuredebut;
     }
     
     /**
     * Permet de définir la date de la commande.
     * @param dateCommande
     */
-    private void setDateCommande(Date dateCommande) {
-        this.dateCommande = dateCommande;
+    public void setheuredebut(Time heuredebut) {
+        this.heuredebut = heuredebut;
     }
     
     /**
     * Permet de récupérer la date limite de la commande.
     * @return dateLimite
     */
-    private Date getDateLimite() {
-        return this.dateLimite;
+    public Time getHeureFin() {
+        return this.heurefin;
     }
     
     /**
     * Permet de définir la date limite de la commande.
     * @param dateLimite
     */
-    private void setDateLimite(Date dateLimite) {
-        this.dateLimite = dateLimite;
+    public void setheurefin(Time heurefin) {
+        this.heurefin = heurefin;
     }
     
     /**
     * @generated
     */
-    private Client getClient() {
+    public Client getClient() {
         return this.Client;
     }
     
     /**
     * @generated
     */
-    private void setClient(Client Client) {
+    public void setClient(Client Client) {
         this.Client = Client;
     }
     

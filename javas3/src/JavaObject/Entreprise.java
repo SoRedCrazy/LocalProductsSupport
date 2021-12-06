@@ -7,7 +7,7 @@ package JavaObject;
 public class Entreprise {
     
    
-	private Integer siret;
+	private String  siret;
     private Integer numeroDeRue;
     private String rue;
     private Integer codePostal;
@@ -15,7 +15,7 @@ public class Entreprise {
     private String pays;
     private String nom;
     private String prenom;
-    private Integer numTelephone;
+    private String numTelephone;
     private Vehicule ListVehicule;
     private Tournee ListTournee;
     private Client ListClient;
@@ -38,7 +38,7 @@ public class Entreprise {
      * @param numTelephone -Integer
      * @param mdp-String
      */
-    public Entreprise (int siret, Integer numeroDeRue, String rue, Integer codePostal, String ville, String pays, String nom, String prenom, Integer numTelephone, String mdp) {
+    public Entreprise (String  siret, Integer numeroDeRue, String rue, Integer codePostal, String ville, String pays, String nom, String prenom, String  numTelephone, String mdp) {
     	this.siret=siret;
     	this.numeroDeRue=numeroDeRue;
     	this.rue=rue;
@@ -76,7 +76,7 @@ public class Entreprise {
     * Permet d'obtenir la valeur du siret.
     * @return siret -Integer
     */
-    public Integer getSiret() {
+    public String getSiret() {
         return this.siret;
     }
     
@@ -85,7 +85,7 @@ public class Entreprise {
     * Permet de modifier la valeur du siret.
     * @param siret -Integer 
     */
-    public void setSiret(Integer siret) {
+    public void setSiret(String  siret) {
         this.siret = siret;
     }
     
@@ -220,7 +220,7 @@ public class Entreprise {
     * Permet d'obtenir le numero de telephone
     * @return numTelephone -Integer
     */
-    public Integer getNumTelephone() {
+    public String getNumTelephone() {
         return this.numTelephone;
     }
     
@@ -229,7 +229,7 @@ public class Entreprise {
     * Permet de modifier le numero de telephone 
     * @param Integer
     */
-    public void setNumTelephone(Integer numTelephone) {
+    public void setNumTelephone(String  numTelephone) {
         this.numTelephone = numTelephone;
     }
     

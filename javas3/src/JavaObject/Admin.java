@@ -114,7 +114,7 @@ public class Admin {
     * @param codePostal -Integer
     * @param ville -String
     * @param pays -String
-    * @param numTelephone -Integer
+    * @param numTelephone -Long
     * @param entreprise -Entreprise
     * @author gangn
      * @return 
