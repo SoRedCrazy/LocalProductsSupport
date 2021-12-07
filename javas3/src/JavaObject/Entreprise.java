@@ -1,5 +1,7 @@
 package JavaObject;
 
+import java.util.ArrayList;
+
 /**
 * @generated
 * Cette classe va servir a gerer entierement les objets entreprise, qui representeron les entreprise des producteur, et donc les utilisateur du logiciel.
@@ -7,7 +9,7 @@ package JavaObject;
 public class Entreprise {
     
    
-	private Integer siret;
+	private String  siret;
     private Integer numeroDeRue;
     private String rue;
     private Integer codePostal;
@@ -15,14 +17,11 @@ public class Entreprise {
     private String pays;
     private String nom;
     private String prenom;
-    private Integer numTelephone;
-    private Vehicule ListVehicule;
-    private Tournee ListTournee;
-    private Client ListClient;
-    private String password;
-    private Vehicule vehicule;
-    private Client client;
-    private Tournee tournee;
+    private String numTelephone;
+    private ArrayList<Vehicule> vehicule;
+    private ArrayList<Client> client;
+    private ArrayList<Tournee> tournee;
+    private String mdp;
     //BRO
     /**
      * CONSTRUCTEUR
@@ -36,8 +35,9 @@ public class Entreprise {
      * @param nom -String
      * @param prenom -String
      * @param numTelephone -Integer
+     * @param mdp-String
      */
-    public Entreprise (int siret, Integer numeroDeRue, String rue, Integer codePostal, String ville, String pays, String nom, String prenom, Integer numTelephone) {
+    public Entreprise (String  siret, Integer numeroDeRue, String rue, Integer codePostal, String ville, String pays, String nom, String prenom, String  numTelephone, String mdp) {
     	this.siret=siret;
     	this.numeroDeRue=numeroDeRue;
     	this.rue=rue;
@@ -47,18 +47,39 @@ public class Entreprise {
     	this.nom=nom;
     	this.prenom=prenom;
     	this.numTelephone=numTelephone;
+    	this.mdp=mdp;
+    	this.client=new ArrayList<Client>();
+    	this.tournee= new ArrayList<Tournee>();
+    	this.vehicule=new ArrayList<Vehicule>();
     	
     }
     
     
-    //GETTERS AND SETTERS
-    
     /**
+     * permet d'avoir le mots de passe 
+     * 
+     * @return string 
+     */
+    
+    public String getMdp() {
+		return mdp;
+	}
+
+    /**
+     * permet de modifier le mots de passe
+     * @param String- mdp
+     */
+	public void setMdp(String mdp) {
+		this.mdp = mdp;
+	}
+
+
+	/**
     * @generated
     * Permet d'obtenir la valeur du siret.
     * @return siret -Integer
     */
-    public Integer getSiret() {
+    public String getSiret() {
         return this.siret;
     }
     
@@ -67,7 +88,7 @@ public class Entreprise {
     * Permet de modifier la valeur du siret.
     * @param siret -Integer 
     */
-    public void setSiret(Integer siret) {
+    public void setSiret(String  siret) {
         this.siret = siret;
     }
     
@@ -202,7 +223,7 @@ public class Entreprise {
     * Permet d'obtenir le numero de telephone
     * @return numTelephone -Integer
     */
-    public Integer getNumTelephone() {
+    public String getNumTelephone() {
         return this.numTelephone;
     }
     
@@ -211,7 +232,7 @@ public class Entreprise {
     * Permet de modifier le numero de telephone 
     * @param Integer
     */
-    public void setNumTelephone(Integer numTelephone) {
+    public void setNumTelephone(String  numTelephone) {
         this.numTelephone = numTelephone;
     }
     
@@ -269,23 +290,6 @@ public class Entreprise {
         this.ListClient = ListClient;
     }
     
-    /**
-    * @generated
-    * Permet d'obtenir le mot de passe
-    * @return password -String
-    */
-    public String getPassword() {
-        return this.password;
-    }
-    
-    /**
-    * @generated
-    * Permet de modifier le mot de passe
-    * @param password -String
-    */
-    public void setPassword(String password) {
-        this.password = password;
-    }
     
     
     /**

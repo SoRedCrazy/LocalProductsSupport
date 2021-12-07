@@ -12,7 +12,7 @@ public class Client {
     private Integer codePostal;
     private String ville;
     private String pays;
-    private Integer numTelephone;
+    private String  numTelephone;
     
     /**
      * Ce constructeur permet de créer un client avec de nombreux paramétres 
@@ -29,7 +29,7 @@ public class Client {
      * @param entreprise -Entreprise
      * @author gangn
      */
-    public Client(int idclient, String prenom,String nom,Integer numeroDeRue,String rue,Integer codePostal,String ville,String pays,Integer numTelephone) {
+    public Client(int idclient, String prenom,String nom,Integer numeroDeRue,String rue,Integer codePostal,String ville,String pays,String  numTelephone) {
     	this.idClient = idclient;
     	this.prenom = prenom;
     	this.nom = nom;
@@ -176,7 +176,7 @@ public class Client {
      * Ce getteur permet de récupérer le numéro de téléphone du client
      * @return le numéro de téléphone de type Integer
      */
-    public  Integer getNumTelephone() {
+    public  String  getNumTelephone() {
         return this.numTelephone;
     }
     
@@ -184,7 +184,7 @@ public class Client {
      * Ce setteur permet de modifier le numéro de téléphone du client
      * @param numTelephone -Integer
      */
-    public  void setNumTelephone(Integer numTelephone) {
+    public  void setNumTelephone(String  numTelephone) {
         this.numTelephone = numTelephone;
     }
     

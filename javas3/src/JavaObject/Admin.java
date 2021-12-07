@@ -115,21 +115,25 @@ public class Admin {
     * @param ville -String
     * @param pays -String
     * @param numTelephone -String
+    * @param numTelephone -Long
     * @param entreprise -Entreprise
     * @author gangn
      * @return 
     */
-    public void ajouterClient() {
-        //TODO
+    public void ajouterClient(String prenom,String nom,Integer numeroDeRue,String rue,Integer codePostal,String ville,String pays,String  numTelephone,String mailAdmin) {
+        DAO instance = new DAO();
+        instance.ajouterclient(prenom, nom, numeroDeRue, rue, codePostal, ville, pays, numTelephone, mailAdmin);
+        
     }
     /**
     * Cette méthode permet la suppression d'un Client sur la base de donnée.
     * Le client doit exister dans la base de donnée pour que la suppression fonctionne.
-    * @param id du Client à supprimer -Integer
+    * @param Client à supprimer -Client
      * @return 
     */
-    public void supprimerClient() {
-        //TODO
+    public void supprimerClient(Client client) {
+    	DAO instance = new DAO();
+    	instance.delclient(client);
     }
     /**
     * Cette méthode permet de modifier les parametres d'un client.
