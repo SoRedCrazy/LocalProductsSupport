@@ -85,7 +85,7 @@ public class Admin {
      * @param pays -String
      * @param nom -String
      * @param prenom -String
-     * @param numTelephone -Integer
+     * @param numTelephone -String
      * @param ListVehicule[] -Vehicule
      * @param ListTournee[] -Tournee
      * @param ListClient[] -Client
@@ -114,7 +114,7 @@ public class Admin {
     * @param codePostal -Integer
     * @param ville -String
     * @param pays -String
-    * @param numTelephone -Integer
+    * @param numTelephone -String
     * @param entreprise -Entreprise
     * @author gangn
      * @return 
