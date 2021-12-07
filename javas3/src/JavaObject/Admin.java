@@ -134,6 +134,7 @@ public class Admin {
     public void supprimerClient(Client client) {
     	DAO instance = new DAO();
     	instance.delclient(client);
+    	//blablatest
     }
     /**
     * Cette méthode permet de modifier les parametres d'un client.
