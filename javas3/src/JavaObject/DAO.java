@@ -359,7 +359,7 @@ public class DAO {
      * @param Time 
      * @param Vehicule
      * @return Tournée
-     * @exception SQLException si erreur de paramettre
+     * @exception SQLException si erreur de paramettres
      */
     public Tournee ajouterTournee( Date date, Time horaireDebut, Time horaireFin,Vehicule vehicule) {
     	Tournee to = null;
@@ -465,10 +465,13 @@ public class DAO {
 
     /**
      * Permet l'ajout d'une commande dans une tournÃ©e et retourne un boolean pour savoir si la requete s'est bien dÃ©roulÃ©e
+     * on verifie d'aboir si le poid de la tournée n'est pas depasser par rapport au camion puis on ajoute les valeurs et on mets a jours 
+     * la valeur de la tourné
      *
      * @param tournee
      * @param commande
      * @return Commande
+     * @exception SQLException si erreur de paramettres
      */
     public Commande ajouterCommandeTournee( String libelle, Integer poids, Time Heuredebut, Time Heurefin, Client client,Entreprise entreprise,Tournee tournee) {
     	Commande co = null;
@@ -477,7 +480,6 @@ public class DAO {
     	ResultSet result;
         try {
         	//sql 
-        	
 		    	//on recuperles in du camiOn et et le poids de la tournée
 		    	stmt= this.cn.prepareStatement("SELECT V.Poids_maximal, T.poid FROM Vehicule V INNER JOIN Tournee T on  T.Imaticulation=V.Imaticulation WHERE idtournee=?");
 				stmt.setInt(1,tournee.getIdTournee());
@@ -516,8 +518,6 @@ public class DAO {
 						stmt.setInt(2,tournee.getIdTournee());
 						rs= stmt.executeUpdate();
 				    }
-
-
 		    }
         } catch(SQLException e) {
         	e.printStackTrace();
@@ -528,23 +528,94 @@ public class DAO {
 
     }
 
-    /** Permet la suppression d'une commande dans une tournee et retourne un boolean pour savoir si la requete s'est bien deroulee
-     * @param tournee
+    /** Permet la suppression d'une commande dans une tournee et retourne un boolean 
+     * pour savoir si la requete s'est bien deroulee elle supprimer la commande d'abord 
+     * puis mets a jours le poids de la tournee
      * @param commande
      * @return boolean
+     * @exception SQLException si erreur de paramettres
      */
-    public boolean supprimerCommandeTournee(Tournee tournee, Commande commande) {
-        return true;
+    public boolean supprimerCommandeTournee( Commande commande) {
+    	PreparedStatement stmt=null;
+    	int rs=-1;
+    	
+        try {
+        	stmt= this.cn.prepareStatement("DELETE FROM Commande WHERE idcommande=?");
+			stmt.setInt(1, commande.getIdCommande());
+			rs= stmt.executeUpdate();
+			stmt= this.cn.prepareStatement("UPDATE Tournee T INNER JOIN Commande C ON  C.idtournee=T.idtournee SET poid=poid-?  WHERE idcommande= ?");
+	    	stmt.setInt(1,commande.getPoids());
+			stmt.setInt(2,commande.getIdCommande());
+			rs= stmt.executeUpdate();
+			
+        } catch(SQLException e) {
+        	e.printStackTrace();
+        }
+        
+        if(rs<0) {
+        	return false;
+        }
+        else {
+        	return true;
+        }
 
 
     }
 
-    /** Permet la modification d'une commande.
-     * @param tournee
+    /** Permet la modification d'une commande cela verif le poids de la tournée et le poids max du camion 
+     * si il n'est pas depasser avant puis modifie la commande si sa c'est bien passer mets a jour le poid de la tournée.
+     * @param Commande 
      * @return boolean
+     * @exception SQLException si erreur de paramettres
      */
-    public boolean modifCommande(Tournee tournee) {
-        return true;
+    public boolean modifCommande(Commande commande) {
+    	Commande co = null;
+    	PreparedStatement stmt=null;
+    	int rs=-1;
+    	ResultSet result;
+        try {
+        	//sql 
+        	
+		    	//on recuperles in du camiOn et et le poids de la tournée
+		    	stmt= this.cn.prepareStatement("SELECT V.Poids_maximal, T.poid FROM Vehicule V INNER JOIN Tournee T on  T.Imaticulation=V.Imaticulation INNER JOIN Commande C ON  C.idtournee=T.idtournee WHERE idcommande=?");
+				stmt.setInt(1,commande.getIdCommande());
+				result= stmt.executeQuery();
+				result.next();
+				int newpoids=result.getInt("poid")+commande.getPoids()-commande.getAncienpoids();
+				System.out.println(commande.getPoids());
+				//on verifie si le poids du camion n'est pas depasser 
+				if(newpoids<result.getInt("Poids_maximal")) {
+					stmt= this.cn.prepareStatement("UPDATE Commande SET Heure_de_debut=?,Heure_de_fin=?,libelle=? ,poids=? WHERE idcommande=?");
+					
+					stmt.setTime(1,commande.getHeuredebut());
+					stmt.setTime(2,commande.getHeureFin());
+					stmt.setString(3, commande.getLibelle());
+					stmt.setInt(4, commande.getPoids());
+					stmt.setInt(5, commande.getIdCommande());
+					//on recupere le deroulement et excute
+					rs= stmt.executeUpdate();
+					// si infrieur a 0 ca c'est pas bien passer
+					if (rs<0) {
+				        throw new SQLException();
+				    }
+				    else {
+						//on mets a jours le poid 
+				    	stmt= this.cn.prepareStatement("UPDATE Tournee T INNER JOIN Commande C ON  C.idtournee=T.idtournee SET poid=? WHERE idcommande= ?");
+				    	stmt.setInt(1,newpoids);
+						stmt.setInt(2,commande.getIdCommande());
+						rs= stmt.executeUpdate();
+				    }
+		    }
+        } catch(SQLException e) {
+        	e.printStackTrace();
+        }
+        
+        if(rs<0) {
+        	return false;
+        }
+        else {
+        	return true;
+        }
 
     }
 

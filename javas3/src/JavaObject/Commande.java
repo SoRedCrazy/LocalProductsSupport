@@ -10,12 +10,14 @@ public class Commande {
     private Time heuredebut;
     private Time heurefin;
     private Client Client;
+    private int ancienpoids;
 
     public Commande(Integer idCommande, String libelle, Integer poids, Time heuredebut, Time heurefin, Client client) {
 		this.idCommande = idCommande;
 		this.libelle = libelle;
 		this.poids = poids;
 		this.heuredebut = heuredebut;
+		this.heurefin=heurefin;
 		Client = client;
 	}
 
@@ -60,13 +62,20 @@ public class Commande {
     }
     
     /**
-    * Permet de définir le poids de la commande.
-    * @param poids
-    */
-    public void setPoids(Integer poids) {
-        this.poids = poids;
-    }
-    
+     * permet de sette le poid 
+     * @param poids
+     */
+	public void setPoids(int poids) {
+		this.ancienpoids=this.poids;
+		this.poids = poids;
+	}
+	 /**
+     * permet d'avoir l'ancien poids utiles a la base de donnee
+     * @param poids
+     */
+	public int getAncienpoids() {
+		return ancienpoids;
+	}
     /**
     * Permet de récupérer la date de la commande.
     * @return dateCommande

@@ -136,12 +136,13 @@ public class Tournee {
 		return poids;
 	}
     /**
-     * permet de sette de 
+     * permet de sette le poid 
      * @param poids
      */
 	public void setPoids(int poids) {
 		this.poids = poids;
 	}
+	
 
 	/**
     * Permet l'ajout d'une commande de la liste des commandes de la tournée.
