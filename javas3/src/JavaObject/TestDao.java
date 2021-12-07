@@ -3,6 +3,7 @@ package JavaObject;
 import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class TestDao {
@@ -28,9 +29,9 @@ public class TestDao {
 		LocalDate localDate = LocalDate.of(2015, 3, 2);
 		
 		Tournee te=new Tournee(1,d1, t1,t2, ve);
-		Commande co=d.ajouterCommandeTournee("poire", 25, t1, t2, cl, en, te);
+		Commande co= new Commande(2,"poire", 10, t1, t2, cl);
 		
-		
+		boolean b2=d.supprimerCommandeTournee(co);
 		
 		
 	}
