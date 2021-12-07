@@ -1,5 +1,7 @@
 package JavaObject;
 
+import java.util.ArrayList;
+
 /**
 * @generated
 * Cette classe va servir a gerer entierement les objets entreprise, qui representeron les entreprise des producteur, et donc les utilisateur du logiciel.
@@ -16,12 +18,9 @@ public class Entreprise {
     private String nom;
     private String prenom;
     private String numTelephone;
-    private Vehicule ListVehicule;
-    private Tournee ListTournee;
-    private Client ListClient;
-    private Vehicule vehicule;
-    private Client client;
-    private Tournee tournee;
+    private ArrayList<Vehicule> vehicule;
+    private ArrayList<Client> client;
+    private ArrayList<Tournee> tournee;
     private String mdp;
     //BRO
     /**
@@ -49,6 +48,10 @@ public class Entreprise {
     	this.prenom=prenom;
     	this.numTelephone=numTelephone;
     	this.mdp=mdp;
+    	this.client=new ArrayList<Client>();
+    	this.tournee= new ArrayList<Tournee>();
+    	this.vehicule=new ArrayList<Vehicule>();
+    	
     }
     
     
