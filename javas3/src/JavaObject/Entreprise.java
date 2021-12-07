@@ -238,66 +238,10 @@ public class Entreprise {
     
     /**
     * @generated
-    * permet de d'obtenir un liste de vehicule
-    * @return ListVehicule -Vehicule
-    */
-    public Vehicule getListVehicule() {
-        return this.ListVehicule;
-    }
-    
-    /**
-    * @generated
-    * Permet de modifier une liste de vehicule 
-    * @param ListVehicule -Vehicule
-    */
-    public void setListVehicule(Vehicule ListVehicule) {
-        this.ListVehicule = ListVehicule;
-    }
-    
-    /**
-    * @generated
-    * Permet d'obtenir la liste de tournee
-    * @return ListTournee -Tournee
-    */
-    public Tournee getListTournee() {
-        return this.ListTournee;
-    }
-    
-    /**
-    * @generated
-    * Permet de modifier lez liste de tournee
-    * @param ListTournee -Tournee
-    */
-    public void setListTournee(Tournee ListTournee) {
-        this.ListTournee = ListTournee;
-    }
-    
-    /**
-    * @generated
-    * Permet d'obtenir la liste de client
-    * @return ListClient -Client
-    */
-    public Client getListClient() {
-        return this.ListClient;
-    }
-    
-    /**
-    * @generated
-    * Permet de modifier la liste de client
-    * @param ListClient -Client
-    */
-    public void setListClient(Client ListClient) {
-        this.ListClient = ListClient;
-    }
-    
-    
-    
-    /**
-    * @generated
     * Permet d'obtenir une tournee
     * @return tournee -Tournee
     */
-    public Tournee getTournee() {
+    public ArrayList<Tournee> getTournee() {
         return this.tournee;
     }
     
@@ -306,7 +250,7 @@ public class Entreprise {
     * Permet de modifier une tournee
     * @param tournee -Tournee
     */
-    public void setTournee(Tournee tournee) {
+    public void setTournee(ArrayList<Tournee> tournee) {
         this.tournee = tournee;
     }
     
@@ -315,7 +259,7 @@ public class Entreprise {
     * Permet d'obtenir un vehicule
     * @return vehicule -Vehicule
     */
-    public Vehicule getVehicule() {
+    public ArrayList<Vehicule> getVehicule() {
         return this.vehicule;
     }
     
@@ -324,7 +268,7 @@ public class Entreprise {
     * Permet de modifier un Vehicule
     * @param vehicule -Vehicule
     */
-    public void setVehicule(Vehicule vehicule) {
+    public void setVehicule(ArrayList<Vehicule> vehicule) {
         this.vehicule = vehicule;
     }
     
@@ -333,7 +277,7 @@ public class Entreprise {
     * Permet d'obtenir un client 
     * @return client -Client
     */
-    public Client getClient() {
+    public ArrayList<Client> getClient() {
         return this.client;
     }
     
@@ -342,7 +286,7 @@ public class Entreprise {
     * Permet de modifiuer un client
     * @param client -Client
     */
-    public void setClient(Client client) {
+    public void setClient(ArrayList<Client> client) {
         this.client = client;
     }
     
