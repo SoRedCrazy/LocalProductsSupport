@@ -92,17 +92,19 @@ public class Admin {
      * @param password -String
      * @param vehicule -Vehicule
      */
-    public void ajouterEntreprise() {
-        //TODO
+    public void ajouterEntreprise(String  siret,String prenom,String nom,Integer numeroDeRue,String rue,Integer codePostal,String ville,String pays,String  numTelephone,String motsdepasses,String mailAdmin) {
+    	DAO instance = new DAO();
+    	instance.ajouterEntreprise(siret, prenom, nom, numeroDeRue, rue, codePostal, ville, pays, numTelephone, motsdepasses, mailAdmin);
     }
     /**
     * Cette méthode permet la suppression d'une Entreprise sur la base de donnée.
     * L'entreprise doit exister dans la base de donnée pour que la suppression fonctionne.
-    * @param siret de l'entreprise à supprimer -Integer
+    * @param Entreprise à supprimer -Entreprise
      * @return 
     */
-    public void supprimerEntreprise() {
-        //TODO
+    public void supprimerEntreprise(Entreprise entreprise) {
+       DAO instance = new DAO();
+       instance.supprimerEntreprise(entreprise);
     }
     /**
     * Cette méthode permet d'ajouter un Client à la base de donnée.
@@ -138,21 +140,22 @@ public class Admin {
     }
     /**
     * Cette méthode permet de modifier les parametres d'un client.
-    * @param parametre à changer -F
-    * @param nouvelle valeur -F 
-     * @return 
+    * @param Client a modifier -Client
+    * @return 
     */
-    public void ModifClient() {
-        //TODO
+    public void ModifClient(Client client) {
+        DAO instance = new DAO();
+        instance.modifclient(client);
     }
     /**
     * Cette méthode permet de modifier les parametres d'une entreprise.
-    * @param parametre à changer -F
-    * @param nouvelle valeur -F
+    * @param Entreprise à modifier -Entreprise
      * @return 
     */
-    public void ModifEntreprise() {
-        //TODO
+    public void ModifEntreprise(Entreprise entreprise) {
+    	DAO instance = new DAO();
+    	instance.modifEntreprise(entreprise);
+    	
     }
     /**
     * Cette méthode permet la connexion de l'administrateur au logiciel.
