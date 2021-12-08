@@ -19,10 +19,9 @@ public class Entreprise {
     private String prenom;
     private String numTelephone;
     private ArrayList<Vehicule> vehicule;
-    private ArrayList<Client> client;
     private ArrayList<Tournee> tournee;
     private String mdp;
-    //BRO
+    
     /**
      * CONSTRUCTEUR
      * Permet de creer une entreprise, seul un admin peut le faire.
@@ -48,7 +47,6 @@ public class Entreprise {
     	this.prenom=prenom;
     	this.numTelephone=numTelephone;
     	this.mdp=mdp;
-    	this.client=new ArrayList<Client>();
     	this.tournee= new ArrayList<Tournee>();
     	this.vehicule=new ArrayList<Vehicule>();
     	
@@ -268,27 +266,22 @@ public class Entreprise {
     * Permet de modifier un Vehicule
     * @param vehicule -Vehicule
     */
-    public void setVehicule(ArrayList<Vehicule> vehicule) {
-        this.vehicule = vehicule;
+    /**
+     * @param vehicule
+     */
+    public void setVehicule(Vehicule vehicule) {
+        this.vehicule.add(vehicule);
     }
     
-    /**
-    * @generated
-    * Permet d'obtenir un client 
-    * @return client -Client
-    */
-    public ArrayList<Client> getClient() {
-        return this.client;
-    }
-    
-    /**
-    * @generated
-    * Permet de modifiuer un client
-    * @param client -Client
-    */
-    public void setClient(ArrayList<Client> client) {
-        this.client = client;
-    }
+    @Override
+	public String toString() {
+		return "Entreprise [siret=" + siret + ", numeroDeRue=" + numeroDeRue + ", rue=" + rue + ", codePostal="
+				+ codePostal + ", ville=" + ville + ", pays=" + pays + ", nom=" + nom + ", prenom=" + prenom
+				+ ", numTelephone=" + numTelephone + ", vehicule=" + vehicule + ", tournee="
+				+ tournee + ", mdp=" + mdp + "]";
+	}
+
+
     
 
     //                          Operations                                  

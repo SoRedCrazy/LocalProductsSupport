@@ -569,7 +569,6 @@ public class DAO {
      * @exception SQLException si erreur de paramettres
      */
     public boolean modifCommande(Commande commande) {
-    	Commande co = null;
     	PreparedStatement stmt=null;
     	int rs=-1;
     	ResultSet result;
@@ -620,27 +619,157 @@ public class DAO {
     }
 
     /** Permet de retourner la liste des Tournee en fonction du numero de siret.
-     * @param int Siret
-     * @return ArrrayList<Tournee>
+     * @param Entreprise entreprise
+     * @return ArrayList<Tournee>
+     * @SQLException 
      */
 
-    public ArrayList<Tournee> listTournee(String  siret){
-        return null;
+    public ArrayList<Tournee> listTournee(Entreprise entreprise) {
+    	ArrayList<Tournee> listTo = new ArrayList<Tournee>();
+    	PreparedStatement stmt=null;
+    	ResultSet result;
+    	Vehicule v=null;
+        try {
+    
+			stmt= this.cn.prepareStatement("SELECT T.idtournee,T.Horaire_de_debut, T.Horaire_de_fin,T.Date,T.poid,T.Imaticulation FROM Vehicule V INNER JOIN Tournee T on  T.Imaticulation=V.Imaticulation WHERE V.SIRET=?");		
+			stmt.setString(1,entreprise.getSiret());
+			result= stmt.executeQuery();
+			
+			while(result.next()) {
+				Tournee T=new Tournee(result.getInt("idtournee"),result.getDate("Date"),result.getTime("Horaire_de_debut"),result.getTime("Horaire_de_fin"),new Vehicule(result.getString("Imaticulation"),result.getInt("Poids_maximal")));
+				T.setPoids(result.getInt("poid"));
+				listTo.add(T);
+			 }	
+				
+        } catch(SQLException e) {
+        	e.printStackTrace();
+        }
+       
+        return listTo;
 
     }
 
-    /** Permet de retourner la liste de toute les  Tournees.
+    /** Permet de retourner la liste de toute les  Tournees de la bases.
      * @return ArrrayList<Tournee>
      */
 
     public ArrayList<Tournee> TourneeAdmin(){
-        return null;
+    	ArrayList<Tournee> listTo = new ArrayList<Tournee>();
+    	PreparedStatement stmt=null;
+    	ResultSet result;
+    	Vehicule v=null;
+        try {
+    
+			stmt= this.cn.prepareStatement("SELECT T.idtournee,T.Horaire_de_debut, T.Horaire_de_fin,T.Date,T.poid,T.Imaticulation,V.Poids_maximal FROM Tournee T INNER JOIN Vehicule V ON T.Imaticulation=V.Imaticulation");		
+			result= stmt.executeQuery();
+			
+			 while(result.next()) {
+				Tournee T=new Tournee(result.getInt("idtournee"),result.getDate("Date"),result.getTime("Horaire_de_debut"),result.getTime("Horaire_de_fin"),new Vehicule(result.getString("Imaticulation"),result.getInt("Poids_maximal")));
+		        T.setPoids(result.getInt("poid"));
+				listTo.add(T);
+			 }	
+        } catch(SQLException e) {
+        	e.printStackTrace();
+        }
+ 
+        return listTo;
     }
+    /**
+     * Permet de recuperer tout les vehicule de la base de donnée
+     * @return ArrayList<Vehicule>
+     */
+    public ArrayList<Vehicule> listVehicule() {
+    	ArrayList<Vehicule> listVe = new ArrayList<Vehicule>();
+    	PreparedStatement stmt=null;
+    	ResultSet result;
+        try {
+    
+			stmt= this.cn.prepareStatement("SELECT * FROM Vehicule ");		
+			result= stmt.executeQuery();
+			
+			 while(result.next()) {
+		        Vehicule V=new Vehicule(result.getString("Imaticulation"),result.getInt("Poids_maximal"));
+		        listVe.add(V);
+		        }
+        } catch(SQLException e) {
+        	e.printStackTrace();
+        }
+ 
+        return listVe;
+	}
+    /**
+     * Permet de recuperer tout les vehicule de la base de donnée
+     * @return ArrayList<Vehicule>
+     */
+    public ArrayList<Vehicule> listVehiculeEntreprise(Entreprise entreprise) {
+    	ArrayList<Vehicule> listVe = new ArrayList<Vehicule>();
+    	PreparedStatement stmt=null;
+    	ResultSet result;
+        try {
+    
+			stmt= this.cn.prepareStatement("SELECT * FROM Vehicule WHERE SIRET=?");	
+			stmt.setString(1,entreprise.getSiret());
+			result= stmt.executeQuery();
+			
+			 while(result.next()) {
+		        Vehicule V=new Vehicule(result.getString("Imaticulation"),result.getInt("Poids_maximal"));
+		        listVe.add(V);
+		        }
+        } catch(SQLException e) {
+        	e.printStackTrace();
+        }
+ 
+        return listVe;
+	}
 
-    /** Permet de retouner la liste de toutes les commandes.
+	/** Permet de retouner la liste de toutes les commandes.
+     * @param Tournee tournee
      * @return ArrayList<Commande>
      */
-    public ArrayList<Commande> listCommande(){
-        return null;
+    public ArrayList<Commande> listCommande(Tournee tournee){
+    	ArrayList<Commande> listCo = new ArrayList<Commande>();
+    	PreparedStatement stmt=null;
+    	ResultSet result;
+    	Vehicule v=null;
+        try {
+    
+			stmt= this.cn.prepareStatement("Select * FROM Commande C INNER JOIN Client Cl ON C.idclient=Cl.idclient WHERE idtournee=?");
+			stmt.setInt(1,tournee.getIdTournee());
+			result= stmt.executeQuery();
+			
+			 while(result.next()) {
+				Client cl=new Client(result.getInt("idclient"),result.getString("prenom"),result.getString("nom"),result.getInt("numero_de_rue"),result.getString("rue"),result.getInt("code_postal"),result.getString("ville"),result.getString("pays"),result.getString("numero_de_telephone"));
+				Commande C=new Commande(result.getInt("idcommande"),result.getString("libelle"),result.getInt("poids"),result.getTime("Heure_de_debut"),result.getTime("Heure_de_fin"),cl);
+		        listCo.add(C);
+			 }	
+        } catch(SQLException e) {
+        	e.printStackTrace();
+        }
+ 
+        return listCo;
     }
+/**
+ * Permet de recuperer tout les client de la base de donnée
+ * @return ArrayList<Client>
+ */
+public ArrayList<Client> listClient() {
+	ArrayList<Client> listCl = new ArrayList<Client>();
+	PreparedStatement stmt=null;
+	ResultSet result;
+    try {
+
+		stmt= this.cn.prepareStatement("SELECT * FROM Client ");		
+		result= stmt.executeQuery();
+		
+		 while(result.next()) {
+			 Client cl=new Client(result.getInt("idclient"),result.getString("prenom"),result.getString("nom"),result.getInt("numero_de_rue"),result.getString("rue"),result.getInt("code_postal"),result.getString("ville"),result.getString("pays"),result.getString("numero_de_telephone"));
+	        listCl.add(cl);
+	        }
+    } catch(SQLException e) {
+    	e.printStackTrace();
+    }
+
+    return listCl;
+}
+
 }

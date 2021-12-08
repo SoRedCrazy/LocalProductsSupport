@@ -14,7 +14,12 @@ public class Vehicule {
 		this.poidsMax = poidsMax;
 	}
     
-    /**
+    @Override
+	public String toString() {
+		return "Vehicule [immatriculation=" + immatriculation + ", poidsMax=" + poidsMax + "]";
+	}
+
+	/**
     * Permet de récupérer l'immatriculation du véhicule.
     * @return immatriculation
     */
