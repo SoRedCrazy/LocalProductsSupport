@@ -29,9 +29,13 @@ public class TestDao {
 		LocalDate localDate = LocalDate.of(2015, 3, 2);
 		
 		Tournee te=new Tournee(1,d1, t1,t2, ve);
-		Commande co= new Commande(2,"poire", 10, t1, t2, cl);
+		Commande co=d.ajouterCommandeTournee("poire", 10, t1, t2, cl,en,te);
+		ArrayList<Commande> t=d.listCommande(te);
+		System.out.println(t.size());
+		for(Commande elmt:t) {
+			System.out.println(elmt.toString());
+		}
 		
-		boolean b2=d.supprimerCommandeTournee(co);
 		
 		
 	}
