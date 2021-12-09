@@ -284,7 +284,7 @@ public class DAO {
 	 * @return vehicule
 	 * @exception SQLException si erreur de paramettre
 	 */
-	public Vehicule ajouterVehicule(String immatriculation, int poidmax, Entreprise entreprise) {
+	public Vehicule ajouterVehicule(String immatriculation, int poidmax, String siret) {
 		// preparation
 		Vehicule ve = null;
 		PreparedStatement stmt = null;
@@ -294,7 +294,7 @@ public class DAO {
 			stmt = this.cn.prepareStatement("INSERT INTO Vehicule VALUES(?,?,?)");
 			stmt.setString(1, immatriculation);
 			stmt.setInt(2, poidmax);
-			stmt.setString(3, entreprise.getSiret());
+			stmt.setString(3, siret);
 			// on recupere le deroulement et excute
 			rs = stmt.executeUpdate();
 			// si infrieur a 0 ca c'est pas bien passer

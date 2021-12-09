@@ -1,5 +1,7 @@
 package JavaObject;
 
+import java.sql.Date;
+import java.sql.Time;
 import java.util.ArrayList;
 
 /**
@@ -21,6 +23,7 @@ public class Entreprise {
 	private ArrayList<Vehicule> vehicule;
 	private ArrayList<Tournee> tournee;
 	private String mdp;
+	DAO d = new DAO();
 
 	/**
 	 * CONSTRUCTEUR Permet de creer une entreprise, seul un admin peut le faire.
@@ -265,27 +268,51 @@ public class Entreprise {
 	 * @generated Ajoute un vehicule a la liste de vehicules de l'entreprise
 	 * @param Vehicule
 	 * @return
+	 * @return
 	 */
-	public void ajouterVehicule(Vehicule v) {
-		// TODO
+	public boolean ajouterVehicule(String immatriculation, int poidmax, String siret) {
+		Vehicule ve = d.ajouterVehicule(immatriculation, poidmax, siret);
+		if (ve != null) {
+			vehicule.add(ve);
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	/**
 	 * @generated Supprime un vehicule de la liste de vehicule de l'entreprise
 	 * @param Vehicule
 	 * @return
+	 * @return
 	 */
-	public void supprimerVehicule(Vehicule v) {
-		// TODO
+	public boolean supprimerVehicule(Vehicule v) {
+		if (vehicule.contains(v)) {
+			d.supprimerVehicule(v);
+			if (d.supprimerVehicule(v) == true) {
+				vehicule.remove(v);
+				return true;
+			} else {
+				return false;
+			}
+		} else
+			return false;
 	}
 
 	/**
 	 * @generated Ajoute une tournee a la liste de tournee de l'entreprise
 	 * @param Tournee
 	 * @return
+	 * @return
 	 */
-	public void ajouterTournee(Tournee t) {
-		// TODO
+	public boolean ajouterTournee(Date date, Time horaireDebut, Time horaireFin, Vehicule vehicule) {
+		Tournee to = d.ajouterTournee(date, horaireDebut, horaireFin, vehicule);
+		if (to != null) {
+			tournee.add(to);
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	/**
@@ -301,9 +328,20 @@ public class Entreprise {
 	 * @generated Supprime une tournee de la liste de tournee de l'entreprise
 	 * @param Tournee
 	 * @return
+	 * @return
 	 */
-	public void supprimerTournee(Tournee t) {
-		// TODO
+	public boolean supprimerTournee(Tournee t) {
+		if (vehicule.contains(t)) {
+			d.supprimerTournee(t);
+			if (d.supprimerTournee(t) == true) {
+				vehicule.remove(t);
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
 	}
 
 	/**
