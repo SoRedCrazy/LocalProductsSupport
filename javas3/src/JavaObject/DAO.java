@@ -12,7 +12,7 @@ public class DAO {
 	private Connection cn;
 
 	/**
-	 * Consctructeur
+	 * Consctructeur ouvre la connection singleton
 	 *
 	 */
 	public DAO() {
@@ -21,7 +21,9 @@ public class DAO {
 
 	/**
 	 * Permet l'ajout d'un client dans la DAO et retourne un Client null si ca ca
-	 * c'est pas bien passer et le client bien cr�e si c'est bon.
+	 * c'est pas bien passer et le client bien cr�e si c'est bon. Pour cela on
+	 * insert le client en bdd puis on execute si le reusultat est superieur a -1
+	 * cela c'est bien passer donc on cherche sont id puis on le cree.
 	 *
 	 * @param prenom       -String
 	 * @param nom          -String
@@ -33,17 +35,16 @@ public class DAO {
 	 * @param numTelephone -Integer
 	 * @param mailAdmin    - String
 	 * @return Client
-	 * @exception SQLExecption pour tel que le numero de telephone existe deja...
+	 * @exception SQLExecption Exemple: numero de telephone existe deja...
+	 * @author julienboisgard
 	 */
 	public Client ajouterclient(String prenom, String nom, Integer numeroDeRue, String rue, Integer codePostal,
 			String ville, String pays, String numTelephone, String mailAdmin) {
-		// preparation
 		Client cl = null;
 		PreparedStatement stmt = null;
 		int rs = -1;
 		ResultSet result;
 		try {
-			// sql
 			stmt = this.cn.prepareStatement("INSERT INTO Client VALUES(0,?,?,?,?,?,?,?,?,?)");
 			stmt.setString(1, prenom);
 			stmt.setString(2, nom);
@@ -54,14 +55,10 @@ public class DAO {
 			stmt.setString(7, pays);
 			stmt.setString(8, numTelephone);
 			stmt.setString(9, mailAdmin);
-			// on recupere le deroulement et excute
 			rs = stmt.executeUpdate();
-			// si infrieur a 0 ca c'est pas bien passer
 			if (rs < 0) {
 				throw new SQLException();
 			} else {
-				// on cherche l'id�e a ttribut dans la base de donne est le numero de telephone
-				// est unique
 				stmt = this.cn.prepareStatement("SELECT idclient FROM Client WHERE numero_de_telephone= ? ");
 				stmt.setString(1, numTelephone);
 				stmt.execute();
@@ -73,19 +70,19 @@ public class DAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
-		// si l'objet est null sa c'est pas bien passer
 		return cl;
 
 	}
 
 	/**
 	 * Permet la suppression d'un client dans la DAO et retourne un boolean pour
-	 * savoir si la requete s'est bien déroulée.
+	 * savoir si la requete s'est bien déroulée. Pour cela on envoie le la requete
+	 * si le resultat et superier a -1 le clien est bien suprimer
 	 *
 	 * @param client
 	 * @return boolean
-	 * @exception SQLException si les information ne concorde pas
+	 * @exception SQLException si les information ne concorde pas.
+	 * @author julienboisgard
 	 */
 	public boolean delclient(Client client) {
 
@@ -110,11 +107,15 @@ public class DAO {
 	}
 
 	/**
-	 * Permet de modifier des informations client.
+	 * Permet de modifier des informations client. Pour cela on recupere le client
+	 * deja modifier et a partir de sont id on modifie se qu'il lui correspond si le
+	 * resultat est superieur a -1 ca c'est bien passer.
+	 * 
 	 *
 	 * @param client
 	 * @return boolean
-	 * @exception SQLException si probleme d'information.
+	 * @exception SQLException si probleme d'informations.
+	 * @author julienboisgard
 	 */
 
 	public boolean modifclient(Client client) {
@@ -148,8 +149,10 @@ public class DAO {
 	}
 
 	/**
-	 * Permet l'ajout d'une entreprise dans la DAO et retourne un boolean pour
-	 * savoir si la requete s'est bien déroulée.
+	 * Permet l'ajout d'une entreprise dans la DAO et retourne l'entreprise cree
+	 * null si cele c'est pas bien passer. On envoie la requete avec les
+	 * informations de l'entreprise si le resultat et superieur a -1 sa c'est bien
+	 * passer et on la cree
 	 *
 	 * @param siret        -Integer
 	 * @param numeroDeRue  -Integer
@@ -163,17 +166,16 @@ public class DAO {
 	 * @param mdp-String
 	 * @param mailAdmin    - String
 	 * @return Entreprise
-	 * @exception SQLException si erreur de paramettre
+	 * @exception SQLException si erreur de paramettres
+	 * @author julienboisgard
 	 */
 	public Entreprise ajouterEntreprise(String siret, String prenom, String nom, Integer numeroDeRue, String rue,
 			Integer codePostal, String ville, String pays, String numTelephone, String motsdepasses, String mailAdmin) {
 
-		// preparation
 		Entreprise et = null;
 		PreparedStatement stmt = null;
 		int rs = -1;
 		try {
-			// sql
 			stmt = this.cn.prepareStatement("INSERT INTO Entreprise VALUES(?,?,?,?,?,?,?,?,?,?,?)");
 			stmt.setString(1, siret);
 			stmt.setInt(2, numeroDeRue);
@@ -186,9 +188,7 @@ public class DAO {
 			stmt.setString(9, numTelephone);
 			stmt.setString(10, motsdepasses);
 			stmt.setString(11, mailAdmin);
-			// on recupere le deroulement et excute
 			rs = stmt.executeUpdate();
-			// si infrieur a 0 ca c'est pas bien passer
 			if (rs < 0) {
 				throw new SQLException();
 			} else {
@@ -199,18 +199,19 @@ public class DAO {
 			e.printStackTrace();
 		}
 
-		// si l'objet est null sa c'est pas bien passer
 		return et;
 
 	}
 
 	/**
 	 * Permet la suppression d'une entreprise dans la DAO et retourne un boolean
-	 * pour savoir si la requete s'est bien déroulée.
-	 *
+	 * pour savoir si la requete s'est bien déroulée. Pour cela on envoie la
+	 * requette si le resultat est superieur a -1 ca c'est bien passer.
+	 * 
 	 * @param entreprise
 	 * @return boolean
-	 * @exception SQLException si erreur de paramettre
+	 * @exception SQLException si erreur de paramettres
+	 * @author julienboisgard
 	 */
 
 	public boolean supprimerEntreprise(Entreprise entreprise) {
@@ -238,11 +239,14 @@ public class DAO {
 	}
 
 	/**
-	 * Permet de modifier des informations entreprise.
+	 * Permet de modifier des informations entreprise. Pour cela a partir du siret
+	 * on modifie les autres paramettres si le resultat est superieur a -1 ca c'est
+	 * bien passer
 	 *
 	 * @param entreprise
 	 * @return boolean
-	 * @exception SQLException si erreur de paramettre
+	 * @exception SQLException si erreur de paramettres
+	 * @author julienboisgard
 	 */
 	public boolean modifEntreprise(Entreprise entreprise) {
 		PreparedStatement stmt = null;
@@ -275,14 +279,15 @@ public class DAO {
 	}
 
 	/**
-	 * Permet l'ajout d'un véhicule dans la DAO et retourne un boolean pour savoir
-	 * si la requete s'est bien déroulée.
-	 *
+	 * Permet l'ajout d'un véhicule dans la DAO et retourne un objet Vehcilue crée
+	 * On ajoute a la bdd le vheicule si reultat superieurr a -1 on cree le Vehicule
+	 * 
 	 * @param Immatriculation String
 	 * @param poidmax         int
 	 * @param siret           int
 	 * @return vehicule
 	 * @exception SQLException si erreur de paramettre
+	 * @author julienboisgard
 	 */
 	public Vehicule ajouterVehicule(String immatriculation, int poidmax, String siret) {
 		// preparation
@@ -290,14 +295,12 @@ public class DAO {
 		PreparedStatement stmt = null;
 		int rs = -1;
 		try {
-			// sql
 			stmt = this.cn.prepareStatement("INSERT INTO Vehicule VALUES(?,?,?)");
 			stmt.setString(1, immatriculation);
 			stmt.setInt(2, poidmax);
 			stmt.setString(3, siret);
-			// on recupere le deroulement et excute
 			rs = stmt.executeUpdate();
-			// si infrieur a 0 ca c'est pas bien passer
+
 			if (rs < 0) {
 				throw new SQLException();
 			} else {
@@ -307,18 +310,20 @@ public class DAO {
 			e.printStackTrace();
 		}
 
-		// si l'objet est null sa c'est pas bien passer
 		return ve;
 
 	}
 
 	/**
 	 * Permet la suppression de vehicule dans la DAO et retourne un boolean pour
-	 * savoir si la requete s'est bien déroulée.
+	 * savoir si la requete s'est bien déroulée. Pourcela on supprimer les les
+	 * commande des tout ou le vehicule est dedans puis les tours ou les vehivule
+	 * sont dedans et enfin on supprime le vehicule
 	 *
 	 * @param vehicule
 	 * @return boolean
-	 * @exception SQLException si erreur de paramettre
+	 * @exception SQLException si erreur de paramettres
+	 * @author julienboisgard
 	 */
 	public boolean supprimerVehicule(Vehicule vehicule) {
 		PreparedStatement stmt = null;
@@ -351,15 +356,18 @@ public class DAO {
 	}
 
 	/**
-	 * Permet l'ajout de d'une tourn�e et ca creation
+	 * Permet l'ajout d'une tournée et ca creation on ajoute les valeurs puis si
+	 * c'est bon on recupere l'idtournée et on la cree si l'objet et null cela c'est
+	 * mal passer
 	 *
 	 * @param Integer
 	 * @param Date
 	 * @param Time
 	 * @param Time
 	 * @param Vehicule
-	 * @return Tourn�e
+	 * @return Tourn�e
 	 * @exception SQLException si erreur de paramettres
+	 * @author julienboisgard
 	 */
 	public Tournee ajouterTournee(Date date, Time horaireDebut, Time horaireFin, Vehicule vehicule) {
 		Tournee to = null;
@@ -367,16 +375,14 @@ public class DAO {
 		int rs = -1;
 		ResultSet result;
 		try {
-			// sql
 			stmt = this.cn.prepareStatement("INSERT INTO Tournee VALUES(0,?,?,?,?,?)");
 			stmt.setTime(1, horaireDebut);
 			stmt.setTime(2, horaireFin);
 			stmt.setDate(3, date);
 			stmt.setInt(4, 0);
 			stmt.setString(5, vehicule.getImmatriculation());
-			// on recupere le deroulement et excute
 			rs = stmt.executeUpdate();
-			// si infrieur a 0 ca c'est pas bien passer
+
 			if (rs < 0) {
 				throw new SQLException();
 			} else {
@@ -393,17 +399,18 @@ public class DAO {
 			e.printStackTrace();
 		}
 
-		// si l'objet est null sa c'est pas bien passer
 		return to;
 
 	}
 
 	/**
-	 * Permet de modifier des informations tournee.
+	 * Permet de modifier des informations tournee. on recupere la tournée deja
+	 * modifier et on update dans la bdd a partir de l'id
 	 *
 	 * @param tournee
 	 * @return boolean
-	 * @exception SQLException si erreur de paramettre
+	 * @exception SQLException si erreur de paramettres
+	 * @author julienboisgard
 	 */
 	public boolean modifTournee(Tournee tournee) {
 
@@ -432,11 +439,13 @@ public class DAO {
 
 	/**
 	 * Permet la suppression dans la DAO et retourne un boolean pour savoir si la
-	 * requete s'est bien déroulée.
+	 * requete s'est bien déroulée. Pour cela il faut supprimer d'abords les
+	 * commandes de la tournnée puis apres on suprimmer la tournée
 	 *
 	 * @param tournee
 	 * @return boolean
-	 * @exception SQLException si erreur de paramettre
+	 * @exception SQLException si erreur de paramettres
+	 * @author julienboisgard
 	 */
 	public boolean supprimerTournee(Tournee tournee) {
 		PreparedStatement stmt = null;
@@ -465,14 +474,15 @@ public class DAO {
 
 	/**
 	 * Permet l'ajout d'une commande dans une tournée et retourne un boolean pour
-	 * savoir si la requete s'est bien déroulée on verifie d'aboir si le poid de
-	 * la tourn�e n'est pas depasser par rapport au camion puis on ajoute les
-	 * valeurs et on mets a jours la valeur de la tourn�
+	 * savoir si la requete s'est bien déroulée on verifie d'aboir si le poid de la
+	 * tourn�e n'est pas depasser par rapport au camion puis on ajoute les valeurs
+	 * et on mets a jours la valeur de la tourn�
 	 *
 	 * @param tournee
 	 * @param commande
 	 * @return Commande
 	 * @exception SQLException si erreur de paramettres
+	 * @author julienboisgard
 	 */
 	public Commande ajouterCommandeTournee(String libelle, Integer poids, Time Heuredebut, Time Heurefin, Client client,
 			Entreprise entreprise, Tournee tournee) {
@@ -481,8 +491,7 @@ public class DAO {
 		int rs = -1;
 		ResultSet result;
 		try {
-			// sql
-			// on recuperles in du camiOn et et le poids de la tourn�e
+
 			stmt = this.cn.prepareStatement(
 					"SELECT V.Poids_maximal, T.poid FROM Vehicule V INNER JOIN Tournee T on  T.Imaticulation=V.Imaticulation WHERE idtournee=?");
 			stmt.setInt(1, tournee.getIdTournee());
@@ -490,7 +499,6 @@ public class DAO {
 			result.next();
 			int newpoids = result.getInt("poid") + poids;
 
-			// on verifie si le poids du camion n'est pas depasser
 			if (newpoids < result.getInt("Poids_maximal")) {
 				stmt = this.cn.prepareStatement("INSERT INTO Commande VALUES(0,?,?,?,?,?,?,?)");
 				stmt.setString(1, libelle);
@@ -500,13 +508,11 @@ public class DAO {
 				stmt.setString(5, entreprise.getSiret());
 				stmt.setInt(6, client.getIdClient());
 				stmt.setInt(7, tournee.getIdTournee());
-				// on recupere le deroulement et excute
 				rs = stmt.executeUpdate();
-				// si infrieur a 0 ca c'est pas bien passer
+
 				if (rs < 0) {
 					throw new SQLException();
 				} else {
-					// on vas chercher l'id de la commande
 					stmt = this.cn.prepareStatement(
 							"SELECT idcommande FROM Commande WHERE idclient= ? AND idtournee= ? ORDER BY idcommande DESC");
 					stmt.setInt(1, client.getIdClient());
@@ -515,7 +521,6 @@ public class DAO {
 					result.next();
 					co = new Commande(result.getInt("idcommande"), libelle, poids, Heuredebut, Heurefin, client);
 
-					// on mets a jours le poid
 					stmt = this.cn.prepareStatement("UPDATE Tournee SET poid=? WHERE idtournee= ?");
 					stmt.setInt(1, newpoids);
 					stmt.setInt(2, tournee.getIdTournee());
@@ -526,7 +531,6 @@ public class DAO {
 			e.printStackTrace();
 		}
 
-		// si l'objet est null sa c'est pas bien passer
 		return co;
 
 	}
@@ -539,6 +543,7 @@ public class DAO {
 	 * @param commande
 	 * @return boolean
 	 * @exception SQLException si erreur de paramettres
+	 * @author julienboisgard
 	 */
 	public boolean supprimerCommandeTournee(Commande commande) {
 		PreparedStatement stmt = null;
@@ -567,30 +572,27 @@ public class DAO {
 	}
 
 	/**
-	 * Permet la modification d'une commande cela verif le poids de la tourn�e et le
+	 * Permet la modification d'une commande cela verif le poids de la tourn�e et le
 	 * poids max du camion si il n'est pas depasser avant puis modifie la commande
-	 * si sa c'est bien passer mets a jour le poid de la tourn�e.
+	 * si sa c'est bien passer mets a jour le poid de la tourn�e.
 	 * 
 	 * @param Commande
 	 * @return boolean
 	 * @exception SQLException si erreur de paramettres
+	 * @author julienboisgard
 	 */
 	public boolean modifCommande(Commande commande) {
 		PreparedStatement stmt = null;
 		int rs = -1;
 		ResultSet result;
 		try {
-			// sql
-
-			// on recuperles in du camiOn et et le poids de la tourn�e
 			stmt = this.cn.prepareStatement(
 					"SELECT V.Poids_maximal, T.poid FROM Vehicule V INNER JOIN Tournee T on  T.Imaticulation=V.Imaticulation INNER JOIN Commande C ON  C.idtournee=T.idtournee WHERE idcommande=?");
 			stmt.setInt(1, commande.getIdCommande());
 			result = stmt.executeQuery();
 			result.next();
 			int newpoids = result.getInt("poid") + commande.getPoids() - commande.getAncienpoids();
-			System.out.println(commande.getPoids());
-			// on verifie si le poids du camion n'est pas depasser
+
 			if (newpoids < result.getInt("Poids_maximal")) {
 				stmt = this.cn.prepareStatement(
 						"UPDATE Commande SET Heure_de_debut=?,Heure_de_fin=?,libelle=? ,poids=? WHERE idcommande=?");
@@ -600,13 +602,10 @@ public class DAO {
 				stmt.setString(3, commande.getLibelle());
 				stmt.setInt(4, commande.getPoids());
 				stmt.setInt(5, commande.getIdCommande());
-				// on recupere le deroulement et excute
 				rs = stmt.executeUpdate();
-				// si infrieur a 0 ca c'est pas bien passer
 				if (rs < 0) {
 					throw new SQLException();
 				} else {
-					// on mets a jours le poid
 					stmt = this.cn.prepareStatement(
 							"UPDATE Tournee T INNER JOIN Commande C ON  C.idtournee=T.idtournee SET poid=? WHERE idcommande= ?");
 					stmt.setInt(1, newpoids);
@@ -627,18 +626,20 @@ public class DAO {
 	}
 
 	/**
-	 * Permet de retourner la liste des Tournee en fonction du numero de siret.
+	 * Permet de retourner la liste des Tournee en fonction du numero de siret. on
+	 * recupere les informations dans la bdd puis on les crre est on les ajoutes a
+	 * la liste
 	 * 
 	 * @param Entreprise entreprise
 	 * @return ArrayList<Tournee>
-	 * @SQLException
+	 * @exception SQLException si erreur de paramettres
+	 * @author julienboisgard
 	 */
 
 	public ArrayList<Tournee> listTournee(Entreprise entreprise) {
 		ArrayList<Tournee> listTo = new ArrayList<Tournee>();
 		PreparedStatement stmt = null;
 		ResultSet result;
-		Vehicule v = null;
 		try {
 
 			stmt = this.cn.prepareStatement(
@@ -663,16 +664,18 @@ public class DAO {
 	}
 
 	/**
-	 * Permet de retourner la liste de toute les Tournees de la bases.
+	 * Permet de retourner la liste de toute les Tournees de la bases. on recupere
+	 * les informations dans la bdd puis on les crre est on les ajoutes a la liste
 	 * 
 	 * @return ArrrayList<Tournee>
+	 * @exception SQLException si erreur deparamettres
+	 * @author julienboisgard
 	 */
 
 	public ArrayList<Tournee> TourneeAdmin() {
 		ArrayList<Tournee> listTo = new ArrayList<Tournee>();
 		PreparedStatement stmt = null;
 		ResultSet result;
-		Vehicule v = null;
 		try {
 
 			stmt = this.cn.prepareStatement(
@@ -694,9 +697,13 @@ public class DAO {
 	}
 
 	/**
-	 * Permet de recuperer tout les vehicule de la base de donn�e
+	 * Permet de recuperer tout les vehicule de la base de donn�e on recupere dans
+	 * la bdd puis on cree tout les vehicule et on les ajoute si la liste est vide
+	 * il n'y a pas n'as pas de Vehicule
 	 * 
 	 * @return ArrayList<Vehicule>
+	 * @exception SQLException si erreur de paramettres
+	 * @author julienboisgard
 	 */
 	public ArrayList<Vehicule> listVehicule() {
 		ArrayList<Vehicule> listVe = new ArrayList<Vehicule>();
@@ -719,9 +726,13 @@ public class DAO {
 	}
 
 	/**
-	 * Permet de recuperer tout les vehicule de la base de donn�e
+	 * Permet de recuperer tout les vehicule de la base de donnée lier à une
+	 * entreprise on recupere dans la bdd puis on cree tout les vehicule et on les
+	 * ajoute si la liste est vide l'entreprise n'as pas de Vehicule
 	 * 
 	 * @return ArrayList<Vehicule>
+	 * @exception SQLException si erreur de paramettres
+	 * @author julienboisgard
 	 */
 	public ArrayList<Vehicule> listVehiculeEntreprise(Entreprise entreprise) {
 		ArrayList<Vehicule> listVe = new ArrayList<Vehicule>();
@@ -745,16 +756,18 @@ public class DAO {
 	}
 
 	/**
-	 * Permet de retouner la liste de toutes les commandes.
+	 * Permet de retouner la liste de toutes les commandes de la basse de données
+	 * apres on cree la Commande est on les ajoute a la liste si la liste est vide
+	 * il n'y a pas de Commande dans la Tournée.
 	 * 
 	 * @param Tournee tournee
 	 * @return ArrayList<Commande>
+	 * @author julienboisgard
 	 */
 	public ArrayList<Commande> listCommande(Tournee tournee) {
 		ArrayList<Commande> listCo = new ArrayList<Commande>();
 		PreparedStatement stmt = null;
 		ResultSet result;
-		Vehicule v = null;
 		try {
 
 			stmt = this.cn.prepareStatement(
@@ -778,9 +791,12 @@ public class DAO {
 	}
 
 	/**
-	 * Permet de recuperer tout les client de la base de donn�e
-	 * 
+	 * Permet de recuperer tout les client de la base de donn�e apres on cree le
+	 * client est on les ajoute a la liste si la liste est vide il n'y a pas de
+	 * client.
+	 *
 	 * @return ArrayList<Client>
+	 * @author julienboisgard
 	 */
 	public ArrayList<Client> listClient() {
 		ArrayList<Client> listCl = new ArrayList<Client>();
@@ -802,6 +818,35 @@ public class DAO {
 		}
 
 		return listCl;
+	}
+
+	/**
+	 * Permet de recuperer tout les admin qui esxiste dans la base. On recupere tout
+	 * les admins dans la bases pour ensuite les cree et les ajouter dans la liste
+	 * si la liste est vide il n'existe pas admin
+	 * 
+	 * @return ArrayList<Admin>
+	 * @author julienboisgard
+	 */
+	public ArrayList<Admin> listAdmin() {
+		ArrayList<Admin> listAD = new ArrayList<Admin>();
+		PreparedStatement stmt = null;
+		ResultSet result;
+		try {
+
+			stmt = this.cn.prepareStatement("SELECT * FROM Admin ");
+			result = stmt.executeQuery();
+
+			while (result.next()) {
+				Admin AD = new Admin(result.getString("Nom"), result.getString("Prenom"),
+						result.getString("mots_de_passes"), result.getString("mail"));
+				listAD.add(AD);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return listAD;
 	}
 
 }
