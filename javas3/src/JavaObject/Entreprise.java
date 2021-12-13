@@ -269,6 +269,7 @@ public class Entreprise {
 	 * @param Vehicule
 	 * @return
 	 * @return
+	 * @author François Bardel
 	 */
 	public boolean ajouterVehicule(String immatriculation, int poidmax, String siret) {
 		Vehicule ve = d.ajouterVehicule(immatriculation, poidmax, siret);
@@ -285,6 +286,7 @@ public class Entreprise {
 	 * @param Vehicule
 	 * @return
 	 * @return
+	 * @author François Bardel
 	 */
 	public boolean supprimerVehicule(Vehicule v) {
 		if (vehicule.contains(v)) {
@@ -304,6 +306,7 @@ public class Entreprise {
 	 * @param Tournee
 	 * @return
 	 * @return
+	 * @author François Bardel
 	 */
 	public boolean ajouterTournee(Date date, Time horaireDebut, Time horaireFin, Vehicule vehicule) {
 		Tournee to = d.ajouterTournee(date, horaireDebut, horaireFin, vehicule);
@@ -329,12 +332,13 @@ public class Entreprise {
 	 * @param Tournee
 	 * @return
 	 * @return
+	 * @author François Bardel
 	 */
 	public boolean supprimerTournee(Tournee t) {
-		if (vehicule.contains(t)) {
+		if (tournee.contains(t)) {
 			d.supprimerTournee(t);
 			if (d.supprimerTournee(t) == true) {
-				vehicule.remove(t);
+				tournee.remove(t);
 				return true;
 			} else {
 				return false;
@@ -348,18 +352,31 @@ public class Entreprise {
 	 * @generated Permet d'obtenir toutes les information d'une commande
 	 * @param Commande
 	 * @return
+	 * @author François Bardel
 	 */
 	public void consulterCommande(Commande c) {
-		// TODO
+		c.getHeuredebut();
+		c.getHeureFin();
+		c.getClient();
+		c.getLibelle();
+		c.getIdCommande();
+		c.getPoids();
 	}
 
 	/**
 	 * @generated Permet d'obtenir toutes les information d'une tournee
 	 * @param Tournee
 	 * @return
+	 * @author François Bardel
 	 */
 	public void consulterTournee(Tournee t) {
-		// TODO
+		t.getDate();
+		t.getHoraireDebut();
+		t.getHoraireFin();
+		t.getIdTournee();
+		t.getListCommande();
+		t.getPoids();
+		t.getVehicule();
 	}
 
 	/**
@@ -367,9 +384,17 @@ public class Entreprise {
 	 * @param Tournee
 	 * @param Commande
 	 * @return
+	 * @author François Bardel
 	 */
-	public void ajouterCommandeTournee(Tournee t, Commande c, Client client) {
-		// ajout du Client pour sont id car une commande est lier a un client Julien
+	public void ajouterCommandeTournee(String libelle, Integer poids, Time Heuredebut, Time Heurefin, Client client,
+			String siret, Tournee tournee) {
+		Commande co = d.ajouterCommandeTournee(libelle, poids, Heuredebut, Heurefin, client, siret, tournee);
+		if (co != null) {
+			ArrayList listCo = tournee.getListCommande();
+			listCo.add(co);
+			tournee.setListCommande(listCo);
+		}
+
 	}
 
 	/**
@@ -377,15 +402,30 @@ public class Entreprise {
 	 * @param Tournee
 	 * @param Commande
 	 * @return
+	 * @author François Bardel
+	 * @return
 	 */
-	public void supprimerCommandeTournee(Tournee t, Commande c) {
-		// TODO
+	public boolean supprimerCommandeTournee(Tournee t, Commande c) {
+		if (t.getListCommande().contains(c)) {
+			d.supprimerCommandeTournee(c);
+			if (d.supprimerCommandeTournee(c) == true) {
+				ArrayList listco = t.getListCommande();
+				listco.remove(c);
+				t.setListCommande(listco);
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
 	}
 
 	/**
 	 * @generated Permet a l'utilisateur de se connecter
 	 * @param String
 	 * @param String
+	 * @author François Bardel
 	 * @return
 	 */
 	public void connexion(String usr, String password) {
