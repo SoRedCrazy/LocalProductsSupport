@@ -323,8 +323,11 @@ public class Entreprise {
 	 * @param Tournee
 	 * @return
 	 */
-	public void modifierTournee(Tournee t) {
-		// TODO
+	public void modifierTournee(Date date, Time horaireDebut, Time horaireFin, Vehicule vehicule, Tournee t) {
+		t.setDate(date);
+		t.setHoraireDebut(horaireDebut);
+		t.setHoraireFin(horaireFin);
+		t.setVehicule(vehicule);
 	}
 
 	/**
@@ -349,37 +352,6 @@ public class Entreprise {
 	}
 
 	/**
-	 * @generated Permet d'obtenir toutes les information d'une commande
-	 * @param Commande
-	 * @return
-	 * @author François Bardel
-	 */
-	public void consulterCommande(Commande c) {
-		c.getHeuredebut();
-		c.getHeureFin();
-		c.getClient();
-		c.getLibelle();
-		c.getIdCommande();
-		c.getPoids();
-	}
-
-	/**
-	 * @generated Permet d'obtenir toutes les information d'une tournee
-	 * @param Tournee
-	 * @return
-	 * @author François Bardel
-	 */
-	public void consulterTournee(Tournee t) {
-		t.getDate();
-		t.getHoraireDebut();
-		t.getHoraireFin();
-		t.getIdTournee();
-		t.getListCommande();
-		t.getPoids();
-		t.getVehicule();
-	}
-
-	/**
 	 * @generated Permet d'ajouter une commande a une tournee
 	 * @param Tournee
 	 * @param Commande
@@ -393,6 +365,7 @@ public class Entreprise {
 			ArrayList listCo = tournee.getListCommande();
 			listCo.add(co);
 			tournee.setListCommande(listCo);
+			tournee.setPoids(tournee.getPoids() + poids);
 		}
 
 	}
@@ -412,6 +385,7 @@ public class Entreprise {
 				ArrayList listco = t.getListCommande();
 				listco.remove(c);
 				t.setListCommande(listco);
+				t.setPoids(t.getPoids() - c.getPoids());
 				return true;
 			} else {
 				return false;
