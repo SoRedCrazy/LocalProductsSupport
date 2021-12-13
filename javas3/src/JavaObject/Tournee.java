@@ -177,7 +177,7 @@ public class Tournee {
 	}
 
 	/**
-	 * Permet de recuperer le poids de la tournee
+	 * Permet de recuperer le poids de la tournee.
 	 * 
 	 * @return int poids
 	 * @exception 
