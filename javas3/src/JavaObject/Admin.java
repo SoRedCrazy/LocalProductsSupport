@@ -18,6 +18,9 @@ public class Admin {
 	private String prenom;
 
 	private String password;
+	
+	private String email;
+	
 	private DAO instance = new DAO();
 
 	/**
@@ -33,7 +36,8 @@ public class Admin {
 	public Admin(String nom, String prenom, String password, String email) {
 		this.nom = nom;
 		this.prenom = prenom;
-		this.password = email;
+		this.password = password;
+		this.email = email;
 	}
 
 	/**
@@ -42,7 +46,7 @@ public class Admin {
 	 * @return Un nom de type String
 	 * @author Gangneux Alexis
 	 */
-	private String getNom() {
+	public String getNom() {
 		return this.nom;
 	}
 
@@ -52,7 +56,7 @@ public class Admin {
 	 * @param nom -String
 	 * @author Gangneux Alexis
 	 */
-	private void setNom(String nom) {
+	public void setNom(String nom) {
 		this.nom = nom;
 	}
 
@@ -62,7 +66,7 @@ public class Admin {
 	 * @return Un prénom de type String
 	 * @author Gangneux Alexis
 	 */
-	private String getPrenom() {
+	public String getPrenom() {
 		return this.prenom;
 	}
 
@@ -72,7 +76,7 @@ public class Admin {
 	 * @param prenom -String
 	 * @author Gangneux Alexis
 	 */
-	private void setPrenom(String prenom) {
+	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
 
@@ -82,7 +86,7 @@ public class Admin {
 	 * @return Un mot de passe de type String
 	 * @author Gangneux Alexis
 	 */
-	private String getPassword() {
+	public String getPassword() {
 		return this.password;
 	}
 
@@ -92,11 +96,33 @@ public class Admin {
 	 * @param password -String
 	 * @author Gangneux Alexis
 	 */
-	private void setPassword(String password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	/**
+	 * Ce getter permet de récupérer l'email d'un administrateur
+	 * 
+	 * @return Un email de type String
+	 * @author Gangneux Alexis
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * Ce setter permet de modifier l'email d'un administrateur
+	 * 
+	 * @param email -String
+	 * @author Gangneux Alexis
+	 */
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 
 	// Operations
+
 
 	/**
 	 * Cette méthode permet l'ajout d'une Entreprise à la base de donnée.
@@ -215,14 +241,21 @@ public class Admin {
 	 * @see listAdmin() -DAO
 	 * @author Gangneux Alexis
 	 */
-	public void connexion(Admin admin) {
-		ArrayList<Admin> listAdmin = instance.listAdmin();
+	public static Admin connexion(String email, String password) {
+		DAO d = new DAO();
+		ArrayList<Admin> listAdmin = d.listAdmin();
 		for(Admin a : listAdmin) {
-			if(admin == a) {
-				System.out.println("Connexion réussie");
+			if(a.getEmail()==email) {
+				if(a.getPassword()==password) {
+					return a;
+				}
 			}
 		}
-		System.out.println("Connexion échouer, enregistrez-vous dans la base de donnée");
+		return null;
+	
 	}
-
+	
+	
+	
+		
 }
