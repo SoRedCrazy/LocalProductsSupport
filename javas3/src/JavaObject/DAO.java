@@ -357,8 +357,8 @@ public class DAO {
 
 	/**
 	 * Permet l'ajout d'une tournée et ca creation on ajoute les valeurs puis si
-	 * c'est bon on recupere l'idtournée et on la cree si l'objet et null cela c'est
-	 * mal passer
+	 * c'est bon on recupere l'idtournée et on la cree si l'objet et null cela
+	 * c'est mal passer
 	 *
 	 * @param Integer
 	 * @param Date
@@ -474,9 +474,9 @@ public class DAO {
 
 	/**
 	 * Permet l'ajout d'une commande dans une tournée et retourne un boolean pour
-	 * savoir si la requete s'est bien déroulée on verifie d'aboir si le poid de la
-	 * tourn�e n'est pas depasser par rapport au camion puis on ajoute les valeurs
-	 * et on mets a jours la valeur de la tourn�
+	 * savoir si la requete s'est bien déroulée on verifie d'aboir si le poid de
+	 * la tourn�e n'est pas depasser par rapport au camion puis on ajoute les
+	 * valeurs et on mets a jours la valeur de la tourn�
 	 *
 	 * @param tournee
 	 * @param commande
@@ -485,7 +485,7 @@ public class DAO {
 	 * @author julienboisgard
 	 */
 	public Commande ajouterCommandeTournee(String libelle, Integer poids, Time Heuredebut, Time Heurefin, Client client,
-			Entreprise entreprise, Tournee tournee) {
+			String siret, Tournee tournee) {
 		Commande co = null;
 		PreparedStatement stmt = null;
 		int rs = -1;
@@ -505,7 +505,7 @@ public class DAO {
 				stmt.setInt(2, poids);
 				stmt.setTime(3, Heuredebut);
 				stmt.setTime(4, Heurefin);
-				stmt.setString(5, entreprise.getSiret());
+				stmt.setString(5, siret);
 				stmt.setInt(6, client.getIdClient());
 				stmt.setInt(7, tournee.getIdTournee());
 				rs = stmt.executeUpdate();
@@ -572,9 +572,9 @@ public class DAO {
 	}
 
 	/**
-	 * Permet la modification d'une commande cela verif le poids de la tourn�e et le
-	 * poids max du camion si il n'est pas depasser avant puis modifie la commande
-	 * si sa c'est bien passer mets a jour le poid de la tourn�e.
+	 * Permet la modification d'une commande cela verif le poids de la tourn�e et
+	 * le poids max du camion si il n'est pas depasser avant puis modifie la
+	 * commande si sa c'est bien passer mets a jour le poid de la tourn�e.
 	 * 
 	 * @param Commande
 	 * @return boolean
