@@ -849,4 +849,35 @@ public class DAO {
 		return listAD;
 	}
 
+	/**
+	 * Permet de recuperer tout les entreprise qui esxiste dans la base. On recupere
+	 * tout les entreprises dans la bases pour ensuite les cree et les ajouter dans
+	 * la liste si la liste est vide il n'existe pas Entreprise
+	 * 
+	 * @return ArrayList<Admin>
+	 * @author julienboisgard
+	 */
+	public ArrayList<Entreprise> listEntreprise() {
+		ArrayList<Entreprise> listET = new ArrayList<Entreprise>();
+		PreparedStatement stmt = null;
+		ResultSet result;
+		try {
+
+			stmt = this.cn.prepareStatement("SELECT * FROM Entreprise ");
+			result = stmt.executeQuery();
+
+			while (result.next()) {
+				Entreprise ET = new Entreprise(result.getString("SIRET"), result.getInt("Numero_de_rue"),
+						result.getString("rue"), result.getInt("code_postal"), result.getString("ville"),
+						result.getString("pays"), result.getString("NOM"), result.getString("prenom"),
+						result.getString("Numero_de_telephone"), result.getString("mots_de_passes"));
+				listET.add(ET);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return listET;
+	}
+
 }
