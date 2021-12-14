@@ -185,7 +185,7 @@ public class Admin {
 	 */
 	public void ajouterClient(String prenom, String nom, Integer numeroDeRue, String rue, Integer codePostal,
 			String ville, String pays, String numTelephone) {
-
+		
 		instance.ajouterclient(prenom, nom, numeroDeRue, rue, codePostal, ville, pays, numTelephone, this.email);
 
 	}
@@ -202,7 +202,7 @@ public class Admin {
 	public void supprimerClient(Client client) {
 
 		instance.delclient(client);
-		// blablatest
+		
 	}
 
 	/**
@@ -217,14 +217,19 @@ public class Admin {
 	 * @param ville        -String
 	 * @param pays         -String
 	 * @param numTelephone -String
-	 * @param numTelephone -Long
-	 * @param entreprise   -Entreprise
 	 * @see modifclient() -DAO
 	 * @author Gangneux Alexis
 	 */
 	public void ModifClient(Client client, String prenom, String nom, Integer numeroDeRue, String rue,
 			Integer codePostal, String ville, String pays, String numTelephone) {
-
+		client.setPrenom(prenom);
+		client.setNom(nom);
+		client.setNumeroDeRue(numeroDeRue);
+		client.setRue(rue);
+		client.setCodePostal(codePostal);
+		client.setVille(ville);
+		client.setPays(pays);
+		client.setNumTelephone(numTelephone);
 		instance.modifclient(client);
 	}
 
@@ -239,18 +244,22 @@ public class Admin {
 	 * @param nom            -String
 	 * @param prenom         -String
 	 * @param numTelephone   -String
-	 * @param ListVehicule[] -Vehicule
-	 * @param ListTournee[]  -Tournee
-	 * @param ListClient[]   -Client
 	 * @param password       -String
-	 * @param vehicule       -Vehicule
 	 * @see modifEntreprise() -DAO
 	 * @author Gangneux Alexis
 	 */
 	public void ModifEntreprise(Entreprise entreprise, String prenom, String nom, Integer numeroDeRue, String rue,
 			Integer codePostal, String ville, String pays, String numTelephone, String motsdepasses) {
 		entreprise.setRue(rue);
-
+		entreprise.setPrenom(prenom);
+		entreprise.setNom(nom);
+		entreprise.setNumeroDeRue(numeroDeRue);
+		entreprise.setRue(rue);
+		entreprise.setCodePostal(codePostal);
+		entreprise.setVille(ville);
+		entreprise.setPays(pays);
+		entreprise.setNumTelephone(numTelephone);
+		entreprise.setMdp(motsdepasses);
 		instance.modifEntreprise(entreprise);
 
 	}
