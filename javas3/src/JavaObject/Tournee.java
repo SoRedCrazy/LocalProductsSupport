@@ -4,6 +4,13 @@ import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
 
+/**
+ * Permet de crée une tournée puis de lui ajouter/retirer des commande ou
+ * modifier
+ * 
+ * @author JulienBoisgard
+ *
+ */
 public class Tournee {
 
 	private Integer idTournee;
@@ -24,7 +31,7 @@ public class Tournee {
 	 * @param horaireFin
 	 * @param vehicule
 	 */
-	
+
 	public Tournee(Integer idTournee, Date date, Time horaireDebut, Time horaireFin, Vehicule vehicule) {
 		super();
 		this.idTournee = idTournee;
@@ -159,7 +166,7 @@ public class Tournee {
 	public int getPoids() {
 		return poids;
 	}
-	
+
 	/**
 	 * permet de sette le poid
 	 * 
@@ -168,7 +175,7 @@ public class Tournee {
 	public void setPoids(int poids) {
 		this.poids = poids;
 	}
-	
+
 	/**
 	 * ?
 	 */
@@ -180,7 +187,7 @@ public class Tournee {
 	 * Permet de recuperer le poids de la tournee.
 	 * 
 	 * @return int poids
-	 * @exception 
+	 * @exception
 	 * @author amaurymechin
 	 */
 
@@ -194,8 +201,7 @@ public class Tournee {
 	public void addCommande(Commande commande) {
 		try {
 			listCommande.add(commande);
-		}
-		catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -210,8 +216,7 @@ public class Tournee {
 	public void delCommande(Commande commande) {
 		try {
 			listCommande.remove(commande);
-		}
-		catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

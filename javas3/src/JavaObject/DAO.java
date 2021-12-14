@@ -8,6 +8,12 @@ import java.sql.SQLException;
 import java.sql.Time;
 import java.util.ArrayList;
 
+/**
+ * Permet la gestion de la base de donner entre les objet
+ * 
+ * @author julienBoisgard
+ *
+ */
 public class DAO {
 	private Connection cn;
 

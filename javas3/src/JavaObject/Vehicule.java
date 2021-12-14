@@ -1,5 +1,12 @@
 package JavaObject;
 
+/**
+ * Permet de gerer les vehivule
+ * 
+ * @author julienBoisgard
+ *
+ */
+
 public class Vehicule {
 
 	private String immatriculation;
