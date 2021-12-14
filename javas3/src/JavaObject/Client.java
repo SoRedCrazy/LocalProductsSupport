@@ -1,5 +1,10 @@
 package JavaObject;
 
+/**
+ * Cette classe permet de gerer les objets client, elle ne contient que le
+ * constructeur de l'objet, ainsi que les getters et setters.
+ */
+
 public class Client {
 
 	private Integer idClient;

@@ -2,6 +2,11 @@ package JavaObject;
 
 import java.sql.Time;
 
+/**
+ * Cette classe permet de gerer les objets commande, elle ne contient que le
+ * constructeur de l'objet, ainsi que les getters et setters.
+ */
+
 public class Commande {
 
 	private Integer idCommande;

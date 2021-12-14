@@ -1,11 +1,16 @@
 package JavaObject;
 
-//ratatouille
 import java.sql.Connection;
 import java.sql.SQLException;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
 
+/**
+ * Cette classe sert a gerer la connection a la base de donnée, et faire en
+ * sorte qu'il y ait une unique connexion.
+ * 
+ *
+ */
 public class Singleton {
 
 	private static Connection connect;
