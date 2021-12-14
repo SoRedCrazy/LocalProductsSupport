@@ -414,14 +414,23 @@ public class Entreprise {
 	}
 
 	/**
-	 * @generated Permet a l'utilisateur de se connecter
+	 * Permet a l'utilisateur de se connecter
+	 * 
 	 * @param String
 	 * @param String
+	 * @return Entreprise
 	 * @author François Bardel
-	 * @return
 	 */
-	public void connexion(String usr, String password) {
-		// TODO
+	public Entreprise connexion(String siret, String password) {
+		ArrayList<Entreprise> listEntreprise = d.listEntreprise();
+		for (Entreprise e : listEntreprise) {
+			if (e.getSiret() == siret) {
+				if (e.getMdp() == password) {
+					return e;
+				}
+			}
+		}
+		return null;
 	}
 
 }
