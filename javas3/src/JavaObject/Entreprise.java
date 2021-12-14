@@ -5,9 +5,9 @@ import java.sql.Time;
 import java.util.ArrayList;
 
 /**
- *  Cette classe va servir a gerer entierement les objets entreprise,
- *            qui representeron les entreprise des producteur, et donc les
- *            utilisateur du logiciel.
+ * Cette classe va servir a gerer entierement les objets entreprise, qui
+ * representeron les entreprise des producteur, et donc les utilisateur du
+ * logiciel.
  */
 public class Entreprise {
 
@@ -265,10 +265,11 @@ public class Entreprise {
 	// Operations
 
 	/**
-	 * @generated Ajoute un vehicule a la liste de vehicules de l'entreprise
+	 * Ajoute un vehicule a la liste de vehicules de l'entreprise, et verifie qu'il
+	 * a bien été ajouté dans la base de donnée
+	 * 
 	 * @param Vehicule
-	 * @return
-	 * @return
+	 * @return boolean
 	 * @author François Bardel
 	 */
 	public boolean ajouterVehicule(String immatriculation, int poidmax, String siret) {
@@ -282,10 +283,11 @@ public class Entreprise {
 	}
 
 	/**
-	 * @generated Supprime un vehicule de la liste de vehicule de l'entreprise
+	 * Supprime un vehicule de la liste de vehicule de l'entreprise, et verifie
+	 * qu'il a bien été supprimer de la bases de donnée
+	 * 
 	 * @param Vehicule
-	 * @return
-	 * @return
+	 * @return boolean
 	 * @author François Bardel
 	 */
 	public boolean supprimerVehicule(Vehicule v) {
@@ -302,10 +304,14 @@ public class Entreprise {
 	}
 
 	/**
-	 * @generated Ajoute une tournee a la liste de tournee de l'entreprise
-	 * @param Tournee
-	 * @return
-	 * @return
+	 * Ajoute une tournée, a la liste detournee de l'entreprise, et verifie qu'elle
+	 * est bien dans la base de donnée
+	 * 
+	 * @param date
+	 * @param horaireDebut
+	 * @param horaireFin
+	 * @param vehicule
+	 * @return boolean
 	 * @author François Bardel
 	 */
 	public boolean ajouterTournee(Date date, Time horaireDebut, Time horaireFin, Vehicule vehicule) {
@@ -319,9 +325,11 @@ public class Entreprise {
 	}
 
 	/**
-	 * @generated Modifie les information d'une tournee
+	 * Modifie les information d'une tournee grace aux setters de la classe Tournee
+	 * 
 	 * @param Tournee
 	 * @return
+	 * @author François Bardel
 	 */
 	public void modifierTournee(Date date, Time horaireDebut, Time horaireFin, Vehicule vehicule, Tournee t) {
 		t.setDate(date);
@@ -331,10 +339,11 @@ public class Entreprise {
 	}
 
 	/**
-	 * @generated Supprime une tournee de la liste de tournee de l'entreprise
+	 * Supprime une tournee de la liste de tournee de l'entreprise, et verifie sa
+	 * suppretion dans la base de donnée
+	 * 
 	 * @param Tournee
-	 * @return
-	 * @return
+	 * @return boolean
 	 * @author François Bardel
 	 */
 	public boolean supprimerTournee(Tournee t) {
@@ -352,10 +361,16 @@ public class Entreprise {
 	}
 
 	/**
-	 * @generated Permet d'ajouter une commande a une tournee
-	 * @param Tournee
-	 * @param Commande
-	 * @return
+	 * Permet d'ajouter une commande a une tournee, verifie l'ajoue de cette
+	 * commande sur la base de donnée et met a jour le poids de la tournee
+	 * 
+	 * @param libelle
+	 * @param poids
+	 * @param Heuredebut
+	 * @param Heurefin
+	 * @param client
+	 * @param siret
+	 * @param tournee
 	 * @author François Bardel
 	 */
 	public void ajouterCommandeTournee(String libelle, Integer poids, Time Heuredebut, Time Heurefin, Client client,
@@ -371,7 +386,10 @@ public class Entreprise {
 	}
 
 	/**
-	 * @generated Permet de supprimer une commande d'une tournee
+	 * Permet de supprimer une commande d'une tournee, en verifiant qu'elle etait
+	 * bien dans la liste de commande, et en verrifiant que le changement se fait
+	 * bien dans la base de donnée. De plus, le poids de la tournee se met a jour.
+	 * 
 	 * @param Tournee
 	 * @param Commande
 	 * @return
