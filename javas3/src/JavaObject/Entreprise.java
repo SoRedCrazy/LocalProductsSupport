@@ -8,6 +8,8 @@ import java.util.ArrayList;
  * Cette classe va servir a gerer entierement les objets entreprise, qui
  * representeron les entreprise des producteur, et donc les utilisateur du
  * logiciel.
+ * 
+ * @author Bardel François
  */
 public class Entreprise {
 
