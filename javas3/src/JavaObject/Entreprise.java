@@ -5,7 +5,7 @@ import java.sql.Time;
 import java.util.ArrayList;
 
 /**
- * @generated Cette classe va servir a gerer entierement les objets entreprise,
+ *  Cette classe va servir a gerer entierement les objets entreprise,
  *            qui representeron les entreprise des producteur, et donc les
  *            utilisateur du logiciel.
  */

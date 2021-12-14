@@ -3,8 +3,7 @@ package JavaObject;
 import java.util.ArrayList;
 
 /**
- * La classe Admin , permet de crï¿½e un Administrateur. Il pourra par la suite
- * utiliser toute les mï¿½thodes disponible dans cette classe. Administrateur aura
+ * La classe Admin , permet de crée un Administrateur, l'administrateur aura
  * tout les droits de suppression, d'ajout et de modification sur les autres
  * utilisateurs (Entreprise et Client).
  * 
