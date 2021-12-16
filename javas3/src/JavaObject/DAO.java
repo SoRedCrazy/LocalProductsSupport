@@ -160,7 +160,7 @@ public class DAO {
 	 * informations de l'entreprise si le resultat et superieur a -1 sa c'est bien
 	 * passer et on la cree
 	 *
-	 * @param siret        -Integer
+	 * @param siret        -String
 	 * @param numeroDeRue  -Integer
 	 * @param rue          -String
 	 * @param codePostal   -Integer
