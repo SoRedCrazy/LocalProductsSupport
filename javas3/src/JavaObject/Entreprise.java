@@ -30,7 +30,7 @@ public class Entreprise {
 	/**
 	 * CONSTRUCTEUR Permet de creer une entreprise, seul un admin peut le faire.
 	 * 
-	 * @param siret        -Integer
+	 * @param siret        -String
 	 * @param numeroDeRue  -Integer
 	 * @param rue          -String
 	 * @param codePostal   -Integer
