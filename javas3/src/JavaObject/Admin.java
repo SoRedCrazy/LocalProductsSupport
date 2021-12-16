@@ -25,7 +25,7 @@ public class Admin {
 	private DAO instance = new DAO();
 
 	/**
-	 * Ce constructeur permet de cr�er un administrateur , chaque administrateur est
+	 * Ce constructeur permet de creer un administrateur , chaque administrateur est
 	 * unique et prend en parametre un nom,prenom et mot de passe pour son
 	 * identification.
 	 * 
@@ -42,7 +42,7 @@ public class Admin {
 	}
 
 	/**
-	 * Ce getter permet de r�cup�rer le nom d'un administrateur
+	 * Ce getter permet de recuperer le nom d'un administrateur
 	 * 
 	 * @return Un nom de type String
 	 * @author Gangneux Alexis
@@ -62,9 +62,9 @@ public class Admin {
 	}
 
 	/**
-	 * Ce getter permet de r�cup�rer le pr�nom d'un administrateur
+	 * Ce getter permet de recuperer le prenom d'un administrateur
 	 * 
-	 * @return Un pr�nom de type String
+	 * @return Un prenom de type String
 	 * @author Gangneux Alexis
 	 */
 	public String getPrenom() {
@@ -82,7 +82,7 @@ public class Admin {
 	}
 
 	/**
-	 * Ce getter permet de r�cup�rer le mot de passe d'un administrateur
+	 * Ce getter permet de recuperer le mot de passe d'un administrateur
 	 * 
 	 * @return Un mot de passe de type String
 	 * @author Gangneux Alexis
@@ -102,7 +102,7 @@ public class Admin {
 	}
 
 	/**
-	 * Ce getter permet de r�cup�rer l'email d'un administrateur
+	 * Ce getter permet de recuperer l'email d'un administrateur
 	 * 
 	 * @return Un email de type String
 	 * @author Gangneux Alexis
@@ -124,8 +124,8 @@ public class Admin {
 	// Operations
 
 	/**
-	 * Cette m�thode permet l'ajout d'une Entreprise � la base de donn�e.
-	 * L'entreprise ne doit pas exister dans la base de donn�e pour que l'ajout
+	 * Cette methode permet l'ajout d'une Entreprise a la base de donnee.
+	 * L'entreprise ne doit pas exister dans la base de donnee pour que l'ajout
 	 * fonctionne.
 	 * 
 	 * @param siret          -Integer
@@ -152,11 +152,11 @@ public class Admin {
 	}
 
 	/**
-	 * Cette m�thode permet la suppression d'une Entreprise sur la base de donn�e.
-	 * L'entreprise doit exister dans la base de donn�e pour que la suppression
+	 * Cette methode permet la suppression d'une Entreprise sur la base de donnee.
+	 * L'entreprise doit exister dans la base de donnee pour que la suppression
 	 * fonctionne.
 	 * 
-	 * @param Entreprise � supprimer -Entreprise
+	 * @param Entreprise a supprimer -Entreprise
 	 * @return
 	 * @see supprimerEntreprise() -DAO
 	 * @author Gangneux Alexis
@@ -167,8 +167,8 @@ public class Admin {
 	}
 
 	/**
-	 * Cette m�thode permet d'ajouter un Client � la base de donn�e. Le Client ne
-	 * doit pas exister dans la base de donn�e pour que la m�thode fonctionne.
+	 * Cette methode permet d'ajouter un Client a la base de donnee. Le Client ne
+	 * doit pas exister dans la base de donnee pour que la methode fonctionne.
 	 * 
 	 * @param prenom       -String
 	 * @param nom          -String
@@ -190,11 +190,11 @@ public class Admin {
 	}
 
 	/**
-	 * Cette m�thode permet la suppression d'un Client sur la base de donn�e. Le
-	 * client doit exister dans la base de donn�e pour que la suppression
+	 * Cette methode permet la suppression d'un Client sur la base de donnee. Le
+	 * client doit exister dans la base de donnee pour que la suppression
 	 * fonctionne.
 	 * 
-	 * @param Client � supprimer -Client
+	 * @param Client a supprimer -Client
 	 * @see delclient() -DAO
 	 * @author Gangneux Alexis
 	 */
@@ -205,7 +205,7 @@ public class Admin {
 	}
 
 	/**
-	 * Cette m�thode permet de modifier les parametres d'un client.
+	 * Cette methode permet de modifier les parametres d'un client.
 	 * 
 	 * @param Client       a modifier -Client
 	 * @param prenom       -String
@@ -233,9 +233,9 @@ public class Admin {
 	}
 
 	/**
-	 * Cette m�thode permet de modifier les parametres d'une entreprise.
+	 * Cette methode permet de modifier les parametres d'une entreprise.
 	 * 
-	 * @param Entreprise     � modifier -Entreprise
+	 * @param Entreprise     a modifier -Entreprise
 	 * @param rue            -String
 	 * @param codePostal     -Integer
 	 * @param ville          -String
@@ -264,11 +264,11 @@ public class Admin {
 	}
 
 	/**
-	 * Cette m�thode permet la connexion de l'administrateur au logiciel. La m�thode
-	 * v�rifie que les parametres rentr�s corresponde au parametre sur la base de
-	 * donn�e.
+	 * Cette methode permet la connexion de l'administrateur au logiciel. La methode
+	 * verifie que les parametres rentrees corresponde au parametre sur la base de
+	 * donnee.
 	 * 
-	 * @param adresseMail (Concat�nation du Nom.Pr�nom@...fr) -String
+	 * @param adresseMail (Concatenation du Nom.Prenom@...fr) -String
 	 * @param password    -String
 	 * @see listAdmin() -DAO
 	 * @author Gangneux Alexis
