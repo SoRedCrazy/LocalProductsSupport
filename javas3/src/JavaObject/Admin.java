@@ -184,7 +184,7 @@ public class Admin {
 	 */
 	public void ajouterClient(String prenom, String nom, Integer numeroDeRue, String rue, Integer codePostal,
 			String ville, String pays, String numTelephone) {
-		
+
 		instance.ajouterclient(prenom, nom, numeroDeRue, rue, codePostal, ville, pays, numTelephone, this.email);
 
 	}
@@ -201,7 +201,7 @@ public class Admin {
 	public void supprimerClient(Client client) {
 
 		instance.delclient(client);
-		
+
 	}
 
 	/**
@@ -235,15 +235,15 @@ public class Admin {
 	/**
 	 * Cette methode permet de modifier les parametres d'une entreprise.
 	 * 
-	 * @param Entreprise     a modifier -Entreprise
-	 * @param rue            -String
-	 * @param codePostal     -Integer
-	 * @param ville          -String
-	 * @param pays           -String
-	 * @param nom            -String
-	 * @param prenom         -String
-	 * @param numTelephone   -String
-	 * @param password       -String
+	 * @param Entreprise   a modifier -Entreprise
+	 * @param rue          -String
+	 * @param codePostal   -Integer
+	 * @param ville        -String
+	 * @param pays         -String
+	 * @param nom          -String
+	 * @param prenom       -String
+	 * @param numTelephone -String
+	 * @param password     -String
 	 * @see modifEntreprise() -DAO
 	 * @author Gangneux Alexis
 	 */
@@ -287,5 +287,4 @@ public class Admin {
 
 	}
 
-	
 }
