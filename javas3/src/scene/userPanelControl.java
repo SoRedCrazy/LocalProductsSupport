@@ -23,19 +23,19 @@ public class userPanelControl {
 	}
 
 	public void ajouterTourneeUserPanelButton() throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("adminPanel.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("addTourneeUser.fxml"));
 		Pane mainpane = loader.load();
 		userPanel.getChildren().setAll(mainpane);
 	}
 
 	public void ajouterVehiculeUserPanelButton() throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("adminPanel.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("AddVehicule.fxml"));
 		Pane mainpane = loader.load();
 		userPanel.getChildren().setAll(mainpane);
 	}
 
 	public void supprimerVehiculeUserPanelButton() throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("adminPanel.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("delVehicule.fxml"));
 		Pane mainpane = loader.load();
 		userPanel.getChildren().setAll(mainpane);
 	}
