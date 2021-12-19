@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="adminPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scene.adminPanelControl">
+   <children>
+      <AnchorPane layoutX="-8.0" layoutY="-9.0" prefHeight="139.0" prefWidth="731.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="130.0" layoutX="3.0" layoutY="5.0" stroke="BLACK" strokeType="INSIDE" width="726.0" />
+            <Text layoutX="22.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello $ADMIN">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Button layoutX="168.0" layoutY="14.0" mnemonicParsing="false" onAction="#addTourneeAdminPanelButton" text="Ajouter une tournee" />
+            <Button layoutX="301.0" layoutY="14.0" mnemonicParsing="false" onAction="#addVehiculeAdminPanelButton" text="Ajouter un vehicule" />
+            <Button layoutX="18.0" layoutY="50.0" mnemonicParsing="false" onAction="#supprimerVehiculeAdminPanelButton" text="Supprimer un vehicule" />
+            <Button layoutX="556.0" layoutY="14.0" mnemonicParsing="false" onAction="#addClientAdminPanelButton" prefHeight="25.0" prefWidth="90.0" text="Ajouter Client" />
+            <Button layoutX="161.0" layoutY="50.0" mnemonicParsing="false" onAction="#supprimerClientAdminPanelButton" text="Supprimer Client" />
+            <Button layoutX="278.0" layoutY="50.0" mnemonicParsing="false" onAction="#supprimerEntrepriseAdminPanelButton" text="Supprimer Entreprise" />
+            <Button layoutX="420.0" layoutY="50.0" mnemonicParsing="false" onAction="#modifEntrepriseAdminPanelButton" text="Modifier Entreprise" />
+            <Button layoutX="554.0" layoutY="50.0" mnemonicParsing="false" onAction="#modifClientAdminPanelButton" text="Modifier Client" />
+            <Button layoutX="433.0" layoutY="14.0" mnemonicParsing="false" onAction="#addEntrepriseAdminPanelButton" text="Ajouter Entreprise" />
+         </children>
+      </AnchorPane>
+      <ScrollBar layoutX="706.0" layoutY="128.0" orientation="VERTICAL" prefHeight="352.0" prefWidth="14.0" />
+      <TableView layoutY="122.0" prefHeight="361.0" prefWidth="707.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="202.0" text="C2" />
+            <TableColumn prefWidth="202.0" text="C2" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

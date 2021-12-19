@@ -53,8 +53,8 @@ public class Entreprise {
 		this.prenom = prenom;
 		this.numTelephone = numTelephone;
 		this.mdp = mdp;
-		this.tournee = new ArrayList<Tournee>();
-		this.vehicule = new ArrayList<Vehicule>();
+		this.tournee = d.listTournee(siret);
+		this.vehicule = d.listVehiculeEntreprise(siret);
 
 	}
 

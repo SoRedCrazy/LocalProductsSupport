@@ -642,7 +642,7 @@ public class DAO {
 	 * @author julienboisgard
 	 */
 
-	public ArrayList<Tournee> listTournee(Entreprise entreprise) {
+	public ArrayList<Tournee> listTournee(String siret) {
 		ArrayList<Tournee> listTo = new ArrayList<Tournee>();
 		PreparedStatement stmt = null;
 		ResultSet result;
@@ -650,7 +650,7 @@ public class DAO {
 
 			stmt = this.cn.prepareStatement(
 					"SELECT T.idtournee,T.Horaire_de_debut, T.Horaire_de_fin,T.Date,T.poid,T.Imaticulation FROM Vehicule V INNER JOIN Tournee T on  T.Imaticulation=V.Imaticulation WHERE V.SIRET=?");
-			stmt.setString(1, entreprise.getSiret());
+			stmt.setString(1, siret);
 			result = stmt.executeQuery();
 
 			while (result.next()) {
@@ -740,14 +740,14 @@ public class DAO {
 	 * @exception SQLException si erreur de paramettres
 	 * @author julienboisgard
 	 */
-	public ArrayList<Vehicule> listVehiculeEntreprise(Entreprise entreprise) {
+	public ArrayList<Vehicule> listVehiculeEntreprise(String siret) {
 		ArrayList<Vehicule> listVe = new ArrayList<Vehicule>();
 		PreparedStatement stmt = null;
 		ResultSet result;
 		try {
 
 			stmt = this.cn.prepareStatement("SELECT * FROM Vehicule WHERE SIRET=?");
-			stmt.setString(1, entreprise.getSiret());
+			stmt.setString(1, siret);
 			result = stmt.executeQuery();
 
 			while (result.next()) {
