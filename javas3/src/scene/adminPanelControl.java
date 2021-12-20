@@ -69,7 +69,7 @@ public class adminPanelControl {
 	}
 
 	public void addVehiculeAdminPanelButton() throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("adminPanel.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("addVehiculeAdmin.fxml"));
 		Pane mainpane = loader.load();
 		adminPanel.getChildren().setAll(mainpane);
 	}
