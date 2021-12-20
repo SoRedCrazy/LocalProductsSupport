@@ -53,7 +53,7 @@ public class Entreprise {
 		this.prenom = prenom;
 		this.numTelephone = numTelephone;
 		this.mdp = mdp;
-		this.tournee = d.listTournee(siret);
+		this.tournee = d.listTourneeentreprise(siret);
 		this.vehicule = d.listVehiculeEntreprise(siret);
 
 	}

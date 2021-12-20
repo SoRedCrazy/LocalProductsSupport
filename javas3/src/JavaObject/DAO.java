@@ -642,15 +642,52 @@ public class DAO {
 	 * @author julienboisgard
 	 */
 
-	public ArrayList<Tournee> listTournee(String siret) {
+	public ArrayList<Tournee> listTourneeentreprise(String siret) {
 		ArrayList<Tournee> listTo = new ArrayList<Tournee>();
 		PreparedStatement stmt = null;
 		ResultSet result;
 		try {
 
 			stmt = this.cn.prepareStatement(
-					"SELECT T.idtournee,T.Horaire_de_debut, T.Horaire_de_fin,T.Date,T.poid,T.Imaticulation FROM Vehicule V INNER JOIN Tournee T on  T.Imaticulation=V.Imaticulation WHERE V.SIRET=?");
+					"SELECT T.idtournee,T.Horaire_de_debut, T.Horaire_de_fin,T.Date,T.poid,T.Imaticulation, V.Poids_maximal FROM Vehicule V INNER JOIN Tournee T on  T.Imaticulation=V.Imaticulation WHERE V.SIRET=?");
 			stmt.setString(1, siret);
+			result = stmt.executeQuery();
+
+			while (result.next()) {
+				Tournee T = new Tournee(result.getInt("idtournee"), result.getDate("Date"),
+						result.getTime("Horaire_de_debut"), result.getTime("Horaire_de_fin"),
+						new Vehicule(result.getString("Imaticulation"), result.getInt("Poids_maximal")));
+				T.setPoids(result.getInt("poid"));
+				listTo.add(T);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return listTo;
+
+	}
+
+	/**
+	 * Permet de retourner la liste des Tournee en fonction du numero de siret. on
+	 * recupere les informations dans la bdd puis on les crre est on les ajoutes a
+	 * la liste
+	 * 
+	 * @param Entreprise entreprise
+	 * @return ArrayList<Tournee>
+	 * @exception SQLException si erreur de paramettres
+	 * @author julienboisgard
+	 */
+
+	public ArrayList<Tournee> listTournee() {
+		ArrayList<Tournee> listTo = new ArrayList<Tournee>();
+		PreparedStatement stmt = null;
+		ResultSet result;
+		try {
+
+			stmt = this.cn.prepareStatement(
+					"SELECT T.idtournee,T.Horaire_de_debut, T.Horaire_de_fin,T.Date,T.poid,T.Imaticulation, V.Poids_maximal FROM Vehicule V INNER JOIN Tournee T on  T.Imaticulation=V.Imaticulation ");
 			result = stmt.executeQuery();
 
 			while (result.next()) {
