@@ -42,7 +42,7 @@ public class Vehicule {
 	 * 
 	 * @param immatriculation
 	 */
-	public void setImmatriculation() {
+	public void setImmatriculation(String immatriculation) {
 		this.immatriculation = immatriculation;
 	}
 

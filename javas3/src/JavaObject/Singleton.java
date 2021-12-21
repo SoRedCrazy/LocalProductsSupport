@@ -26,10 +26,10 @@ public class Singleton {
 	private Singleton() {
 
 		MysqlDataSource ds = new MysqlDataSource();
-		ds.setUser("u230559756_root");
-		ds.setPassword("Azerty37");
-		ds.setServerName("212.1.208.101");
-		ds.setDatabaseName("u230559756_project");
+		ds.setUser("root");
+		ds.setPassword("");
+		ds.setServerName("127.0.0.1");
+		ds.setDatabaseName("projet");
 
 		try {
 			connect = ds.getConnection();
