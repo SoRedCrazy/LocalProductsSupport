@@ -41,17 +41,29 @@ public class addVehiculeAdminControl {
 	public void addVehiculeButton() throws IOException {
 		String imma = immatriculation.getText();
 		String siret = entreprise.getSelectionModel().getSelectedItem();
-		int poids = Integer.parseInt(poid.getText());
-
-		Vehicule v = d.ajouterVehicule(imma, poids, siret);
-
-		if (v != null) {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("adminPanel.fxml"));
-			Pane mainpane = loader.load();
-			addVehiculeAdmin.getChildren().setAll(mainpane);
-		} else {
-			presentation.setText("Erreur envoie base de donnée");
+		int poids = -1;
+		try {
+			poids = Integer.parseInt(poid.getText());
+		} catch (NumberFormatException e) {
+			presentation.setText("Erreur de le format int pour le poids");
 		}
 
+		if (poids != -1) {
+			Vehicule v = d.ajouterVehicule(imma, poids, siret);
+
+			if (v != null) {
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("adminPanel.fxml"));
+				Pane mainpane = loader.load();
+				addVehiculeAdmin.getChildren().setAll(mainpane);
+			} else {
+				presentation.setText("Erreur envoie base de donnée");
+			}
+		}
+	}
+
+	public void back() throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("adminPanel.fxml"));
+		Pane mainpane = loader.load();
+		addVehiculeAdmin.getChildren().setAll(mainpane);
 	}
 }

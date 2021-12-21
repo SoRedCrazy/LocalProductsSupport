@@ -337,7 +337,7 @@ public class DAO {
 
 		try {
 			stmt = this.cn.prepareStatement(
-					"DELETE FROM Commande WHERE idtournee=(SELECT idtournee FROM Tournee WHERE Imaticulation= ? ) ");
+					"DELETE FROM Commande WHERE idtournee in (SELECT idtournee FROM Tournee WHERE Imaticulation= ? ) ");
 			stmt.setString(1, vehicule.getImmatriculation());
 			rs = stmt.executeUpdate();
 

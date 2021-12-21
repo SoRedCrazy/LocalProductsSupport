@@ -92,4 +92,10 @@ public class addTourneeAdminControl {
 
 	}
 
+	public void back() throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("adminPanel.fxml"));
+		Pane mainpane = loader.load();
+		addTourneeAdmin.getChildren().setAll(mainpane);
+	}
+
 }

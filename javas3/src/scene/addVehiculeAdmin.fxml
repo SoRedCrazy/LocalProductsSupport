@@ -64,5 +64,6 @@
          </rowConstraints>
       </GridPane>
       <Button layoutX="556.0" layoutY="377.0" mnemonicParsing="false" onAction="#addVehiculeButton" prefHeight="55.0" prefWidth="121.0" text="Envoyer" />
+      <Button layoutX="91.0" layoutY="343.0" mnemonicParsing="false" onAction="#back" prefHeight="53.0" prefWidth="82.0" text="back" />
    </children>
 </AnchorPane>
