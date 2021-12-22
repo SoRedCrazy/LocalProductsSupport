@@ -274,8 +274,8 @@ public class Entreprise {
 	 * @return boolean
 	 * @author François Bardel
 	 */
-	public boolean ajouterVehicule(String immatriculation, int poidmax, String siret) {
-		Vehicule ve = d.ajouterVehicule(immatriculation, poidmax, siret);
+	public boolean ajouterVehicule(String immatriculation, int poidmax) {
+		Vehicule ve = d.ajouterVehicule(immatriculation, poidmax, this.siret);
 		if (ve != null) {
 			vehicule.add(ve);
 			return true;
@@ -338,6 +338,7 @@ public class Entreprise {
 		t.setHoraireDebut(horaireDebut);
 		t.setHoraireFin(horaireFin);
 		t.setVehicule(vehicule);
+		d.modifTournee(t);
 	}
 
 	/**
@@ -376,8 +377,8 @@ public class Entreprise {
 	 * @author François Bardel
 	 */
 	public void ajouterCommandeTournee(String libelle, Integer poids, Time Heuredebut, Time Heurefin, Client client,
-			String siret, Tournee tournee) {
-		Commande co = d.ajouterCommandeTournee(libelle, poids, Heuredebut, Heurefin, client, siret, tournee);
+			Tournee tournee) {
+		Commande co = d.ajouterCommandeTournee(libelle, poids, Heuredebut, Heurefin, client, this.siret, tournee);
 		if (co != null) {
 			ArrayList listCo = tournee.getListCommande();
 			listCo.add(co);
@@ -413,26 +414,6 @@ public class Entreprise {
 		} else {
 			return false;
 		}
-	}
-
-	/**
-	 * Permet a l'utilisateur de se connecter
-	 * 
-	 * @param String
-	 * @param String
-	 * @return Entreprise
-	 * @author François Bardel
-	 */
-	public Entreprise connexion(String siret, String password) {
-		ArrayList<Entreprise> listEntreprise = d.listEntreprise();
-		for (Entreprise e : listEntreprise) {
-			if (e.getSiret() == siret) {
-				if (e.getMdp() == password) {
-					return e;
-				}
-			}
-		}
-		return null;
 	}
 
 }

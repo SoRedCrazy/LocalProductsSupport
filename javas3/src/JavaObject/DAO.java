@@ -220,20 +220,29 @@ public class DAO {
 	 * @author julienboisgard
 	 */
 
-	public boolean supprimerEntreprise(Entreprise entreprise) {
+	public boolean supprimerEntreprise(String siret) {
 		PreparedStatement stmt = null;
 		int rs = -1;
 
 		try {
-			stmt = this.cn.prepareStatement(
-					"DELETE FROM Commande WHERE siret= ? ; DELETE FROM Tournee WHERE Imaticulation=(SELECT Imaticulation FROM Vehicule WHERE SIRET= ? ) ; DELETE FROM Vehicule WHERE SIRET= ? ; DELETE FROM Entreprise WHERE SIRET= ? ");
-			stmt.setString(1, entreprise.getSiret());
-			stmt.setString(2, entreprise.getSiret());
-			stmt.setString(3, entreprise.getSiret());
-			stmt.setString(4, entreprise.getSiret());
+			stmt = this.cn.prepareStatement("DELETE FROM Commande WHERE siret= ?");
+			stmt.setString(1, siret);
 			rs = stmt.executeUpdate();
-		} catch (SQLException e) {
 
+			stmt = this.cn.prepareStatement(
+					" DELETE FROM Tournee WHERE Imaticulation in (SELECT Imaticulation FROM Vehicule WHERE SIRET= ? )");
+			stmt.setString(1, siret);
+			rs += stmt.executeUpdate();
+
+			stmt = this.cn.prepareStatement(" DELETE FROM Vehicule WHERE SIRET= ? ");
+			stmt.setString(1, siret);
+			rs += stmt.executeUpdate();
+
+			stmt = this.cn.prepareStatement("DELETE FROM Entreprise WHERE SIRET= ? ");
+			stmt.setString(1, siret);
+			rs += stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 
 		if (rs < 0) {

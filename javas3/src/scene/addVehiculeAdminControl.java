@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import JavaObject.DAO;
 import JavaObject.Entreprise;
-import JavaObject.Vehicule;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -26,11 +25,12 @@ public class addVehiculeAdminControl {
 	@FXML
 	private Text presentation;
 	DAO d = new DAO();
+	private ArrayList<Entreprise> ent = d.listEntreprise();
 
 	@FXML
 	public void initialize() {
 		ArrayList<String> ent = new ArrayList<String>();
-		for (Entreprise elemt : d.listEntreprise()) {
+		for (Entreprise elemt : this.ent) {
 			ent.add(elemt.getSiret());
 		}
 		ObservableList<String> Ovehi = FXCollections.observableArrayList(ent);
@@ -49,9 +49,14 @@ public class addVehiculeAdminControl {
 		}
 
 		if (poids != -1) {
-			Vehicule v = d.ajouterVehicule(imma, poids, siret);
+			boolean v = false;
+			for (Entreprise elemt : this.ent) {
+				if (siret == elemt.getSiret()) {
+					elemt.ajouterVehicule(imma, poids);
+				}
+			}
 
-			if (v != null) {
+			if (v != false) {
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("adminPanel.fxml"));
 				Pane mainpane = loader.load();
 				addVehiculeAdmin.getChildren().setAll(mainpane);

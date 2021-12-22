@@ -91,5 +91,6 @@
          </children>
       </GridPane>
       <Button layoutX="564.0" layoutY="392.0" mnemonicParsing="false" onAction="#addClientButton" prefHeight="58.0" prefWidth="97.0" text="Envoyer" />
+      <Button layoutX="90.0" layoutY="395.0" mnemonicParsing="false" onAction="#back" prefHeight="53.0" prefWidth="82.0" text="back" />
    </children>
 </AnchorPane>
