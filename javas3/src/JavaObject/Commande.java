@@ -127,17 +127,32 @@ public class Commande {
 	}
 
 	/**
-	 * @generated
+	 * Permet de récupérer le client qui passe la commande.
+	 * 
+	 * @return client
 	 */
 	public Client getClient() {
 		return this.Client;
 	}
 
 	/**
-	 * @generated
+	 * Permet de définir le client qui passe la commande.
 	 */
 	public void setClient(Client Client) {
 		this.Client = Client;
+	}
+
+	/**
+	 * Permet de retourner les informations sur la commande.
+	 * 
+	 * @return integer idCommande - String libelle - int poids - Time heuredebut -
+	 *         Time heurefin - Client client - int ancienpoids
+	 * @author AmauryMechin
+	 */
+	@Override
+	public String toString() {
+		return "Commande [idCommande=" + idCommande + ", libelle=" + libelle + ", poids=" + poids + ", heuredebut="
+				+ heuredebut + ", heurefin=" + heurefin + ", Client=" + Client + "]";
 	}
 
 }

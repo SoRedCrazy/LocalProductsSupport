@@ -163,12 +163,19 @@ public class Tournee {
 		this.vehicule = vehicule;
 	}
 
+	/**
+	 * Permet de recuperer le poids de la tournee.
+	 * 
+	 * @return int poids
+	 * @exception
+	 * @author amaurymechin
+	 */
 	public int getPoids() {
 		return poids;
 	}
 
 	/**
-	 * permet de sette le poid
+	 * permet de set le poid
 	 * 
 	 * @param poids
 	 */
@@ -177,19 +184,24 @@ public class Tournee {
 	}
 
 	/**
+	 * permet de retourner les informations sur la tournée.
+	 * 
+	 * @return integer idTournee - Date date - Time horaireDebut - Time horaireFin -
+	 *         ArrayList<Commande> listCommande - Vehicule vehicule - int poids
+	 * @author AmauryMechin
+	 */
+	@Override
+	public String toString() {
+		return "Tournee [idTournee=" + idTournee + ", date=" + date + ", horaireDebut=" + horaireDebut + ", horaireFin="
+				+ horaireFin + ", listCommande=" + listCommande + ", vehicule=" + vehicule + ", poids=" + poids + "]";
+	}
+
+	/**
 	 * ?
 	 */
 	public void itineraire() {
 		// TODO
 	}
-
-	/**
-	 * Permet de recuperer le poids de la tournee.
-	 * 
-	 * @return int poids
-	 * @exception
-	 * @author amaurymechin
-	 */
 
 	/**
 	 * Permet l'ajout d'une commande de la liste des commandes de la tournée.
@@ -224,13 +236,24 @@ public class Tournee {
 	/**
 	 * Permet de modifier uen commande de la liste des commandes de la tournée.
 	 * 
-	 * @param commande
+	 * @param commande   -Commande
+	 * @param libelle    -String
+	 * @param poids      -Integer
+	 * @param heuredebut -Time
+	 * @param heurefin   -Time
+	 * @param client     -Client
 	 * @exception
 	 * @author amaurymechin
 	 */
-	public boolean modifCommande(Commande commande) {
+	public boolean modifCommande(Commande commande, String libelle, Integer poids, Time heuredebut, Time heurefin,
+			Client client) {
 		d.modifCommande(commande);
 		if (d.modifCommande(commande) == true) {
+			commande.setLibelle(libelle);
+			commande.setPoids(poids);
+			commande.setheuredebut(heuredebut);
+			commande.setheurefin(heurefin);
+			commande.setClient(client);
 			return true;
 		} else {
 			return false;
