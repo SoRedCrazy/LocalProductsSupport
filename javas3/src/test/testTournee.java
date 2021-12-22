@@ -25,12 +25,11 @@ class testTournee {
 		t.addCommande(c);
 		ArrayList<Commande> listC = new ArrayList<Commande>();
 		listC.add(c);
-		assertTrue("Erreur", t.getListCommande().size() != 0);
+		Tournee t2 = new Tournee(1, null, null, null, v);
+		t2.setListCommande(listC);
+		assertTrue("Erreur", t.getListCommande().size() == 1);
 		assertEquals("Erreur", t.getListCommande(), listC);
-		assertEquals("Erreur", t.toString(),
-				"Tournee [idTournee=" + t.getIdTournee() + ", date=" + t.getDate() + ", horaireDebut="
-						+ t.getHoraireDebut() + ", horaireFin=" + t.getHoraireFin() + ", listCommande="
-						+ t.getListCommande() + ", vehicule=" + t.getVehicule() + ", poids=" + t.getPoids() + "]");
+		assertEquals("Erreur", t.toString(), t2.toString());
 		assertFalse("Erreur", t.getListCommande().isEmpty());
 	}
 
@@ -38,12 +37,11 @@ class testTournee {
 	void testDelCommande() {
 		t.delCommande(c);
 		ArrayList<Commande> listC = new ArrayList<Commande>();
+		Tournee t2 = new Tournee(1, null, null, null, v);
+		t2.setListCommande(listC);
 		assertTrue("Erreur", t.getListCommande().isEmpty());
 		assertEquals("Erreur", t.getListCommande(), listC);
-		assertEquals("Erreur", t.toString(),
-				"Tournee [idTournee=" + t.getIdTournee() + ", date=" + t.getDate() + ", horaireDebut="
-						+ t.getHoraireDebut() + ", horaireFin=" + t.getHoraireFin() + ", listCommande="
-						+ t.getListCommande() + ", vehicule=" + t.getVehicule() + ", poids=" + t.getPoids() + "]");
+		assertEquals("Erreur", t.toString(), t2.toString());
 		assertFalse("Erreur", t.getListCommande().size() != 0);
 	}
 
@@ -54,9 +52,9 @@ class testTournee {
 		assertTrue("Erreur", c.getLibelle() == "lait");
 		assertEquals("Erreur", c, c2);
 		assertEquals("Erreur", c.toString(),
-				"Commande [idCommande=" + c.getIdCommande() + ", libelle=" + c.getLibelle() + ", poids=" + c.getPoids()
-						+ ", heuredebut=" + c.getHeuredebut() + ", heurefin=" + c.getHeureFin() + ", Client="
-						+ c.getClient() + "]");
+				"Commande [idCommande=" + c2.getIdCommande() + ", libelle=" + c2.getLibelle() + ", poids="
+						+ c2.getPoids() + ", heuredebut=" + c2.getHeuredebut() + ", heurefin=" + c2.getHeureFin()
+						+ ", Client=" + c2.getClient() + "]");
 
 		assertFalse("Erreur", c.getPoids() != 2);
 	}
