@@ -5,10 +5,9 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="addEntreprise" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scene.addEntrepriseControl">
    <children>
-      <Text layoutX="42.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajout de l'entreprise, merci de remplir les informations" wrappingWidth="497.13671875">
+      <Text fx:id="titre" layoutX="42.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajout de l'entreprise, merci de remplir les informations" wrappingWidth="497.13671875">
          <font>
             <Font size="20.0" />
          </font>
@@ -46,11 +45,11 @@
                   <Font size="10.0" />
                </font>
             </Text>
-            <TextField GridPane.columnIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="siret" GridPane.columnIndex="1" />
+            <TextField fx:id="numRue" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="rue" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="CPT" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="ville" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Siret" textAlignment="CENTER" wrappingWidth="81.13671875">
                <font>
                   <Font size="9.0" />
@@ -71,11 +70,11 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <TextField prefHeight="54.0" prefWidth="152.0" GridPane.columnIndex="1" />
-            <TextField prefHeight="49.0" prefWidth="155.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField prefHeight="53.0" prefWidth="155.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField prefHeight="51.0" prefWidth="155.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField prefHeight="49.0" prefWidth="155.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="pays" prefHeight="54.0" prefWidth="152.0" GridPane.columnIndex="1" />
+            <TextField fx:id="nom" prefHeight="49.0" prefWidth="155.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="prenom" prefHeight="53.0" prefWidth="155.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="numTel" prefHeight="51.0" prefWidth="155.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="MDP" prefHeight="49.0" prefWidth="155.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pays" textAlignment="CENTER" wrappingWidth="155.13671875">
                <font>
                   <Font size="18.0" />
@@ -104,5 +103,6 @@
          </children>
       </GridPane>
       <Button layoutX="564.0" layoutY="392.0" mnemonicParsing="false" onAction="#addEntrepriseButton" prefHeight="58.0" prefWidth="97.0" text="Envoyer" />
+      <Button layoutX="91.0" layoutY="395.0" mnemonicParsing="false" onAction="#back" prefHeight="53.0" prefWidth="82.0" text="back" />
    </children>
 </AnchorPane>

@@ -1,7 +1,5 @@
 package JavaObject;
 
-import java.util.ArrayList;
-
 /**
  * La classe Admin , permet de crée un Administrateur, l'administrateur aura
  * tout les droits de suppression, d'ajout et de modification sur les autres
@@ -144,11 +142,17 @@ public class Admin {
 	 * @param vehicule       -Vehicule
 	 * @see ajouterEntreprise() -DAO
 	 * @author Gangneux Alexis
+	 * @return boolean
 	 */
-	public void ajouterEntreprise(String siret, String prenom, String nom, Integer numeroDeRue, String rue,
+	public boolean ajouterEntreprise(String siret, String prenom, String nom, Integer numeroDeRue, String rue,
 			Integer codePostal, String ville, String pays, String numTelephone, String motsdepasses) {
-		instance.ajouterEntreprise(siret, prenom, nom, numeroDeRue, rue, codePostal, ville, pays, numTelephone,
-				motsdepasses, this.email);
+		Entreprise ent = instance.ajouterEntreprise(siret, prenom, nom, numeroDeRue, rue, codePostal, ville, pays,
+				numTelephone, motsdepasses, this.email);
+		if (ent != null) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	/**
@@ -160,10 +164,17 @@ public class Admin {
 	 * @return
 	 * @see supprimerEntreprise() -DAO
 	 * @author Gangneux Alexis
+	 * @return boolean
 	 */
-	public void supprimerEntreprise(Entreprise entreprise) {
+	public boolean supprimerEntreprise(String siret) {
 
-		instance.supprimerEntreprise(entreprise);
+		boolean b = instance.supprimerEntreprise(siret);
+
+		if (b == true) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	/**
@@ -180,12 +191,19 @@ public class Admin {
 	 * @param numTelephone -String
 	 * @param entreprise   -Entreprise
 	 * @author Gangneux Alexis
+	 * @return boolean
 	 * @see ajouterclient() -DAO
 	 */
-	public void ajouterClient(String prenom, String nom, Integer numeroDeRue, String rue, Integer codePostal,
+	public boolean ajouterClient(String prenom, String nom, Integer numeroDeRue, String rue, Integer codePostal,
 			String ville, String pays, String numTelephone) {
 
-		instance.ajouterclient(prenom, nom, numeroDeRue, rue, codePostal, ville, pays, numTelephone, this.email);
+		Client c = instance.ajouterclient(prenom, nom, numeroDeRue, rue, codePostal, ville, pays, numTelephone,
+				this.email);
+		if (c != null) {
+			return true;
+		} else {
+			return false;
+		}
 
 	}
 
@@ -195,12 +213,18 @@ public class Admin {
 	 * fonctionne.
 	 * 
 	 * @param Client a supprimer -Client
+	 * @return boolean
 	 * @see delclient() -DAO
 	 * @author Gangneux Alexis
 	 */
-	public void supprimerClient(Client client) {
+	public boolean supprimerClient(Client client) {
 
-		instance.delclient(client);
+		boolean b = instance.delclient(client);
+		if (b) {
+			return true;
+		} else {
+			return false;
+		}
 
 	}
 
@@ -218,8 +242,9 @@ public class Admin {
 	 * @param numTelephone -String
 	 * @see modifclient() -DAO
 	 * @author Gangneux Alexis
+	 * @return boolean
 	 */
-	public void ModifClient(Client client, String prenom, String nom, Integer numeroDeRue, String rue,
+	public boolean ModifClient(Client client, String prenom, String nom, Integer numeroDeRue, String rue,
 			Integer codePostal, String ville, String pays, String numTelephone) {
 		client.setPrenom(prenom);
 		client.setNom(nom);
@@ -229,7 +254,13 @@ public class Admin {
 		client.setVille(ville);
 		client.setPays(pays);
 		client.setNumTelephone(numTelephone);
-		instance.modifclient(client);
+		boolean b = instance.modifclient(client);
+
+		if (b) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	/**
@@ -246,8 +277,9 @@ public class Admin {
 	 * @param password     -String
 	 * @see modifEntreprise() -DAO
 	 * @author Gangneux Alexis
+	 * @return boolean
 	 */
-	public void ModifEntreprise(Entreprise entreprise, String prenom, String nom, Integer numeroDeRue, String rue,
+	public boolean ModifEntreprise(Entreprise entreprise, String prenom, String nom, Integer numeroDeRue, String rue,
 			Integer codePostal, String ville, String pays, String numTelephone, String motsdepasses) {
 		entreprise.setRue(rue);
 		entreprise.setPrenom(prenom);
@@ -259,31 +291,13 @@ public class Admin {
 		entreprise.setPays(pays);
 		entreprise.setNumTelephone(numTelephone);
 		entreprise.setMdp(motsdepasses);
-		instance.modifEntreprise(entreprise);
+		boolean b = instance.modifEntreprise(entreprise);
 
-	}
-
-	/**
-	 * Cette methode permet la connexion de l'administrateur au logiciel. La methode
-	 * verifie que les parametres rentrees corresponde au parametre sur la base de
-	 * donnee.
-	 * 
-	 * @param adresseMail (Concatenation du Nom.Prenom@...fr) -String
-	 * @param password    -String
-	 * @see listAdmin() -DAO
-	 * @author Gangneux Alexis
-	 */
-	public static Admin connexion(String email, String password) {
-		DAO d = new DAO();
-		ArrayList<Admin> listAdmin = d.listAdmin();
-		for (Admin a : listAdmin) {
-			if (a.getEmail() == email) {
-				if (a.getPassword() == password) {
-					return a;
-				}
-			}
+		if (b) {
+			return true;
+		} else {
+			return false;
 		}
-		return null;
 
 	}
 

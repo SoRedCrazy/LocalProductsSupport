@@ -87,13 +87,13 @@ public class adminPanelControl {
 	}
 
 	public void supprimerClientAdminPanelButton() throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("adminPanel.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("delClient.fxml"));
 		Pane mainpane = loader.load();
 		adminPanel.getChildren().setAll(mainpane);
 	}
 
 	public void supprimerEntrepriseAdminPanelButton() throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("adminPanel.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("delEntreprise.fxml"));
 		Pane mainpane = loader.load();
 		adminPanel.getChildren().setAll(mainpane);
 	}
@@ -111,7 +111,7 @@ public class adminPanelControl {
 	}
 
 	public void addEntrepriseAdminPanelButton() throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("adminPanel.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("addEntreprise.fxml"));
 		Pane mainpane = loader.load();
 		adminPanel.getChildren().setAll(mainpane);
 	}

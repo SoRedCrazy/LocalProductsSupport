@@ -10,16 +10,16 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
-public class addClientControl {
-	@FXML
-	private AnchorPane addclient;
-	@FXML
-	private TextField nom, prenom, rue, numRue, CPT, ville, pays, tel;
+public class addEntrepriseControl {
 	DAO d = new DAO();
+	@FXML
+	AnchorPane addEntreprise;
+	@FXML
+	private TextField siret, nom, prenom, rue, numRue, CPT, ville, pays, numTel, MDP;
 	@FXML
 	private Text titre;
 
-	public void addClientButton() throws IOException {
+	public void addEntrepriseButton() throws IOException {
 		int numrue = -1;
 		int cpt = -1;
 		try {
@@ -30,20 +30,19 @@ public class addClientControl {
 		}
 
 		if (cpt != -1 && numrue != -1) {
-			boolean b = adminPanelControl.getAd().ajouterClient(prenom.getText(), nom.getText(), numrue, rue.getText(),
-					cpt, ville.getText(), pays.getText(), tel.getText());
+			boolean b = adminPanelControl.getAd().ajouterEntreprise(siret.getText(), prenom.getText(), nom.getText(),
+					numrue, rue.getText(), cpt, ville.getText(), pays.getText(), numTel.getText(), MDP.getText());
 			if (b != false) {
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("adminPanel.fxml"));
 				Pane mainpane = loader.load();
-				addclient.getChildren().setAll(mainpane);
+				addEntreprise.getChildren().setAll(mainpane);
 			}
 		}
-
 	}
 
 	public void back() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("adminPanel.fxml"));
 		Pane mainpane = loader.load();
-		addclient.getChildren().setAll(mainpane);
+		addEntreprise.getChildren().setAll(mainpane);
 	}
 }
