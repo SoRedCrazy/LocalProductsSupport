@@ -500,7 +500,7 @@ public class DAO {
 	 * @author julienboisgard
 	 */
 	public Commande ajouterCommandeTournee(String libelle, Integer poids, Time Heuredebut, Time Heurefin, Client client,
-			String siret, Tournee tournee) {
+			String siret, int idTournee) {
 		Commande co = null;
 		PreparedStatement stmt = null;
 		int rs = -1;
@@ -509,7 +509,7 @@ public class DAO {
 
 			stmt = this.cn.prepareStatement(
 					"SELECT V.Poids_maximal, T.poid FROM Vehicule V INNER JOIN Tournee T on  T.Imaticulation=V.Imaticulation WHERE idtournee=?");
-			stmt.setInt(1, tournee.getIdTournee());
+			stmt.setInt(1, idTournee);
 			result = stmt.executeQuery();
 			result.next();
 			int newpoids = result.getInt("poid") + poids;
@@ -522,7 +522,7 @@ public class DAO {
 				stmt.setTime(4, Heurefin);
 				stmt.setString(5, siret);
 				stmt.setInt(6, client.getIdClient());
-				stmt.setInt(7, tournee.getIdTournee());
+				stmt.setInt(7, idTournee);
 				rs = stmt.executeUpdate();
 
 				if (rs < 0) {
@@ -531,14 +531,14 @@ public class DAO {
 					stmt = this.cn.prepareStatement(
 							"SELECT idcommande FROM Commande WHERE idclient= ? AND idtournee= ? ORDER BY idcommande DESC");
 					stmt.setInt(1, client.getIdClient());
-					stmt.setInt(2, tournee.getIdTournee());
+					stmt.setInt(2, idTournee);
 					result = stmt.executeQuery();
 					result.next();
 					co = new Commande(result.getInt("idcommande"), libelle, poids, Heuredebut, Heurefin, client);
 
 					stmt = this.cn.prepareStatement("UPDATE Tournee SET poid=? WHERE idtournee= ?");
 					stmt.setInt(1, newpoids);
-					stmt.setInt(2, tournee.getIdTournee());
+					stmt.setInt(2, idTournee);
 					rs = stmt.executeUpdate();
 				}
 			}
