@@ -64,13 +64,4 @@ class TestEntreprise {
 		assertFalse("Erreur", d.listTournee().size() != 0);
 	}
 
-	@Test
-	void testAjouterCommandeTournee() {
-
-	}
-
-	@Test
-	void testSupprimerCommandeTournee() {
-
-	}
 }
