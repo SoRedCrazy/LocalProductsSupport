@@ -13,14 +13,14 @@ import JavaObject.Entreprise;
 import JavaObject.Tournee;
 import JavaObject.Vehicule;
 
-class TestEntreprise {
+public class TestEntreprise {
 
 	Entreprise ent = new Entreprise("logitech", 4, "rue machin", 37000, "tours", "france", "amaury", "mechin",
 			"02558589", "mdp");
 	DAO d = new DAO();
 
 	@Test
-	void testAjouterVehicule() {
+	public void testAjouterVehicule() {
 		ent.ajouterVehicule("BW 908 GR", 100);
 		ArrayList<Vehicule> listV = d.listVehicule();
 		assertFalse("Erreur", listV.isEmpty());
@@ -30,7 +30,7 @@ class TestEntreprise {
 	}
 
 	@Test
-	void testSupprimerVehicule() {
+	public void testSupprimerVehicule() {
 		ent.supprimerVehicule(d.listVehicule().get(0));
 		ArrayList<Vehicule> listV = d.listVehicule();
 		assertFalse("Erreur", listV.size() != 0);
@@ -39,7 +39,7 @@ class TestEntreprise {
 	}
 
 	@Test
-	void testAjouterTournee() {
+	public void testAjouterTournee() {
 		ent.ajouterTournee(null, null, null, null);
 		ArrayList<Tournee> listT = d.listTournee();
 		assertTrue("Erreur", listT.size() == 1);
@@ -48,7 +48,7 @@ class TestEntreprise {
 	}
 
 	@Test
-	void testModifierTournee() {
+	public void testModifierTournee() {
 		Vehicule v = new Vehicule("BW 908 GR", 100);
 		ent.modifierTournee(null, null, null, v, d.listTournee().get(0));
 		assertTrue("Erreur", ent.getVehicule().get(0).getImmatriculation() == "BW 908 GR");
@@ -57,7 +57,7 @@ class TestEntreprise {
 	}
 
 	@Test
-	void testSupprimerTournee() {
+	public void testSupprimerTournee() {
 		ent.supprimerTournee(d.listTournee().get(0));
 		assertTrue("Erreur", d.listTournee().isEmpty());
 		assertEquals("Erreur", d.listTournee(), ent.getTournee());
