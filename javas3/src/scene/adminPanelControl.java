@@ -99,13 +99,13 @@ public class adminPanelControl {
 	}
 
 	public void modifEntrepriseAdminPanelButton() throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("adminPanel.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("modifEntreprise.fxml"));
 		Pane mainpane = loader.load();
 		adminPanel.getChildren().setAll(mainpane);
 	}
 
 	public void modifClientAdminPanelButton() throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("adminPanel.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("ModifClient.fxml"));
 		Pane mainpane = loader.load();
 		adminPanel.getChildren().setAll(mainpane);
 	}
