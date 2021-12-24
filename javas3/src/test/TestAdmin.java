@@ -48,16 +48,22 @@ public class TestAdmin {
 
 	@Test
 	public void testModifierEntreprise() {
-		Entreprise e = new Entreprise("alpha", 40, "rue charle", 37100, "tours", "france", "bardel", "francois",
-				"0708909", "mdp");
-		boolean b = a.ModifEntreprise(e, "MODIF", null, 12, null, null, null, null, null, null);
+		// a.ajouterEntreprise("alpha", "france", "rue charle", 37100, "tours", 40,
+		// "bardel", "francois", "0708909",
+		// "mdp");
+		Entreprise e = d.listEntreprise().get(0);
+		boolean b = a.ModifEntreprise(e, "françois", "bardel", 12, "rue charle", 37100, "tours", "france", "080808808",
+				"mdp");
 		assertTrue(b);
 	}
 
 	@Test
 	public void testModifierClient() {
-		a.ajouterClient("amaury", "mechin", 45, "rue de sonzay", 37100, "paumer", "france", "021456971");
-		boolean b = a.ModifClient(d.listClient().get(0), "john", null, null, null, null, null, null, null);
+		// a.ajouterClient("amaury", "mechin", 45, "rue de sonzay", 37100, "paumer",
+		// "france", "021456971");
+		Client c = d.listClient().get(0);
+		boolean b = a.ModifClient(d.listClient().get(0), "john", "cause", 13, "rue bouda", 37800, "tourcoing", "france",
+				"70809007808");
 		assertTrue(b);
 	}
 
