@@ -1,7 +1,5 @@
 package test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
@@ -15,63 +13,52 @@ import JavaObject.Entreprise;
 
 public class TestAdmin {
 
-	Admin a = new Admin("Gangneux", "Alexis", "mdp", "Gangneux.alexis@..fr");
+	Admin a = new Admin("Gangneux", "Alexis", "mdp", "julien.boisgard37@gmail.com");
 	DAO d = new DAO();
 
 	@Test
 	public void testAjouterEntreprise() {
-		a.ajouterEntreprise("logitech", "alexis", "gangneux", 4, "rue machin", 37100, "tours", "france", "02558589",
-				"mdp");
-		ArrayList<Entreprise> list = d.listEntreprise();
-		assertFalse(list.isEmpty());
-		assertTrue(list.size() == 1);
-		assertEquals(list, d.listEntreprise());
+		Boolean b = a.ajouterEntreprise("logitech", "alexis", "gangneux", 4, "rue machin", 37100, "tours", "france",
+				"02558589", "mdp");
+		assertTrue(b);
 
 	}
 
 	@Test
 	public void testSupprimerEntreprise() {
-		a.supprimerEntreprise("logitech");
+		boolean b = a.supprimerEntreprise("logitech");
 		ArrayList<Entreprise> list = d.listEntreprise();
-		assertTrue(list.isEmpty());
-		assertEquals(list, d.listEntreprise());
-		assertTrue(list.size() == 0);
+		assertTrue(b);
 	}
 
 	@Test
 	public void testAjouterClient() {
-		a.ajouterClient("alexis", "gangneux", 43, "rue blabla", 37390, "Cerelles", "france", "0250806090");
+		boolean b = a.ajouterClient("alexis", "gangneux", 43, "rue blabla", 37390, "Cerelles", "france", "0250806090");
 		ArrayList<Client> list = d.listClient();
-		assertFalse(list.isEmpty());
-		assertEquals(list, d.listClient());
-		assertTrue(list.size() == 1);
+		assertTrue(b);
 
 	}
 
 	@Test
 	public void testSupprimerClient() {
-		a.supprimerClient(d.listClient().get(0));
+		boolean b = a.supprimerClient(d.listClient().get(0));
 		ArrayList<Client> list = d.listClient();
-		assertTrue(list.isEmpty());
-		assertEquals(list, d.listClient());
-		assertFalse(list.size() == 1);
+		assertTrue(b);
 	}
 
 	@Test
 	public void testModifierEntreprise() {
-		Entreprise e = new Entreprise(null, null, null, null, null, null, null, null, null, null);
-		a.ModifEntreprise(e, "MODIF", null, 12, null, null, null, null, null, null);
-		assertTrue(e.getSiret() == "MODIF");
-		assertTrue(e.getNumeroDeRue() == 12);
+		Entreprise e = new Entreprise("alpha", 40, "rue charle", 37100, "tours", "france", "bardel", "francois",
+				"0708909", "mdp");
+		boolean b = a.ModifEntreprise(e, "MODIF", null, 12, null, null, null, null, null, null);
+		assertTrue(b);
 	}
 
 	@Test
 	public void testModifierClient() {
-		a.ajouterClient("julien", null, null, null, null, null, null, null);
-		a.ModifClient(d.listClient().get(0), null, "Boisgard", null, null, null, null, null, "0607806086");
-		Client c = d.listClient().get(0);
-		assertTrue(c.getNom() == "Boisgard");
-		assertTrue(c.getNumTelephone() == "0607806086");
+		a.ajouterClient("amaury", "mechin", 45, "rue de sonzay", 37100, "paumer", "france", "021456971");
+		boolean b = a.ModifClient(d.listClient().get(0), "john", null, null, null, null, null, null, null);
+		assertTrue(b);
 	}
 
 }
