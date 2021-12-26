@@ -37,21 +37,27 @@ public class adminPanelControl {
 
 	DAO d = new DAO();
 	private static Admin ad;
+	private static AnchorPane pane;
 
 	@FXML
 	public void initialize() {
+		setPane(adminPanel);
 		presentation.setText(presentation.getText() + " " + ad.getPrenom());
 
-		Id.setCellValueFactory(new PropertyValueFactory<>("Id"));
-		date.setCellValueFactory(new PropertyValueFactory<>("date"));
-		plus.setCellValueFactory(new PropertyValueFactory<>("plus"));
+		Id.setCellValueFactory(new PropertyValueFactory<TourneeClassPanel, Integer>("Id"));
+		date.setCellValueFactory(new PropertyValueFactory<TourneeClassPanel, Date>("date"));
+		plus.setCellValueFactory(new PropertyValueFactory<TourneeClassPanel, Button>("button"));
 
 		ArrayList<TourneeClassPanel> tclaspanel = new ArrayList<TourneeClassPanel>();
 		for (Tournee elemt : d.listTournee()) {
-			tclaspanel.add(new TourneeClassPanel(elemt.getIdTournee(), elemt.getDate()));
+			tclaspanel.add(new TourneeClassPanel(elemt.getIdTournee(), elemt.getDate(), true));
 		}
 		ObservableList<TourneeClassPanel> Ovehi = FXCollections.observableArrayList(tclaspanel);
 		tbData.setItems(Ovehi);
+	}
+
+	public static void setPane(AnchorPane pane) {
+		adminPanelControl.pane = pane;
 	}
 
 	public static Admin getAd() {
@@ -114,6 +120,10 @@ public class adminPanelControl {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("addEntreprise.fxml"));
 		Pane mainpane = loader.load();
 		adminPanel.getChildren().setAll(mainpane);
+	}
+
+	public static void ChangeInterfaceTournee(Pane mainpane) throws IOException {
+		pane.getChildren().setAll(mainpane);
 	}
 
 }

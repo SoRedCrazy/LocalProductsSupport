@@ -52,7 +52,7 @@ public class addVehiculeAdminControl {
 			boolean v = false;
 			for (Entreprise elemt : this.ent) {
 				if (siret == elemt.getSiret()) {
-					elemt.ajouterVehicule(imma, poids);
+					v = elemt.ajouterVehicule(imma, poids);
 				}
 			}
 
