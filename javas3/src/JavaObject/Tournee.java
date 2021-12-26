@@ -262,16 +262,13 @@ public class Tournee {
 	 * @param poids      -Integer
 	 * @param heuredebut -Time
 	 * @param heurefin   -Time
-	 * @param client     -Client
 	 * @author AmauryMechin
 	 */
-	public boolean modifCommande(Commande commande, String libelle, Integer poids, Time heuredebut, Time heurefin,
-			Client client) {
+	public boolean modifCommande(Commande commande, String libelle, Integer poids, Time heuredebut, Time heurefin) {
 		commande.setLibelle(libelle);
 		commande.setPoids(poids);
 		commande.setheuredebut(heuredebut);
 		commande.setheurefin(heurefin);
-		commande.setClient(client);
 		boolean b = d.modifCommande(commande);
 		if (b) {
 			this.setPoids(this.getPoids() - commande.getAncienpoids() + commande.getPoids());

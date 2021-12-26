@@ -22,6 +22,8 @@ import javafx.scene.text.Text;
 public class infoTourneeControl {
 	private static int idTournee;
 	private static boolean admin;
+	private static AnchorPane pan;
+
 	private Tournee tournee;
 
 	@FXML
@@ -47,10 +49,12 @@ public class infoTourneeControl {
 
 	@FXML
 	public void initialize() {
+		setPan(infoTournee);
 		for (Tournee elemt : d.listTournee()) {
 			if (idTournee == elemt.getIdTournee())
 				this.tournee = elemt;
 		}
+		CommandeClassPanel.setTournee(tournee);
 
 		id.setText(id.getText().replace("$ID", Integer.toString(idTournee)));
 		date.setText(date.getText().replace("$DATE", tournee.getDate().toString()));
@@ -73,6 +77,14 @@ public class infoTourneeControl {
 		}
 		ObservableList<CommandeClassPanel> Ovehi = FXCollections.observableArrayList(commandeList);
 		tableCommande.setItems(Ovehi);
+	}
+
+	public static AnchorPane getPan() {
+		return pan;
+	}
+
+	public static void setPan(AnchorPane pan) {
+		infoTourneeControl.pan = pan;
 	}
 
 	public static boolean isAdmin() {
@@ -103,19 +115,33 @@ public class infoTourneeControl {
 		infoTournee.getChildren().setAll(mainpane);
 	}
 
-	public void addComandeButton() {
+	public void addComandeButton() throws IOException {
+		addCommandeControl.setTournne(tournee);
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("addCommande.fxml"));
+		Pane mainpane = loader.load();
+		infoTournee.getChildren().setAll(mainpane);
+	}
+
+	public void deltourneeButton() throws IOException {
+		boolean b = d.supprimerTournee(tournee);
+		if (b) {
+			backButtonInfoTournee();
+		}
 
 	}
 
-	public void deltourneeButton() {
-
-	}
-
-	public void modiftourneeButton() {
-
+	public void modiftourneeButton() throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("modifTournee.fxml"));
+		Pane mainpane = loader.load();
+		infoTournee.getChildren().setAll(mainpane);
 	}
 
 	public void itineraire() {
 
 	}
+
+	public static void ChangeInterfaceModif(Pane mainpane) throws IOException {
+		pan.getChildren().setAll(mainpane);
+	}
+
 }

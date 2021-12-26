@@ -932,4 +932,28 @@ public class DAO {
 		return listET;
 	}
 
+	/**
+	 * permet de recuperer le siret lier a une tournée
+	 * 
+	 * @param id
+	 * @return String - siret
+	 */
+	public String getSiretTournee(int id) {
+		String s = null;
+		PreparedStatement stmt = null;
+		ResultSet result;
+		try {
+			stmt = this.cn.prepareStatement(
+					"SELECT E.SIRET FROM entreprise E INNER JOIN vehicule V ON E.SIRET=V.SIRET INNER JOIN tournee T ON T.Imaticulation=V.Imaticulation WHERE idtournee= ?");
+			stmt.setInt(1, id);
+			result = stmt.executeQuery();
+
+			result.next();
+			s = result.getString("SIRET");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return s;
+	}
+
 }
