@@ -123,7 +123,13 @@ public class infoTourneeControl {
 	}
 
 	public void deltourneeButton() throws IOException {
-		boolean b = d.supprimerTournee(tournee);
+		boolean b = false;
+		if (this.admin) {
+			b = d.supprimerTournee(tournee);
+		} else {
+			b = userPanelControl.getEt().supprimerTournee(tournee);
+		}
+
 		if (b) {
 			backButtonInfoTournee();
 		}
