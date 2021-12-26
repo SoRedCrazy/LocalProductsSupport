@@ -5,23 +5,23 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="addCommande" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="addCommande" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scene.addCommandeControl">
    <children>
-      <Text layoutX="34.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajout d'une commande, merci de remplir les informations" wrappingWidth="545.13671875">
+      <Text fx:id="titre" layoutX="34.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajout d'une commande, merci de remplir les informations" wrappingWidth="545.13671875">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <TextField fx:id="libelle" layoutX="34.0" layoutY="198.0" text="poireau" />
+      <TextField fx:id="libelle" layoutX="34.0" layoutY="198.0" promptText="poireau" />
       <Text layoutX="34.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" />
       <Text layoutX="232.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Poids ( en kilo )" />
-      <TextField fx:id="poid" layoutX="232.0" layoutY="198.0" text="1" />
+      <TextField fx:id="poid" layoutX="232.0" layoutY="198.0" promptText="1" />
       <Text layoutX="430.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Client" />
       <Text layoutX="34.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Heure debut" />
-      <TextField fx:id="heureDebut" layoutX="34.0" layoutY="317.0" text="15:00:00" />
+      <TextField fx:id="heureDebut" layoutX="34.0" layoutY="317.0" promptText="15:00:00" />
       <Text layoutX="232.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Heure fin" />
-      <TextField fx:id="heureFin" layoutX="232.0" layoutY="317.0" text="20:00:00" />
+      <TextField fx:id="heureFin" layoutX="232.0" layoutY="317.0" promptText="20:00:00" />
       <Button layoutX="465.0" layoutY="291.0" mnemonicParsing="false" onAction="#addCommandeButton" prefHeight="52.0" prefWidth="81.0" text="Envoyer" />
-      <ComboBox fx:id="combolist" layoutX="431.0" layoutY="198.0" prefWidth="150.0" />
+      <ComboBox fx:id="combolist" layoutX="431.0" layoutY="198.0" prefWidth="150.0" promptText="Client" />
    </children>
 </AnchorPane>
