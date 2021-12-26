@@ -42,13 +42,12 @@ public class infoTourneeControl {
 	public TableColumn<CommandeClassPanel, Integer> poids;
 	@FXML
 	public TableColumn<CommandeClassPanel, Button> modifier;
-	@FXML
-	public TableColumn<CommandeClassPanel, Button> supprimer;
 
 	DAO d = new DAO();
 
 	@FXML
 	public void initialize() {
+
 		setPan(infoTournee);
 		for (Tournee elemt : d.listTournee()) {
 			if (idTournee == elemt.getIdTournee())
@@ -69,10 +68,9 @@ public class infoTourneeControl {
 		libelle.setCellValueFactory(new PropertyValueFactory<CommandeClassPanel, String>("libelle"));
 		poids.setCellValueFactory(new PropertyValueFactory<CommandeClassPanel, Integer>("poids"));
 		modifier.setCellValueFactory(new PropertyValueFactory<CommandeClassPanel, Button>("modif"));
-		supprimer.setCellValueFactory(new PropertyValueFactory<CommandeClassPanel, Button>("sup"));
 
 		ArrayList<CommandeClassPanel> commandeList = new ArrayList<CommandeClassPanel>();
-		for (Commande elemt : d.listCommande(tournee)) {
+		for (Commande elemt : tournee.getListCommande()) {
 			commandeList.add(new CommandeClassPanel(elemt.getIdCommande(), elemt.getLibelle(), elemt.getPoids()));
 		}
 		ObservableList<CommandeClassPanel> Ovehi = FXCollections.observableArrayList(commandeList);
@@ -123,7 +121,13 @@ public class infoTourneeControl {
 	}
 
 	public void deltourneeButton() throws IOException {
-		boolean b = d.supprimerTournee(tournee);
+		boolean b = false;
+		if (this.admin) {
+			b = d.supprimerTournee(tournee);
+		} else {
+			b = userPanelControl.getEt().supprimerTournee(tournee);
+		}
+
 		if (b) {
 			backButtonInfoTournee();
 		}
@@ -132,6 +136,13 @@ public class infoTourneeControl {
 
 	public void modiftourneeButton() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("modifTournee.fxml"));
+		Pane mainpane = loader.load();
+		infoTournee.getChildren().setAll(mainpane);
+	}
+
+	public void delCommandeButton() throws IOException {
+		delCommandeControl.setTournee(tournee);
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("delCommande.fxml"));
 		Pane mainpane = loader.load();
 		infoTournee.getChildren().setAll(mainpane);
 	}

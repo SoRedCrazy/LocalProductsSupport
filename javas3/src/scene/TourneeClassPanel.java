@@ -39,7 +39,6 @@ public class TourneeClassPanel {
 			try {
 				mainpane = loader.load();
 				if (this.b) {
-
 					adminPanelControl.ChangeInterfaceTournee(mainpane);
 				} else {
 					userPanelControl.ChangeInterfaceTournee(mainpane);

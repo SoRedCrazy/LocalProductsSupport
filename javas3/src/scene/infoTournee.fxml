@@ -9,9 +9,9 @@
    <children>
       <Button layoutX="29.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonInfoTournee" text="Back" />
       <Button layoutX="91.0" layoutY="14.0" mnemonicParsing="false" onAction="#addComandeButton" text="Ajouter une commande" />
-      <Button layoutX="280.0" layoutY="14.0" mnemonicParsing="false" onAction="#deltourneeButton" text="Supprimer la tournee" />
-      <Button layoutX="455.0" layoutY="14.0" mnemonicParsing="false" onAction="#modiftourneeButton" text="Modifier tournee" />
-      <Button layoutX="602.0" layoutY="14.0" mnemonicParsing="false" onAction="#itineraire" text="Itineraire" />
+      <Button layoutX="389.0" layoutY="14.0" mnemonicParsing="false" onAction="#deltourneeButton" text="Supprimer la tournee" />
+      <Button layoutX="527.0" layoutY="14.0" mnemonicParsing="false" onAction="#modiftourneeButton" text="Modifier tournee" />
+      <Button layoutX="643.0" layoutY="14.0" mnemonicParsing="false" onAction="#itineraire" text="Itineraire" />
       <Text fx:id="id" layoutX="41.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Voici les informations de la tournee $ID">
          <font>
             <Font size="20.0" />
@@ -26,11 +26,11 @@
       <TableView fx:id="tableCommande" layoutY="185.0" prefHeight="295.0" prefWidth="720.0">
         <columns>
           <TableColumn fx:id="idcommande" prefWidth="83.0" text="id" />
-          <TableColumn fx:id="libelle" prefWidth="234.0" text="libellé" />
-            <TableColumn fx:id="poids" prefWidth="124.0" text="poids" />
-            <TableColumn fx:id="modifier" prefWidth="137.0" text="modfier" />
-            <TableColumn fx:id="supprimer" prefWidth="141.0" text="supprimer" />
+          <TableColumn fx:id="libelle" prefWidth="260.0" text="libellé" />
+            <TableColumn fx:id="poids" prefWidth="242.0" text="poids" />
+            <TableColumn fx:id="modifier" prefWidth="134.0" text="modfier" />
         </columns>
       </TableView>
+      <Button layoutX="242.0" layoutY="14.0" mnemonicParsing="false" onAction="#delCommandeButton" text="suprimer commande" />
    </children>
 </AnchorPane>

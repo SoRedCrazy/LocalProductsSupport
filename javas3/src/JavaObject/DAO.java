@@ -514,7 +514,7 @@ public class DAO {
 			result.next();
 			int newpoids = result.getInt("poid") + poids;
 
-			if (newpoids < result.getInt("Poids_maximal")) {
+			if (newpoids <= result.getInt("Poids_maximal")) {
 				stmt = this.cn.prepareStatement("INSERT INTO Commande VALUES(0,?,?,?,?,?,?,?)");
 				stmt.setString(1, libelle);
 				stmt.setInt(2, poids);
@@ -565,13 +565,13 @@ public class DAO {
 		int rs = -1;
 
 		try {
-			stmt = this.cn.prepareStatement("DELETE FROM Commande WHERE idcommande=?");
-			stmt.setInt(1, commande.getIdCommande());
-			rs = stmt.executeUpdate();
 			stmt = this.cn.prepareStatement(
 					"UPDATE Tournee T INNER JOIN Commande C ON  C.idtournee=T.idtournee SET poid=poid-?  WHERE idcommande= ?");
 			stmt.setInt(1, commande.getPoids());
 			stmt.setInt(2, commande.getIdCommande());
+			rs = stmt.executeUpdate();
+			stmt = this.cn.prepareStatement("DELETE FROM Commande WHERE idcommande=?");
+			stmt.setInt(1, commande.getIdCommande());
 			rs = stmt.executeUpdate();
 
 		} catch (SQLException e) {
@@ -608,7 +608,7 @@ public class DAO {
 			result.next();
 			int newpoids = result.getInt("poid") + commande.getPoids() - commande.getAncienpoids();
 
-			if (newpoids < result.getInt("Poids_maximal")) {
+			if (newpoids <= result.getInt("Poids_maximal")) {
 				stmt = this.cn.prepareStatement(
 						"UPDATE Commande SET Heure_de_debut=?,Heure_de_fin=?,libelle=? ,poids=? WHERE idcommande=?");
 
@@ -816,7 +816,7 @@ public class DAO {
 	 * @return ArrayList<Commande>
 	 * @author julienboisgard
 	 */
-	public ArrayList<Commande> listCommande(Tournee tournee) {
+	public ArrayList<Commande> listCommande(int id) {
 		ArrayList<Commande> listCo = new ArrayList<Commande>();
 		PreparedStatement stmt = null;
 		ResultSet result;
@@ -824,7 +824,7 @@ public class DAO {
 
 			stmt = this.cn.prepareStatement(
 					"Select * FROM Commande C INNER JOIN Client Cl ON C.idclient=Cl.idclient WHERE idtournee=?");
-			stmt.setInt(1, tournee.getIdTournee());
+			stmt.setInt(1, id);
 			result = stmt.executeQuery();
 
 			while (result.next()) {

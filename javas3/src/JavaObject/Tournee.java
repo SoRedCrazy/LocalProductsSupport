@@ -39,7 +39,7 @@ public class Tournee {
 		this.date = date;
 		this.horaireDebut = horaireDebut;
 		this.horaireFin = horaireFin;
-		this.listCommande = new ArrayList<Commande>();
+		this.listCommande = d.listCommande(this.idTournee);
 		this.vehicule = vehicule;
 		this.poids = 0;
 	}
@@ -240,15 +240,11 @@ public class Tournee {
 	 * @author AmauryMechin
 	 */
 	public boolean delCommande(Commande commande) {
-		if (this.getListCommande().contains(commande)) {
-			boolean b = d.supprimerCommandeTournee(commande);
-			if (b) {
-				this.getListCommande().remove(commande);
-				this.setPoids(this.getPoids() - commande.getPoids());
-				return true;
-			} else {
-				return false;
-			}
+		boolean b = d.supprimerCommandeTournee(commande);
+		if (b) {
+			this.getListCommande().remove(commande);
+			this.setPoids(this.getPoids() - commande.getPoids());
+			return true;
 		} else {
 			return false;
 		}
