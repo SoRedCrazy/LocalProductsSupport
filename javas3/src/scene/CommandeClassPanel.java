@@ -17,7 +17,6 @@ public class CommandeClassPanel {
 	private String libelle;
 	private int poids;
 	private Button modif;
-	private Button sup;
 
 	public CommandeClassPanel(int id, String libelle, int poids) {
 		super();
@@ -41,21 +40,6 @@ public class CommandeClassPanel {
 				e.printStackTrace();
 			}
 
-		});
-		this.sup = new Button("supprimer");
-		this.sup.setOnAction((ActionEvent event) -> {
-			for (Commande elemt : d.listCommande(tournee.getIdTournee())) {
-				if (this.id == elemt.getIdCommande()) {
-					tournee.delCommande(elemt);
-				}
-			}
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("infoTournee.fxml"));
-			try {
-				Pane mainpane = loader.load();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		});
 	}
 
@@ -98,13 +82,4 @@ public class CommandeClassPanel {
 	public void setModif(Button modif) {
 		this.modif = modif;
 	}
-
-	public Button getSup() {
-		return sup;
-	}
-
-	public void setSup(Button sup) {
-		this.sup = sup;
-	}
-
 }
