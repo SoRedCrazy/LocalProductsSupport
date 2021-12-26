@@ -72,7 +72,7 @@ public class infoTourneeControl {
 		supprimer.setCellValueFactory(new PropertyValueFactory<CommandeClassPanel, Button>("sup"));
 
 		ArrayList<CommandeClassPanel> commandeList = new ArrayList<CommandeClassPanel>();
-		for (Commande elemt : d.listCommande(tournee)) {
+		for (Commande elemt : tournee.getListCommande()) {
 			commandeList.add(new CommandeClassPanel(elemt.getIdCommande(), elemt.getLibelle(), elemt.getPoids()));
 		}
 		ObservableList<CommandeClassPanel> Ovehi = FXCollections.observableArrayList(commandeList);

@@ -26,7 +26,7 @@ public class CommandeClassPanel {
 		this.poids = poids;
 		this.modif = new Button("modifier");
 		this.modif.setOnAction((ActionEvent event) -> {
-			for (Commande elemt : d.listCommande(tournee)) {
+			for (Commande elemt : tournee.getListCommande()) {
 				if (id == elemt.getIdCommande()) {
 					modifCommandeControl.setC(elemt);
 					modifCommandeControl.setT(tournee);
@@ -44,20 +44,18 @@ public class CommandeClassPanel {
 		});
 		this.sup = new Button("supprimer");
 		this.sup.setOnAction((ActionEvent event) -> {
-			for (Commande elemt : d.listCommande(tournee)) {
-				if (id == elemt.getIdCommande()) {
+			for (Commande elemt : d.listCommande(tournee.getIdTournee())) {
+				if (this.id == elemt.getIdCommande()) {
 					tournee.delCommande(elemt);
 				}
 			}
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("infoTournee.fxml"));
 			try {
 				Pane mainpane = loader.load();
-				infoTourneeControl.ChangeInterfaceModif(mainpane);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
 		});
 	}
 
