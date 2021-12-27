@@ -5,10 +5,9 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="delVehicule" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scene.delVehiculeControl">
    <children>
-      <Text layoutX="51.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Supprimer un vehicule de votre entreprise" textAlignment="CENTER" wrappingWidth="390.13671875">
+      <Text fx:id="titre" layoutX="51.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Supprimer un vehicule de votre entreprise" textAlignment="CENTER" wrappingWidth="390.13671875">
          <font>
             <Font size="20.0" />
          </font>
@@ -29,11 +28,12 @@
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <ChoiceBox prefHeight="25.0" prefWidth="183.0" GridPane.rowIndex="1" />
+                  <ComboBox fx:id="combolist" prefHeight="25.0" prefWidth="183.0" GridPane.rowIndex="1" />
                </children>
             </GridPane>
          </children>
       </VBox>
       <Button layoutX="558.0" layoutY="211.0" mnemonicParsing="false" onAction="#delVehiculeButton" prefHeight="59.0" prefWidth="102.0" text="Envoyer" />
+      <Button layoutX="86.0" layoutY="319.0" mnemonicParsing="false" onAction="#back" prefHeight="53.0" prefWidth="82.0" text="back" />
    </children>
 </AnchorPane>

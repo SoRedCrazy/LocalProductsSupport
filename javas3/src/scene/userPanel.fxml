@@ -14,7 +14,7 @@
       <AnchorPane prefHeight="128.0" prefWidth="720.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="128.0" stroke="BLACK" strokeType="INSIDE" width="720.0" />
-            <Text layoutX="22.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello $USER ! Bienvenue ! Ajoute et modifie tes tournees.">
+            <Text fx:id="titre" layoutX="22.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello $USER ! Bienvenue ! Ajoute et modifie tes tournees.">
                <font>
                   <Font size="20.0" />
                </font>
@@ -24,12 +24,11 @@
             <Button layoutX="308.0" layoutY="50.0" mnemonicParsing="false" onAction="#supprimerVehiculeUserPanelButton" text="Supprimer un vehicule" />
          </children>
       </AnchorPane>
-      <ScrollBar layoutX="706.0" layoutY="128.0" orientation="VERTICAL" prefHeight="352.0" prefWidth="14.0" />
-      <TableView fx:id="tbData" layoutY="125.0" prefHeight="359.0" prefWidth="706.0">
+      <TableView fx:id="tbData" layoutY="125.0" prefHeight="359.0" prefWidth="720.0">
          <columns>
             <TableColumn fx:id="Id" prefWidth="212.0" text="id" />
             <TableColumn fx:id="date" prefWidth="294.0" text="date" />
-            <TableColumn fx:id="plus" prefWidth="200.0" text="plus" />
+            <TableColumn fx:id="plus" prefWidth="213.0" text="plus" />
          </columns>
       </TableView>
    </children>

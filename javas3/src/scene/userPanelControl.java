@@ -17,10 +17,13 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 
 public class userPanelControl {
 	@FXML
 	private AnchorPane userPanel;
+	@FXML
+	private Text titre;
 
 	private static Entreprise et;
 
@@ -41,6 +44,8 @@ public class userPanelControl {
 	@FXML
 	public void initialize() {
 		setPane(userPanel);
+
+		titre.setText(titre.getText().replace("$USER", et.getPrenom()));
 
 		Id.setCellValueFactory(new PropertyValueFactory<TourneeClassPanel, Integer>("Id"));
 		date.setCellValueFactory(new PropertyValueFactory<TourneeClassPanel, Date>("date"));

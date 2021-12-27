@@ -5,7 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="delVehiculeAdmin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scene.delVeh">
+<AnchorPane fx:id="delVehiculeAdmin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scene.delVehiculeAdminControl">
    <children>
       <Text layoutX="51.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Supprimer un vehicule de votre entreprise" textAlignment="CENTER" wrappingWidth="390.13671875">
          <font>
