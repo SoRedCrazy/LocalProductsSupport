@@ -21,7 +21,8 @@
       <TextField fx:id="heureDebut" layoutX="34.0" layoutY="317.0" promptText="15:00:00" />
       <Text layoutX="232.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Heure fin" />
       <TextField fx:id="heureFin" layoutX="232.0" layoutY="317.0" promptText="20:00:00" />
-      <Button layoutX="465.0" layoutY="291.0" mnemonicParsing="false" onAction="#addCommandeButton" prefHeight="52.0" prefWidth="81.0" text="Envoyer" />
+      <Button layoutX="477.0" layoutY="377.0" mnemonicParsing="false" onAction="#addCommandeButton" prefHeight="52.0" prefWidth="81.0" text="Envoyer" />
       <ComboBox fx:id="combolist" layoutX="431.0" layoutY="198.0" prefWidth="150.0" promptText="Client" />
+      <Button layoutX="60.0" layoutY="376.0" mnemonicParsing="false" onAction="#back" prefHeight="53.0" prefWidth="82.0" text="back" />
    </children>
 </AnchorPane>

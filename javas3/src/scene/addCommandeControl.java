@@ -94,4 +94,10 @@ public class addCommandeControl {
 		}
 	}
 
+	public void back() throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("infoTournee.fxml"));
+		Pane mainpane = loader.load();
+		addCommande.getChildren().setAll(mainpane);
+	}
+
 }

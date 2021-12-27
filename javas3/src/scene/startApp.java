@@ -14,7 +14,7 @@ public class startApp extends Application {
 	@Override
 	public void start(Stage main1) throws Exception {
 		AnchorPane root = FXMLLoader.load(getClass().getResource("Loginscene.fxml"));
-		Scene sc = new Scene(root, 854, 480);
+		Scene sc = new Scene(root, 720, 480);
 		main1.setScene(sc);
 		main1.show();
 	}

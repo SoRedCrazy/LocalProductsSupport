@@ -16,9 +16,9 @@ import javafx.scene.layout.Pane;
 public class delEntrepriseControl {
 	DAO d = new DAO();
 	@FXML
-	ComboBox<String> combolist;
+	private ComboBox<String> combolist;
 	@FXML
-	AnchorPane delEntreprise;
+	private AnchorPane delEntreprise;
 
 	@FXML
 	public void initialize() {

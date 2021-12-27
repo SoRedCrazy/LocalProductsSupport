@@ -330,15 +330,23 @@ public class Entreprise {
 	 * Modifie les information d'une tournee grace aux setters de la classe Tournee
 	 * 
 	 * @param Tournee
+	 * @param Date
+	 * @param Time
+	 * @param Time
 	 * @return
 	 * @author François Bardel
 	 */
-	public void modifierTournee(Date date, Time horaireDebut, Time horaireFin, Vehicule vehicule, Tournee t) {
+	public boolean modifierTournee(Date date, Time horaireDebut, Time horaireFin, Tournee t) {
 		t.setDate(date);
 		t.setHoraireDebut(horaireDebut);
 		t.setHoraireFin(horaireFin);
-		t.setVehicule(vehicule);
-		d.modifTournee(t);
+		boolean b = d.modifTournee(t);
+		if (b) {
+			return true;
+		} else {
+			return false;
+		}
+
 	}
 
 	/**

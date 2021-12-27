@@ -135,6 +135,7 @@ public class infoTourneeControl {
 	}
 
 	public void modiftourneeButton() throws IOException {
+		modifTourneeControl.setTournee(tournee);
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("modifTournee.fxml"));
 		Pane mainpane = loader.load();
 		infoTournee.getChildren().setAll(mainpane);
