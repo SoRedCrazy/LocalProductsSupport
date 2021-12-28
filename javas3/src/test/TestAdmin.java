@@ -62,8 +62,7 @@ public class TestAdmin {
 		// a.ajouterClient("amaury", "mechin", 45, "rue de sonzay", 37100, "paumer",
 		// "france", "021456971");
 		Client c = d.listClient().get(0);
-		boolean b = a.ModifClient(d.listClient().get(0), "john", "cause", 13, "rue bouda", 37800, "tourcoing", "france",
-				"70809007808");
+		boolean b = a.ModifClient(c, "john", "cause", 13, "rue bouda", 37800, "tourcoing", "france", "70809007808");
 		assertTrue(b);
 	}
 
