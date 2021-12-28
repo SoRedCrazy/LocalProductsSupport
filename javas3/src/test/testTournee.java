@@ -25,7 +25,7 @@ public class testTournee {
 
 	@Test
 	public void testDelCommande() {
-		t.delCommande(d.listCommande(t).get(0));
+		t.delCommande(d.listCommande(t.getIdTournee()).get(0));
 		assertTrue("Erreur", t.getListCommande().isEmpty());
 		assertEquals("Erreur", t.getPoids(), 0);
 		assertEquals("Erreur", t.toString(), "");
@@ -35,7 +35,7 @@ public class testTournee {
 	@Test
 	public void testModifCommande() {
 		t.addCommande("chocolat", 3, null, null, null, null);
-		t.modifCommande(d.listCommande(t).get(0), "lait", 2, null, null, null);
+		t.modifCommande(d.listCommande(t.getIdTournee()).get(0), "lait", 2, null, null);
 		assertTrue("Erreur", t.getListCommande().get(0).getLibelle() != "chocolat");
 		assertEquals("Erreur", t.getPoids(), 2);
 		assertFalse("Erreur", t.getListCommande().get(0).getLibelle() != "lait");

@@ -49,10 +49,7 @@ public class TestEntreprise {
 
 	@Test
 	public void testModifierTournee() {
-		Vehicule v = new Vehicule("BW 908 GR", 100);
-		ent.modifierTournee(null, null, null, v, d.listTournee().get(0));
-		assertTrue("Erreur", ent.getVehicule().get(0).getImmatriculation() == "BW 908 GR");
-		assertEquals("Erreur", d.listTournee().get(0).getVehicule(), v);
+		ent.modifierTournee(null, null, null, d.listTournee().get(0));
 		assertFalse("Erreur", ent.getVehicule().get(0).getPoidsMax() != 100);
 	}
 

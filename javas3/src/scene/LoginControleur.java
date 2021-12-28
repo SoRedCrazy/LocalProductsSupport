@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 
 public class LoginControleur {
 	DAO d = new DAO();
@@ -17,6 +18,8 @@ public class LoginControleur {
 	TextField mail, mdp;
 	@FXML
 	AnchorPane Loginscene;
+	@FXML
+	Text titre;
 
 	public void connection() throws IOException {
 
@@ -32,6 +35,8 @@ public class LoginControleur {
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("userPanel.fxml"));
 				Pane mainpane = loader.load();
 				Loginscene.getChildren().setAll(mainpane);
+			} else {
+				titre.setText("Erreur de connection");
 			}
 
 		} else {
@@ -46,6 +51,8 @@ public class LoginControleur {
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("adminPanel.fxml"));
 				Pane mainpane = loader.load();
 				Loginscene.getChildren().setAll(mainpane);
+			} else {
+				titre.setText("Erreur de connection");
 			}
 		}
 
