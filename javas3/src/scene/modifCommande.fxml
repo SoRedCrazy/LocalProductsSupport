@@ -19,7 +19,8 @@
       <Text layoutX="34.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Heure debut" />
       <TextField fx:id="heureDebut" layoutX="34.0" layoutY="317.0" promptText="15:00:00" />
       <Text layoutX="232.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Heure fin" />
-      <TextField fx:id="heureFin" layoutX="232.0" layoutY="317.0" text="17:00:00" />
-      <Button layoutX="465.0" layoutY="291.0" mnemonicParsing="false" onAction="#modifCommandeButton" prefHeight="52.0" prefWidth="81.0" text="Envoyer" />
+      <TextField fx:id="heureFin" layoutX="232.0" layoutY="317.0" promptText="17:00:00" />
+      <Button layoutX="470.0" layoutY="389.0" mnemonicParsing="false" onAction="#modifCommandeButton" prefHeight="52.0" prefWidth="81.0" text="Envoyer" />
+      <Button layoutX="47.0" layoutY="388.0" mnemonicParsing="false" onAction="#back" prefHeight="53.0" prefWidth="82.0" text="back" />
    </children>
 </AnchorPane>

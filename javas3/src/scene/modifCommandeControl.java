@@ -80,4 +80,10 @@ public class modifCommandeControl {
 			titre.setText("erreur d'envoie");
 		}
 	}
+
+	public void back() throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("infoTournee.fxml"));
+		Pane mainpane = loader.load();
+		modifCommande.getChildren().setAll(mainpane);
+	}
 }
