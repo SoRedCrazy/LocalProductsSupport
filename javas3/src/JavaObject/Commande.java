@@ -5,6 +5,8 @@ import java.sql.Time;
 /**
  * Cette classe permet de gerer les objets commande, elle ne contient que le
  * constructeur de l'objet, ainsi que les getters et setters.
+ * 
+ * @author Mechin Amaury
  */
 
 public class Commande {
@@ -16,6 +18,19 @@ public class Commande {
 	private Time heurefin;
 	private Client Client;
 	private int ancienpoids;
+
+	/**
+	 * Constructeur permet de créer une commande.
+	 * 
+	 * @param idCommande -Integer
+	 * @param libelle    -String
+	 * @param poids      -Integer
+	 * @param heuredebut -Time
+	 * @param heurefin   -Time
+	 * @param client     -Client
+	 * 
+	 * @author Mechin Amaury
+	 */
 
 	public Commande(Integer idCommande, String libelle, Integer poids, Time heuredebut, Time heurefin, Client client) {
 		this.idCommande = idCommande;
@@ -29,7 +44,9 @@ public class Commande {
 	/**
 	 * Permet de récupérer l'id de la commande.
 	 * 
-	 * @return idCommande
+	 * @return idCommande -Integer
+	 * 
+	 * @author Mechin Amaury
 	 */
 	public Integer getIdCommande() {
 		return this.idCommande;
@@ -38,7 +55,9 @@ public class Commande {
 	/**
 	 * Permet de définir l'id de la commande.
 	 * 
-	 * @param commande
+	 * @param idCommande -Integer
+	 * 
+	 * @author Mechin Amaury
 	 */
 	public void setIdCommande(Integer idCommande) {
 		this.idCommande = idCommande;
@@ -47,7 +66,9 @@ public class Commande {
 	/**
 	 * Permet de récupérer le libéllé de la commande.
 	 * 
-	 * @return libelle
+	 * @return libelle -String
+	 * 
+	 * @author Mechin Amaury
 	 */
 	public String getLibelle() {
 		return this.libelle;
@@ -56,25 +77,31 @@ public class Commande {
 	/**
 	 * Permet de définir le libelle de la commande.
 	 * 
-	 * @param libelle
+	 * @param libelle -String
+	 * 
+	 * @author Mechin Amaury
 	 */
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
 
 	/**
-	 * Permet de récupérer la poids de la commande.
+	 * Permet de récupérer le poids de la commande.
 	 * 
-	 * @return poids
+	 * @return poids -Integer
+	 * 
+	 * @author Mechin Amaury
 	 */
 	public Integer getPoids() {
 		return this.poids;
 	}
 
 	/**
-	 * permet de sette le poid
+	 * Permet de définir le poids de la commande.
 	 * 
-	 * @param poids
+	 * @param poids -Integer
+	 * 
+	 * @author Mechin Amaury
 	 */
 	public void setPoids(int poids) {
 		this.ancienpoids = this.poids;
@@ -82,9 +109,11 @@ public class Commande {
 	}
 
 	/**
-	 * permet d'avoir l'ancien poids utiles a la base de donnee
+	 * Permet d'avoir l'ancien poids utiles à la base de donnee.
 	 * 
-	 * @param poids
+	 * @param poids -int
+	 * 
+	 * @author Mechin Amaury
 	 */
 	public int getAncienpoids() {
 		return ancienpoids;
@@ -93,7 +122,9 @@ public class Commande {
 	/**
 	 * Permet de récupérer la date de la commande.
 	 * 
-	 * @return dateCommande
+	 * @return heuredebut -Time
+	 * 
+	 * @author Mechin Amaury
 	 */
 	public Time getHeuredebut() {
 		return this.heuredebut;
@@ -102,7 +133,9 @@ public class Commande {
 	/**
 	 * Permet de définir la date de la commande.
 	 * 
-	 * @param dateCommande
+	 * @param heuredebut -Time
+	 * 
+	 * @author Mechin Amaury
 	 */
 	public void setheuredebut(Time heuredebut) {
 		this.heuredebut = heuredebut;
@@ -111,7 +144,9 @@ public class Commande {
 	/**
 	 * Permet de récupérer la date limite de la commande.
 	 * 
-	 * @return dateLimite
+	 * @return heurefin -Time
+	 * 
+	 * @author Mechin Amaury
 	 */
 	public Time getHeureFin() {
 		return this.heurefin;
@@ -120,7 +155,9 @@ public class Commande {
 	/**
 	 * Permet de définir la date limite de la commande.
 	 * 
-	 * @param dateLimite
+	 * @param heurefin -Time
+	 * 
+	 * @author Mechin Amaury
 	 */
 	public void setheurefin(Time heurefin) {
 		this.heurefin = heurefin;
@@ -129,7 +166,9 @@ public class Commande {
 	/**
 	 * Permet de récupérer le client qui passe la commande.
 	 * 
-	 * @return client
+	 * @return client -Client
+	 * 
+	 * @author Mechin Amaury
 	 */
 	public Client getClient() {
 		return this.Client;
@@ -137,6 +176,10 @@ public class Commande {
 
 	/**
 	 * Permet de définir le client qui passe la commande.
+	 * 
+	 * @param client -Client
+	 * 
+	 * @author Mechin Amaury
 	 */
 	public void setClient(Client Client) {
 		this.Client = Client;
