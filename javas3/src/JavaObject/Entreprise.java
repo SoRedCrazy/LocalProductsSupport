@@ -5,8 +5,8 @@ import java.sql.Time;
 import java.util.ArrayList;
 
 /**
- * Cette classe va servir a gerer entierement les objets entreprise, qui
- * representeron les entreprise des producteur, et donc les utilisateur du
+ * Cette classe va servir à gerer entierement les objets entreprise, qui
+ * representeron les entreprises des producteurs, et donc les utilisateurs du
  * logiciel.
  * 
  * @author Bardel François
@@ -38,8 +38,10 @@ public class Entreprise {
 	 * @param pays         -String
 	 * @param nom          -String
 	 * @param prenom       -String
-	 * @param numTelephone -Integer
-	 * @param mdp-String
+	 * @param numTelephone -String
+	 * @param mdp          -String
+	 * 
+	 * @author Bardel François
 	 */
 	public Entreprise(String siret, Integer numeroDeRue, String rue, Integer codePostal, String ville, String pays,
 			String nom, String prenom, String numTelephone, String mdp) {
@@ -59,9 +61,11 @@ public class Entreprise {
 	}
 
 	/**
-	 * permet d'avoir le mots de passe
+	 * Permet d'avoir le mot de passe.
 	 * 
-	 * @return string
+	 * @return mdp -String
+	 * 
+	 * @author Bardel François
 	 */
 
 	public String getMdp() {
@@ -69,72 +73,96 @@ public class Entreprise {
 	}
 
 	/**
-	 * permet de modifier le mots de passe
+	 * Permet de modifier le mot de passe.
 	 * 
-	 * @param String- mdp
+	 * @param mdp -String
+	 * 
+	 * @author Bardel François
 	 */
 	public void setMdp(String mdp) {
 		this.mdp = mdp;
 	}
 
 	/**
-	 * @generated Permet d'obtenir la valeur du siret.
-	 * @return siret -Integer
+	 * Permet d'obtenir la valeur du siret.
+	 * 
+	 * @return siret -String
+	 * 
+	 * @author Bardel François
 	 */
 	public String getSiret() {
 		return this.siret;
 	}
 
 	/**
-	 * @generated Permet de modifier la valeur du siret.
-	 * @param siret -Integer
+	 * Permet de modifier la valeur du siret.
+	 * 
+	 * @param siret -String
+	 * 
+	 * @author Bardel François
 	 */
 	public void setSiret(String siret) {
 		this.siret = siret;
 	}
 
 	/**
-	 * @generated Permet d'obtenir le numero de rue.
+	 * Permet d'obtenir le numero de rue.
+	 * 
 	 * @return numeroDeRue -Integer
+	 * 
+	 * @author Bardel François
 	 */
 	public Integer getNumeroDeRue() {
 		return this.numeroDeRue;
 	}
 
 	/**
-	 * @generated Permet de modifier le numero de rue.
+	 * Permet de modifier le numero de rue.
+	 * 
 	 * @param numeroDeRue -Integer
+	 * 
+	 * @author Bardel François
 	 */
 	public void setNumeroDeRue(Integer numeroDeRue) {
 		this.numeroDeRue = numeroDeRue;
 	}
 
 	/**
-	 * @generated Permet d'obtenir le nom de la rue.
+	 * Permet d'obtenir le nom de la rue.
+	 * 
 	 * @return rue -String
+	 * 
+	 * @author Bardel François
 	 */
 	public String getRue() {
 		return this.rue;
 	}
 
 	/**
-	 * @generated Permet de modifier le nom de rue.
+	 * Permet de modifier le nom de rue.
+	 * 
 	 * @param rue -String
+	 * 
+	 * @author Bardel François
 	 */
 	public void setRue(String rue) {
 		this.rue = rue;
 	}
 
 	/**
-	 * @generated Permet d'obtenir le code postal
+	 * Permet d'obtenir le code postal.
+	 * 
 	 * @return codePostal -Integer
+	 * 
+	 * @author Bardel François
 	 */
 	public Integer getCodePostal() {
 		return this.codePostal;
 	}
 
 	/**
-	 * @generated Permet de modifier le code postal
+	 * Permet de modifier le code postal.
+	 * 
 	 * @param codePostal -Integer
 	 */
 	public void setCodePostal(Integer codePostal) {
@@ -142,120 +170,164 @@ public class Entreprise {
 	}
 
 	/**
-	 * @generated Permet d'obtenir le nom de la ville
+	 * Permet d'obtenir le nom de la ville.
+	 * 
 	 * @return ville -String
+	 * 
+	 * @author Bardel François
 	 */
 	public String getVille() {
 		return this.ville;
 	}
 
 	/**
-	 * @generated Permet de modifier la ville
+	 * Permet de modifier la ville.
+	 * 
 	 * @param ville -String
+	 * 
+	 * @author Bardel François
 	 */
 	public void setVille(String ville) {
 		this.ville = ville;
 	}
 
 	/**
-	 * @generated Permet d'obtenir le pays
+	 * Permet d'obtenir le pays.
+	 * 
 	 * @return pays -String
+	 * 
+	 * @author Bardel François
 	 */
 	public String getPays() {
 		return this.pays;
 	}
 
 	/**
-	 * @generated Permet de modifier le pays
+	 * Permet de modifier le pays.
+	 * 
 	 * @param pays -String
+	 * 
+	 * @author Bardel François
 	 */
 	public void setPays(String pays) {
 		this.pays = pays;
 	}
 
 	/**
-	 * @generated Permet d'obtenir le nom du proprietaire
+	 * Permet d'obtenir le nom du proprietaire.
+	 * 
 	 * @return nom -String
+	 * 
+	 * @author Bardel François
 	 */
 	public String getNom() {
 		return this.nom;
 	}
 
 	/**
-	 * @generated Permet de modifier le nom du proprietaire
+	 * Permet de modifier le nom du proprietaire.
+	 * 
 	 * @param nom -String
+	 * 
+	 * @author Bardel François
 	 */
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
 
 	/**
-	 * @generated Permet d'obtenir le prenom du propretaire
+	 * Permet d'obtenir le prenom du propretaire.
+	 * 
 	 * @return prenom -String
+	 * 
+	 * @author Bardel François
 	 */
 	public String getPrenom() {
 		return this.prenom;
 	}
 
 	/**
-	 * @generated Permet de modifier le prenom du proprietaire
+	 * Permet de modifier le prenom du proprietaire.
+	 * 
 	 * @param prenom -String
+	 * 
+	 * @author Bardel François
 	 */
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
 
 	/**
-	 * @generated Permet d'obtenir le numero de telephone
+	 * Permet d'obtenir le numero de telephone.
+	 * 
 	 * @return numTelephone -Integer
+	 * 
+	 * @author Bardel François
 	 */
 	public String getNumTelephone() {
 		return this.numTelephone;
 	}
 
 	/**
-	 * @generated Permet de modifier le numero de telephone
-	 * @param Integer
+	 * Permet de modifier le numero de telephone.
+	 * 
+	 * @param numTelephone -Integer
+	 * 
+	 * @author Bardel François
 	 */
 	public void setNumTelephone(String numTelephone) {
 		this.numTelephone = numTelephone;
 	}
 
 	/**
-	 * @generated Permet d'obtenir une tournee
-	 * @return tournee -Tournee
+	 * Permet d'obtenir la liste des tournees.
+	 * 
+	 * @return tournee -ArrayList<Tournee>.
+	 * 
+	 * @author Bardel François
 	 */
 	public ArrayList<Tournee> getTournee() {
 		return this.tournee;
 	}
 
 	/**
-	 * @generated Permet de modifier une tournee
-	 * @param tournee -Tournee
+	 * Permet de modifier une tournee.
+	 * 
+	 * @param tournee -ArrayList<Tournee>
+	 * 
+	 * @author Bardel François
 	 */
 	public void setTournee(ArrayList<Tournee> tournee) {
 		this.tournee = tournee;
 	}
 
 	/**
-	 * @generated Permet d'obtenir un vehicule
-	 * @return vehicule -Vehicule
+	 * Permet d'obtenir la liste des vehicules.
+	 * 
+	 * @return vehicule -ArrayList<Vehicule>
+	 * 
+	 * @author Bardel François
 	 */
 	public ArrayList<Vehicule> getVehicule() {
 		return this.vehicule;
 	}
 
 	/**
-	 * @generated Permet de modifier un Vehicule
+	 * Permet de modifier un vehicule.
+	 * 
 	 * @param vehicule -Vehicule
+	 * 
+	 * @author Bardel François
 	 */
-	/**
-	 * @param vehicule
-	 */
-	public void setVehicule(Vehicule vehicule) {
-		this.vehicule.add(vehicule);
+	public void setVehicule(ArrayList<Vehicule> vehicule) {
+		this.vehicule = vehicule;
 	}
 
+	/**
+	 * Permet de retourner toutes les informations de l'entreprise.
+	 * 
+	 * @author Bardel François
+	 */
 	@Override
 	public String toString() {
 		return "Entreprise [siret=" + siret + ", numeroDeRue=" + numeroDeRue + ", rue=" + rue + ", codePostal="
@@ -267,11 +339,13 @@ public class Entreprise {
 	// Operations
 
 	/**
-	 * Ajoute un vehicule a la liste de vehicules de l'entreprise, et verifie qu'il
-	 * a bien été ajouté dans la base de donnée
+	 * Ajoute un vehicule à la liste des vehicules de l'entreprise, et verifie qu'il
+	 * a bien été ajouté dans la base de donnée.
 	 * 
-	 * @param Vehicule
+	 * @param immatriculation -String
+	 * @param poidmax         -Int
 	 * @return boolean
+	 * 
 	 * @author François Bardel
 	 */
 	public boolean ajouterVehicule(String immatriculation, int poidmax) {
@@ -286,10 +360,11 @@ public class Entreprise {
 
 	/**
 	 * Supprime un vehicule de la liste de vehicule de l'entreprise, et verifie
-	 * qu'il a bien été supprimer de la bases de donnée
+	 * qu'il a bien été supprimer de la base de donnée.
 	 * 
-	 * @param Vehicule
+	 * @param v -Vehicule
 	 * @return boolean
+	 * 
 	 * @author François Bardel
 	 */
 	public boolean supprimerVehicule(Vehicule v) {
@@ -306,14 +381,15 @@ public class Entreprise {
 	}
 
 	/**
-	 * Ajoute une tournée, a la liste detournee de l'entreprise, et verifie qu'elle
-	 * est bien dans la base de donnée
+	 * Ajoute une tournée, à la liste de tournee de l'entreprise, et verifie qu'elle
+	 * est bien dans la base de donnée.
 	 * 
-	 * @param date
-	 * @param horaireDebut
-	 * @param horaireFin
-	 * @param vehicule
+	 * @param date         -Date
+	 * @param horaireDebut -Time
+	 * @param horaireFin   -Time
+	 * @param vehicule     -Vehicule
 	 * @return boolean
+	 * 
 	 * @author François Bardel
 	 */
 	public boolean ajouterTournee(Date date, Time horaireDebut, Time horaireFin, Vehicule vehicule) {
@@ -327,13 +403,15 @@ public class Entreprise {
 	}
 
 	/**
-	 * Modifie les information d'une tournee grace aux setters de la classe Tournee
+	 * Modifie les informations d'une tournee grace aux setters de la classe
+	 * Tournee.
 	 * 
-	 * @param Tournee
-	 * @param Date
-	 * @param Time
-	 * @param Time
-	 * @return
+	 * @param date         -Date
+	 * @param horaireDebut -Time
+	 * @param horaireFin   -Time
+	 * @param t            -Tournee
+	 * @return boolean
+	 * 
 	 * @author François Bardel
 	 */
 	public boolean modifierTournee(Date date, Time horaireDebut, Time horaireFin, Tournee t) {
@@ -351,10 +429,11 @@ public class Entreprise {
 
 	/**
 	 * Supprime une tournee de la liste de tournee de l'entreprise, et verifie sa
-	 * suppretion dans la base de donnée
+	 * suppression dans la base de donnée.
 	 * 
-	 * @param Tournee
+	 * @param t -Tournee
 	 * @return boolean
+	 * 
 	 * @author François Bardel
 	 */
 	public boolean supprimerTournee(Tournee t) {

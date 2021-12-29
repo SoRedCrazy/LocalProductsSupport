@@ -9,27 +9,28 @@ import java.sql.Time;
 import java.util.ArrayList;
 
 /**
- * Permet la gestion de la base de donner entre les objet
+ * Permet la gestion de la base de donnee entre les objets.
  * 
- * @author julienBoisgard
+ * @author Boisgard Julien
  *
  */
 public class DAO {
 	private Connection cn;
 
 	/**
-	 * Consctructeur ouvre la connection singleton
+	 * Consctructeur ouvre la connection singleton.
 	 *
+	 * @author Boisgard Julien
 	 */
 	public DAO() {
 		this.cn = Singleton.getInstance();
 	}
 
 	/**
-	 * Permet l'ajout d'un client dans la DAO et retourne un Client null si ca ca
-	 * c'est pas bien passer et le client bien crÔøΩe si c'est bon. Pour cela on
-	 * insert le client en bdd puis on execute si le reusultat est superieur a -1
-	 * cela c'est bien passer donc on cherche sont id puis on le cree.
+	 * Permet l'ajout d'un client dans la DAO et retourne un Client null si ca c'est
+	 * pas bien passer et si c'est bon le client est cree. Pour cela on insert le
+	 * client en bdd puis on execute si le reusultat est superieur ‡ -1 cela c'est
+	 * bien passe donc on cherche sont id puis on le cree.
 	 *
 	 * @param prenom       -String
 	 * @param nom          -String
@@ -38,11 +39,12 @@ public class DAO {
 	 * @param codePostal   -Integer
 	 * @param ville        -String
 	 * @param pays         -String
-	 * @param numTelephone -Integer
+	 * @param numTelephone -String
 	 * @param mailAdmin    - String
-	 * @return Client
+	 * @return cl -Client
 	 * @exception SQLExecption Exemple: numero de telephone existe deja...
-	 * @author julienboisgard
+	 * 
+	 * @author Boisgard Julien
 	 */
 	public Client ajouterclient(String prenom, String nom, Integer numeroDeRue, String rue, Integer codePostal,
 			String ville, String pays, String numTelephone, String mailAdmin) {
@@ -82,13 +84,14 @@ public class DAO {
 
 	/**
 	 * Permet la suppression d'un client dans la DAO et retourne un boolean pour
-	 * savoir si la requete s'est bien d√©roul√©e. Pour cela on envoie le la requete
-	 * si le resultat et superier a -1 le clien est bien suprimer
+	 * savoir si la requete s'est bien deroulee. Pour cela on envoie le la requete
+	 * si le resultat et superieur ‡ -1 le client est bien suprimer.
 	 *
-	 * @param client
+	 * @param client -Client
 	 * @return boolean
 	 * @exception SQLException si les information ne concorde pas.
-	 * @author julienboisgard
+	 * 
+	 * @author Boisgard Julien
 	 */
 	public boolean delclient(Client client) {
 
@@ -114,14 +117,14 @@ public class DAO {
 
 	/**
 	 * Permet de modifier des informations client. Pour cela on recupere le client
-	 * deja modifier et a partir de sont id on modifie se qu'il lui correspond si le
-	 * resultat est superieur a -1 ca c'est bien passer.
+	 * deja modifie et ‡ partir de son id on modifie se qu'il lui correspond, si le
+	 * resultat est superieur ‡ -1 ca c'est bien passe.
 	 * 
-	 *
-	 * @param client
+	 * @param client -Client
 	 * @return boolean
 	 * @exception SQLException si probleme d'informations.
-	 * @author julienboisgard
+	 * 
+	 * @author Boisgard Julien
 	 */
 
 	public boolean modifclient(Client client) {
@@ -155,25 +158,26 @@ public class DAO {
 	}
 
 	/**
-	 * Permet l'ajout d'une entreprise dans la DAO et retourne l'entreprise cree
-	 * null si cele c'est pas bien passer. On envoie la requete avec les
-	 * informations de l'entreprise si le resultat et superieur a -1 sa c'est bien
-	 * passer et on la cree
+	 * Permet l'ajout d'une entreprise dans la DAO et retourne l'entreprise cree.
+	 * Retourne null si cela ne c'est pas bien passer. On envoie la requete avec les
+	 * informations de l'entreprise si le resultat et superieur ‡ -1 ca c'est bien
+	 * passe et on la cree.
 	 *
 	 * @param siret        -String
+	 * @param prenom       -String
+	 * @param nom          -String
 	 * @param numeroDeRue  -Integer
 	 * @param rue          -String
 	 * @param codePostal   -Integer
 	 * @param ville        -String
 	 * @param pays         -String
-	 * @param nom          -String
-	 * @param prenom       -String
-	 * @param numTelephone -Integer
-	 * @param mdp-String
-	 * @param mailAdmin    - String
+	 * @param numTelephone -String
+	 * @param motdepasses  -String
+	 * @param mailAdmin    -String
 	 * @return Entreprise
-	 * @exception SQLException si erreur de paramettres
-	 * @author julienboisgard
+	 * @exception SQLException si erreur de parametres
+	 * 
+	 * @author Boisgard Julien
 	 */
 	public Entreprise ajouterEntreprise(String siret, String prenom, String nom, Integer numeroDeRue, String rue,
 			Integer codePostal, String ville, String pays, String numTelephone, String motsdepasses, String mailAdmin) {
@@ -211,13 +215,14 @@ public class DAO {
 
 	/**
 	 * Permet la suppression d'une entreprise dans la DAO et retourne un boolean
-	 * pour savoir si la requete s'est bien d√©roul√©e. Pour cela on envoie la
-	 * requette si le resultat est superieur a -1 ca c'est bien passer.
+	 * pour savoir si la requete s'est bien deroulee. Pour cela on envoie la
+	 * requette, si le resultat est superieur ‡ -1 ca c'est bien passe.
 	 * 
-	 * @param entreprise
+	 * @param siret -String
 	 * @return boolean
-	 * @exception SQLException si erreur de paramettres
-	 * @author julienboisgard
+	 * @exception SQLException si erreur de parametres
+	 * 
+	 * @author Boisgard Julien
 	 */
 
 	public boolean supprimerEntreprise(String siret) {
@@ -254,14 +259,15 @@ public class DAO {
 	}
 
 	/**
-	 * Permet de modifier des informations entreprise. Pour cela a partir du siret
-	 * on modifie les autres paramettres si le resultat est superieur a -1 ca c'est
-	 * bien passer
+	 * Permet de modifier des informations entreprise. Pour cela ‡ partir du siret
+	 * on modifie les autres parametres si le resultat est superieur ‡ -1 ca c'est
+	 * bien passe.
 	 *
-	 * @param entreprise
+	 * @param entreprise -Entreprise
 	 * @return boolean
-	 * @exception SQLException si erreur de paramettres
-	 * @author julienboisgard
+	 * @exception SQLException si erreur de parametres
+	 * 
+	 * @author Boisgard Julien
 	 */
 	public boolean modifEntreprise(Entreprise entreprise) {
 		PreparedStatement stmt = null;
@@ -294,15 +300,17 @@ public class DAO {
 	}
 
 	/**
-	 * Permet l'ajout d'un v√©hicule dans la DAO et retourne un objet Vehcilue cr√©e
-	 * On ajoute a la bdd le vheicule si reultat superieurr a -1 on cree le Vehicule
+	 * Permet l'ajout d'un vehicule dans la DAO et retourne un objet vehcilue cree.
+	 * On ajoute ‡ la bdd le vheicule si reultat superieurr ‡ -1 on cree le
+	 * vehicule.
 	 * 
-	 * @param Immatriculation String
-	 * @param poidmax         int
-	 * @param siret           int
-	 * @return vehicule
+	 * @param Immatriculation -String
+	 * @param poidmax         -int
+	 * @param siret           -String
+	 * @return ve -Vehicule
 	 * @exception SQLException si erreur de paramettre
-	 * @author julienboisgard
+	 * 
+	 * @author Boisgard Julien
 	 */
 	public Vehicule ajouterVehicule(String immatriculation, int poidmax, String siret) {
 		// preparation
@@ -331,14 +339,15 @@ public class DAO {
 
 	/**
 	 * Permet la suppression de vehicule dans la DAO et retourne un boolean pour
-	 * savoir si la requete s'est bien d√©roul√©e. Pourcela on supprimer les les
-	 * commande des tout ou le vehicule est dedans puis les tours ou les vehivule
-	 * sont dedans et enfin on supprime le vehicule
+	 * savoir si la requete s'est bien deroulee. Pour cela on supprime toutes les
+	 * commandes qui sont dans le vehicule, puis les tournees ou les vehivules sont
+	 * affectes et enfin on supprime le vehicule.
 	 *
-	 * @param vehicule
+	 * @param vehicule -Vehicule
 	 * @return boolean
-	 * @exception SQLException si erreur de paramettres
-	 * @author julienboisgard
+	 * @exception SQLException si erreur de parametres
+	 * 
+	 * @author Boisgard Julien
 	 */
 	public boolean supprimerVehicule(Vehicule vehicule) {
 		PreparedStatement stmt = null;
@@ -371,18 +380,18 @@ public class DAO {
 	}
 
 	/**
-	 * Permet l'ajout d'une tourn√©e et ca creation on ajoute les valeurs puis si
-	 * c'est bon on recupere l'idtourn√©e et on la cree si l'objet et null cela
-	 * c'est mal passer
+	 * Permet l'ajout d'une tournee et sa creation, on ajoute les valeurs puis si
+	 * c'est bon on recupere l'id de la tournee et on la cree. Si l'objet est null
+	 * cela c'est mal passe.
 	 *
-	 * @param Integer
-	 * @param Date
-	 * @param Time
-	 * @param Time
-	 * @param Vehicule
-	 * @return TournÔøΩe
-	 * @exception SQLException si erreur de paramettres
-	 * @author julienboisgard
+	 * @param date         -Date
+	 * @param horaireDebut -Time
+	 * @param horaireFin   -Time
+	 * @param vehicule     -Vehicule
+	 * @return to -Tournee
+	 * @exception SQLException si erreur de parametres
+	 * 
+	 * @author Boisgard Julien
 	 */
 	public Tournee ajouterTournee(Date date, Time horaireDebut, Time horaireFin, Vehicule vehicule) {
 		Tournee to = null;
@@ -419,13 +428,14 @@ public class DAO {
 	}
 
 	/**
-	 * Permet de modifier des informations tournee. on recupere la tourn√©e deja
-	 * modifier et on update dans la bdd a partir de l'id
+	 * Permet de modifier des informations tournee. On recupere la tournee deja
+	 * modifier et on update dans la bdd ‡ partir de l'id.
 	 *
-	 * @param tournee
+	 * @param tournee -Tournee
 	 * @return boolean
-	 * @exception SQLException si erreur de paramettres
-	 * @author julienboisgard
+	 * @exception SQLException si erreur de parametres
+	 * 
+	 * @author Boisgard Julien
 	 */
 	public boolean modifTournee(Tournee tournee) {
 
@@ -454,13 +464,14 @@ public class DAO {
 
 	/**
 	 * Permet la suppression dans la DAO et retourne un boolean pour savoir si la
-	 * requete s'est bien d√©roul√©e. Pour cela il faut supprimer d'abords les
-	 * commandes de la tournn√©e puis apres on suprimmer la tourn√©e
+	 * requete s'est bien deroulee. Pour cela il faut d'abord supprimer les
+	 * commandes de la tournnee puis apres on suprimme la tournee.
 	 *
-	 * @param tournee
+	 * @param tournee -Tournee
 	 * @return boolean
-	 * @exception SQLException si erreur de paramettres
-	 * @author julienboisgard
+	 * @exception SQLException si erreur de parametres
+	 * 
+	 * @author Boisgard Julien
 	 */
 	public boolean supprimerTournee(Tournee tournee) {
 		PreparedStatement stmt = null;
@@ -488,16 +499,22 @@ public class DAO {
 	}
 
 	/**
-	 * Permet l'ajout d'une commande dans une tourn√©e et retourne un boolean pour
-	 * savoir si la requete s'est bien d√©roul√©e on verifie d'aboir si le poid de
-	 * la tournÔøΩe n'est pas depasser par rapport au camion puis on ajoute les
-	 * valeurs et on mets a jours la valeur de la tournÔøΩ
+	 * Permet l'ajout d'une commande dans une tournee et retourne un boolean pour
+	 * savoir si la requete s'est bien deroulee on verifie d'abord si le poids de la
+	 * tournee n'est pas depasse par rapport au vehicule, puis on ajoute les valeurs
+	 * et on met ‡ jour la valeur de la tournee.
 	 *
-	 * @param tournee
-	 * @param commande
-	 * @return Commande
-	 * @exception SQLException si erreur de paramettres
-	 * @author julienboisgard
+	 * @param libelle    -String
+	 * @param poids      -Integer
+	 * @param Heuredebut -Time
+	 * @param Heurefin   -Time
+	 * @param client     -Client
+	 * @param siret      -String
+	 * @param idTournee  -int
+	 * @return co -Commande
+	 * @exception SQLException si erreur de parametres
+	 * 
+	 * @author Boisgard Julien
 	 */
 	public Commande ajouterCommandeTournee(String libelle, Integer poids, Time Heuredebut, Time Heurefin, Client client,
 			String siret, int idTournee) {
@@ -552,13 +569,14 @@ public class DAO {
 
 	/**
 	 * Permet la suppression d'une commande dans une tournee et retourne un boolean
-	 * pour savoir si la requete s'est bien deroulee elle supprimer la commande
-	 * d'abord puis mets a jours le poids de la tournee
+	 * pour savoir si la requete s'est bien deroulee elle supprime la commande
+	 * d'abord puis met ‡ jour le poids de la tournee.
 	 * 
-	 * @param commande
+	 * @param commande -Commande
 	 * @return boolean
-	 * @exception SQLException si erreur de paramettres
-	 * @author julienboisgard
+	 * @exception SQLException si erreur de parametres
+	 * 
+	 * @author Boisgard Julien
 	 */
 	public boolean supprimerCommandeTournee(Commande commande) {
 		PreparedStatement stmt = null;
@@ -587,14 +605,15 @@ public class DAO {
 	}
 
 	/**
-	 * Permet la modification d'une commande cela verif le poids de la tournÔøΩe et
-	 * le poids max du camion si il n'est pas depasser avant puis modifie la
-	 * commande si sa c'est bien passer mets a jour le poid de la tournÔøΩe.
+	 * Permet la modification d'une commande cela verifie le poids de la tournee et
+	 * le poids max du vehicule si il n'est pas depasse, puis modifie la commande si
+	 * ca c'est bien passe et met ‡ jour le poids de la tournee.
 	 * 
-	 * @param Commande
+	 * @param commande -Commande
 	 * @return boolean
-	 * @exception SQLException si erreur de paramettres
-	 * @author julienboisgard
+	 * @exception SQLException si erreur de parametres
+	 * 
+	 * @author Boisgard Julien
 	 */
 	public boolean modifCommande(Commande commande) {
 		PreparedStatement stmt = null;
@@ -641,14 +660,15 @@ public class DAO {
 	}
 
 	/**
-	 * Permet de retourner la liste des Tournee en fonction du numero de siret. on
-	 * recupere les informations dans la bdd puis on les crre est on les ajoutes a
-	 * la liste
+	 * Permet de retourner la liste des tournees en fonction du numero de siret. On
+	 * recupere les informations dans la bdd puis on les crees et on les ajoutes ‡
+	 * la liste.
 	 * 
-	 * @param Entreprise entreprise
-	 * @return ArrayList<Tournee>
-	 * @exception SQLException si erreur de paramettres
-	 * @author julienboisgard
+	 * @param siret -String
+	 * @return listTo -ArrayList<Tournee>
+	 * @exception SQLException si erreur de parametres
+	 * 
+	 * @author Boisgard Julien
 	 */
 
 	public ArrayList<Tournee> listTourneeentreprise(String siret) {
@@ -679,14 +699,14 @@ public class DAO {
 	}
 
 	/**
-	 * Permet de retourner la liste des Tournee en fonction du numero de siret. on
-	 * recupere les informations dans la bdd puis on les crre est on les ajoutes a
-	 * la liste
+	 * Permet de retourner la liste des tournees en fonction du numero de siret. On
+	 * recupere les informations dans la bdd puis on les crees et on les ajoutes ‡
+	 * la liste.
 	 * 
-	 * @param Entreprise entreprise
-	 * @return ArrayList<Tournee>
-	 * @exception SQLException si erreur de paramettres
-	 * @author julienboisgard
+	 * @return listTo -ArrayList<Tournee>
+	 * @exception SQLException si erreur de parametres
+	 *
+	 * @author Boisgard Julien
 	 */
 
 	public ArrayList<Tournee> listTournee() {
@@ -716,12 +736,13 @@ public class DAO {
 	}
 
 	/**
-	 * Permet de retourner la liste de toute les Tournees de la bases. on recupere
-	 * les informations dans la bdd puis on les crre est on les ajoutes a la liste
+	 * Permet de retourner la liste de toute les tournees de la bases. On recupere
+	 * les informations dans la bdd puis on les crees et on les ajoutes ‡ la liste.
 	 * 
-	 * @return ArrrayList<Tournee>
+	 * @return listTo -ArrrayList<Tournee>
 	 * @exception SQLException si erreur deparamettres
-	 * @author julienboisgard
+	 * 
+	 * @author Boisgard Julien
 	 */
 
 	public ArrayList<Tournee> TourneeAdmin() {
@@ -749,13 +770,14 @@ public class DAO {
 	}
 
 	/**
-	 * Permet de recuperer tout les vehicule de la base de donnÔøΩe on recupere dans
-	 * la bdd puis on cree tout les vehicule et on les ajoute si la liste est vide
-	 * il n'y a pas n'as pas de Vehicule
+	 * Permet de recuperer tout les vehicules de la base de donnee. On recupere dans
+	 * la bdd puis on cree tout les vehicules et on les ajoutes. Si la liste est
+	 * vide il n'y a pas n'as pas de vehicule.
 	 * 
-	 * @return ArrayList<Vehicule>
-	 * @exception SQLException si erreur de paramettres
-	 * @author julienboisgard
+	 * @return listVe -ArrayList<Vehicule>
+	 * @exception SQLException si erreur de parametres
+	 * 
+	 * @author Boisgard Julien
 	 */
 	public ArrayList<Vehicule> listVehicule() {
 		ArrayList<Vehicule> listVe = new ArrayList<Vehicule>();
@@ -778,13 +800,14 @@ public class DAO {
 	}
 
 	/**
-	 * Permet de recuperer tout les vehicule de la base de donn√©e lier √† une
-	 * entreprise on recupere dans la bdd puis on cree tout les vehicule et on les
-	 * ajoute si la liste est vide l'entreprise n'as pas de Vehicule
+	 * Permet de recuperer tout les vehicules de la base de donnee lier ‡ une
+	 * entreprise. On recupere dans la bdd puis on cree tout les vehicules et on les
+	 * ajoutes. Si la liste est vide l'entreprise n'as pas de vehicule.
 	 * 
-	 * @return ArrayList<Vehicule>
-	 * @exception SQLException si erreur de paramettres
-	 * @author julienboisgard
+	 * @return listVe -ArrayList<Vehicule>
+	 * @exception SQLException si erreur de parametres
+	 * 
+	 * @author Boisgard Julien
 	 */
 	public ArrayList<Vehicule> listVehiculeEntreprise(String siret) {
 		ArrayList<Vehicule> listVe = new ArrayList<Vehicule>();
@@ -808,13 +831,14 @@ public class DAO {
 	}
 
 	/**
-	 * Permet de retouner la liste de toutes les commandes de la basse de donn√©es
-	 * apres on cree la Commande est on les ajoute a la liste si la liste est vide
-	 * il n'y a pas de Commande dans la Tourn√©e.
+	 * Permet de retouner la liste de toutes les commandes de la basse de donnee,
+	 * apres on cree la commande et on l'ajoute ‡ la liste. Si la liste est vide il
+	 * n'y a pas de commande dans la tournee.
 	 * 
-	 * @param Tournee tournee
-	 * @return ArrayList<Commande>
-	 * @author julienboisgard
+	 * @param id -int
+	 * @return listCo -ArrayList<Commande>
+	 * 
+	 * @author Boisgard Julien
 	 */
 	public ArrayList<Commande> listCommande(int id) {
 		ArrayList<Commande> listCo = new ArrayList<Commande>();
@@ -843,12 +867,13 @@ public class DAO {
 	}
 
 	/**
-	 * Permet de recuperer tout les client de la base de donnÔøΩe apres on cree le
-	 * client est on les ajoute a la liste si la liste est vide il n'y a pas de
+	 * Permet de recuperer tout les clients de la base de donnee, apres on cree le
+	 * client et on l'ajoute ‡ la liste. Si la liste est vide il n'y a pas de
 	 * client.
 	 *
-	 * @return ArrayList<Client>
-	 * @author julienboisgard
+	 * @return listCl -ArrayList<Client>
+	 * 
+	 * @author Boisgard Julien
 	 */
 	public ArrayList<Client> listClient() {
 		ArrayList<Client> listCl = new ArrayList<Client>();
@@ -873,12 +898,13 @@ public class DAO {
 	}
 
 	/**
-	 * Permet de recuperer tout les admin qui esxiste dans la base. On recupere tout
-	 * les admins dans la bases pour ensuite les cree et les ajouter dans la liste
-	 * si la liste est vide il n'existe pas admin
+	 * Permet de recuperer tout les admins qui esxiste dans la base. On recupere
+	 * tout les admins dans la base pour ensuite les crees et les ajouter dans la
+	 * liste. Si la liste est vide il n'existe pas admin.
 	 * 
-	 * @return ArrayList<Admin>
-	 * @author julienboisgard
+	 * @return listAd -ArrayList<Admin>
+	 * 
+	 * @author Boisgard Julien
 	 */
 	public ArrayList<Admin> listAdmin() {
 		ArrayList<Admin> listAD = new ArrayList<Admin>();
@@ -902,12 +928,13 @@ public class DAO {
 	}
 
 	/**
-	 * Permet de recuperer tout les entreprise qui esxiste dans la base. On recupere
-	 * tout les entreprises dans la bases pour ensuite les cree et les ajouter dans
-	 * la liste si la liste est vide il n'existe pas Entreprise
+	 * Permet de recuperer toutes les entreprises qui existe dans la base. On
+	 * recupere toutes les entreprises dans la base pour ensuite les creer et les
+	 * ajouter dans la liste. Si la liste est vide il n'existe pas d'entreprise.
 	 * 
-	 * @return ArrayList<Admin>
-	 * @author julienboisgard
+	 * @return listET -ArrayList<Entreprise>
+	 * 
+	 * @author Boisgard Julien
 	 */
 	public ArrayList<Entreprise> listEntreprise() {
 		ArrayList<Entreprise> listET = new ArrayList<Entreprise>();
@@ -933,10 +960,12 @@ public class DAO {
 	}
 
 	/**
-	 * permet de recuperer le siret lier a une tournÈe
+	 * Permet de recuperer le siret lier ‡ une tournÈe.
 	 * 
-	 * @param id
-	 * @return String - siret
+	 * @param id -int
+	 * @return s -String
+	 * 
+	 * @author Boisgard Julien
 	 */
 	public String getSiretTournee(int id) {
 		String s = null;

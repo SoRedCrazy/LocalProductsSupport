@@ -5,11 +5,10 @@ import java.sql.Time;
 import java.util.ArrayList;
 
 /**
- * Permet de crée une tournée puis de lui ajouter/retirer des commande ou
- * modifier
+ * Permet de crée une tournée puis de lui ajouter/retirer des commandes ou de la
+ * modifier.
  * 
- * @author JulienBoisgard
- *
+ * @author Boisgard Julien
  */
 public class Tournee {
 
@@ -23,18 +22,18 @@ public class Tournee {
 	DAO d = new DAO();
 
 	/**
-	 * Constructeur pour créer une tournée
+	 * Constructeur pour créer une tournée.
 	 * 
-	 * @param idTournee
-	 * @param date
-	 * @param horaireDebut
-	 * @param horaireFin
-	 * @param vehicule
-	 * @author AmauryMechin
+	 * @param idTournee    -Integer
+	 * @param date         -Date
+	 * @param horaireDebut -Time
+	 * @param horaireFin   -Time
+	 * @param vehicule     -Vehicule
+	 * 
+	 * @author Mechin Amaury
 	 */
 
 	public Tournee(Integer idTournee, Date date, Time horaireDebut, Time horaireFin, Vehicule vehicule) {
-		super();
 		this.idTournee = idTournee;
 		this.date = date;
 		this.horaireDebut = horaireDebut;
@@ -47,8 +46,9 @@ public class Tournee {
 	/**
 	 * Permet de récupérer l'id de la tournée.
 	 * 
-	 * @return idTournee
-	 * @author AmauryMechin
+	 * @return idTournee -Integer
+	 * 
+	 * @author Mechin Amaury
 	 */
 	public Integer getIdTournee() {
 		return this.idTournee;
@@ -57,8 +57,9 @@ public class Tournee {
 	/**
 	 * Permet de définir l'id de la tournée.
 	 * 
-	 * @param idTournee
-	 * @author AmauryMechin
+	 * @param idTournee -Integer
+	 *
+	 * @author Mechin Amaury
 	 */
 	public void setIdTournee(Integer idTournee) {
 		this.idTournee = idTournee;
@@ -67,8 +68,9 @@ public class Tournee {
 	/**
 	 * Permet de récupérer la date de la tournée.
 	 * 
-	 * @return date
-	 * @author AmauryMechin
+	 * @return date -Date
+	 * 
+	 * @author Mechin Amaury
 	 */
 	public Date getDate() {
 		return this.date;
@@ -77,8 +79,9 @@ public class Tournee {
 	/**
 	 * Permet de définir la date de la tournée.
 	 * 
-	 * @param date
-	 * @author AmauryMechin
+	 * @param date -Date
+	 * 
+	 * @author Mechin Amaury
 	 */
 	public void setDate(Date date) {
 		this.date = date;
@@ -87,8 +90,9 @@ public class Tournee {
 	/**
 	 * Permet de récupérer l'horaire de début de la tournée.
 	 * 
-	 * @return horaireDebut
-	 * @author AmauryMechin
+	 * @return horaireDebut -Time
+	 * 
+	 * @author Mechin Amaury
 	 */
 	public Time getHoraireDebut() {
 		return this.horaireDebut;
@@ -97,8 +101,8 @@ public class Tournee {
 	/**
 	 * Permet de définir l'horaire de début de la tournée.
 	 * 
-	 * @param horaireDebut
-	 * @author AmauryMechin
+	 * @param horaireDebut -Time
+	 * @author Mechin Amaury
 	 */
 	public void setHoraireDebut(Time horaireDebut) {
 		this.horaireDebut = horaireDebut;
@@ -107,8 +111,9 @@ public class Tournee {
 	/**
 	 * Permet de récupérer l'horaire de fin de la tournée.
 	 * 
-	 * @return horaireFin
-	 * @author AmauryMechin
+	 * @return horaireFin -Time
+	 * 
+	 * @author Mechin Amaury
 	 */
 	public Time getHoraireFin() {
 		return this.horaireFin;
@@ -117,8 +122,9 @@ public class Tournee {
 	/**
 	 * Permet de définir l'horaire de fin de la tournée.
 	 * 
-	 * @param horaireFin
-	 * @author AmauryMechin
+	 * @param horaireFin -Time
+	 * 
+	 * @author Mechin Amaury
 	 */
 	public void setHoraireFin(Time horaireFin) {
 		this.horaireFin = horaireFin;
@@ -127,18 +133,20 @@ public class Tournee {
 	/**
 	 * Permet de récupérer la liste des commandes d'une tournée.
 	 * 
-	 * @return listCommande
-	 * @author AmauryMechin
+	 * @return listCommande -ArrayList<Commande>
+	 * 
+	 * @author Mechin Amaury
 	 */
 	public ArrayList<Commande> getListCommande() {
 		return this.listCommande;
 	}
 
 	/**
-	 * Permet de récupérer la liste des commandes d'une tournée.
+	 * Permet de définir la liste des commandes d'une tournée.
 	 * 
-	 * @param listCommande
-	 * @author AmauryMechin
+	 * @param listCommande -ArrayList<Commande>
+	 * 
+	 * @author Mechin Amaury
 	 */
 	public void setListCommande(ArrayList<Commande> listCommande) {
 		this.listCommande = listCommande;
@@ -147,8 +155,9 @@ public class Tournee {
 	/**
 	 * Permet de récupérer le véhicule associé à la tournée.
 	 * 
-	 * @return vehicule
-	 * @author AmauryMechin
+	 * @return vehicule -Vehicule
+	 * 
+	 * @author Mechin Amaury
 	 */
 	public Vehicule getVehicule() {
 		return this.vehicule;
@@ -157,38 +166,48 @@ public class Tournee {
 	/**
 	 * Permet de définir le véhicule associé à la tournée
 	 * 
-	 * @param vehicule
-	 * @author AmauryMechin
+	 * @param vehicule -Vehicule
+	 * 
+	 * @author Mechin Amaury
 	 */
 	public void setVehicule(Vehicule vehicule) {
 		this.vehicule = vehicule;
 	}
 
 	/**
-	 * Permet de recuperer le poids de la tournee.
+	 * Permet de récupérer le poids de la tournée.
 	 * 
-	 * @return int poids
-	 * @author AmauryMechin
+	 * @return poids -Integer
+	 * 
+	 * @author Mechin Amaury
 	 */
 	public int getPoids() {
 		return poids;
 	}
 
 	/**
-	 * permet de set le poid
+	 * Permet de définir le poid de la tournée.
 	 * 
-	 * @param poids
+	 * @param poids -Integer
+	 * 
+	 * @author Mechin Amaury
 	 */
 	public void setPoids(int poids) {
 		this.poids = poids;
 	}
 
 	/**
-	 * permet de retourner les informations sur la tournée.
+	 * Permet de retourner toutes les informations sur la tournée.
 	 * 
-	 * @return integer idTournee - Date date - Time horaireDebut - Time horaireFin -
-	 *         ArrayList<Commande> listCommande - Vehicule vehicule - int poids
-	 * @author AmauryMechin
+	 * @return idTournee -integer
+	 * @return date -Date
+	 * @return horaireDebut -Time
+	 * @return horaireFin -Time
+	 * @return listCommande -ArrayList<Commande>
+	 * @return vehicule -Vehicule
+	 * @return poids -Integer
+	 *
+	 * @author Mechin Amaury
 	 */
 	@Override
 	public String toString() {
@@ -204,21 +223,23 @@ public class Tournee {
 	}
 
 	/**
-	 * Permet l'ajout d'une commande dans une tournee et retourne un boolean
+	 * Permet l'ajout d'une commande dans une tournee si elle n'existe pas déjà et
+	 * retourne un boolean.
 	 * 
-	 * @param libelle
-	 * @param poids
-	 * @param Heuredebut
-	 * @param Heurefin
-	 * @param client
-	 * @param siret
-	 * @param tournee
-	 * @see ajouterCommandeTournee -DAO
-	 * @author AmauryMechin
+	 * @param libelle      -String
+	 * @param poids        -Integer
+	 * @param horaireDebut -Time
+	 * @param horaireFin   -Time
+	 * @param client       -Client
+	 * @param siret        -String
+	 * @param tournee      -Tournee
+	 * @see ajouterCommandeTournee() -DAO
+	 * 
+	 * @author Mechin Amaury
 	 */
-	public boolean addCommande(String libelle, Integer poids, Time Heuredebut, Time Heurefin, Client client,
+	public boolean addCommande(String libelle, Integer poids, Time horaireDebut, Time horaireFin, Client client,
 			String siret) {
-		Commande co = d.ajouterCommandeTournee(libelle, poids, Heuredebut, Heurefin, client, siret, this.idTournee);
+		Commande co = d.ajouterCommandeTournee(libelle, poids, horaireDebut, horaireFin, client, siret, this.idTournee);
 		if (co != null) {
 			this.getListCommande().add(co);
 			this.setPoids(this.getPoids() + poids);
@@ -234,10 +255,10 @@ public class Tournee {
 	 * bien dans la liste de commande, et en verrifiant que le changement se fait
 	 * bien dans la base de donnée. De plus, le poids de la tournee se met a jour.
 	 * 
-	 * @param tournee  -Tournee
 	 * @param commande -Commande
-	 * @see supprimerCommandeTournee -DAO
-	 * @author AmauryMechin
+	 * @see supprimerCommandeTournee() -DAO
+	 * 
+	 * @author Mechin Amaury
 	 */
 	public boolean delCommande(Commande commande) {
 		boolean b = d.supprimerCommandeTournee(commande);
@@ -253,18 +274,20 @@ public class Tournee {
 	/**
 	 * Permet de modifier uen commande de la liste des commandes de la tournée.
 	 * 
-	 * @param commande   -Commande
-	 * @param libelle    -String
-	 * @param poids      -Integer
-	 * @param heuredebut -Time
-	 * @param heurefin   -Time
-	 * @author AmauryMechin
+	 * @param commande     -Commande
+	 * @param libelle      -String
+	 * @param poids        -Integer
+	 * @param horaireDebut -Time
+	 * @param horaireFin   -Time
+	 * @see modifCommande() -DAO
+	 * 
+	 * @author Mechin Amaury
 	 */
-	public boolean modifCommande(Commande commande, String libelle, Integer poids, Time heuredebut, Time heurefin) {
+	public boolean modifCommande(Commande commande, String libelle, Integer poids, Time horaireDebut, Time horaireFin) {
 		commande.setLibelle(libelle);
 		commande.setPoids(poids);
-		commande.setheuredebut(heuredebut);
-		commande.setheurefin(heurefin);
+		commande.setheuredebut(horaireDebut);
+		commande.setheurefin(horaireFin);
 		boolean b = d.modifCommande(commande);
 		if (b) {
 			this.setPoids(this.getPoids() - commande.getAncienpoids() + commande.getPoids());

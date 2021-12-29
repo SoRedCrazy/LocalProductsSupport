@@ -1,12 +1,13 @@
 package JavaObject;
 
 /**
- * La classe Admin , permet de crée un Administrateur, l'administrateur aura
- * tout les droits de suppression, d'ajout et de modification sur les autres
+ * La classe Admin , permet de crée un Administrateur, l'administrateur a tout
+ * les droits de suppression, d'ajout et de modification sur les autres
  * utilisateurs (Entreprise et Client).
  * 
  * @see DAO
- * @author gangn
+ * 
+ * @author Gangneux Alexis
  *
  */
 
@@ -30,6 +31,7 @@ public class Admin {
 	 * @param nom    -String
 	 * @param prenom -String
 	 * @param email  -String
+	 * 
 	 * @author Gangneux Alexis
 	 */
 	public Admin(String nom, String prenom, String password, String email) {
@@ -40,9 +42,10 @@ public class Admin {
 	}
 
 	/**
-	 * Ce getter permet de recuperer le nom d'un administrateur
+	 * Ce getter permet de recuperer le nom d'un administrateur.
 	 * 
-	 * @return Un nom de type String
+	 * @return nom -String
+	 * 
 	 * @author Gangneux Alexis
 	 */
 	public String getNom() {
@@ -50,9 +53,10 @@ public class Admin {
 	}
 
 	/**
-	 * Ce setter permet de modifier le nom de l'administrateur
+	 * Ce setter permet de modifier le nom de l'administrateur.
 	 * 
 	 * @param nom -String
+	 * 
 	 * @author Gangneux Alexis
 	 */
 	public void setNom(String nom) {
@@ -60,9 +64,10 @@ public class Admin {
 	}
 
 	/**
-	 * Ce getter permet de recuperer le prenom d'un administrateur
+	 * Ce getter permet de recuperer le prenom d'un administrateur.
 	 * 
-	 * @return Un prenom de type String
+	 * @return prenom -String
+	 * 
 	 * @author Gangneux Alexis
 	 */
 	public String getPrenom() {
@@ -70,9 +75,10 @@ public class Admin {
 	}
 
 	/**
-	 * Ce setter permet de modifier le Prenom d'un administrateur
+	 * Ce setter permet de modifier le Prenom d'un administrateur.
 	 * 
 	 * @param prenom -String
+	 * 
 	 * @author Gangneux Alexis
 	 */
 	public void setPrenom(String prenom) {
@@ -80,9 +86,10 @@ public class Admin {
 	}
 
 	/**
-	 * Ce getter permet de recuperer le mot de passe d'un administrateur
+	 * Ce getter permet de recuperer le mot de passe d'un administrateur.
 	 * 
-	 * @return Un mot de passe de type String
+	 * @return password -String
+	 * 
 	 * @author Gangneux Alexis
 	 */
 	public String getPassword() {
@@ -90,9 +97,10 @@ public class Admin {
 	}
 
 	/**
-	 * Ce setter permet de modifier le mot de passe d'un administrateur
+	 * Ce setter permet de modifier le mot de passe d'un administrateur.
 	 * 
 	 * @param password -String
+	 * 
 	 * @author Gangneux Alexis
 	 */
 	public void setPassword(String password) {
@@ -100,9 +108,10 @@ public class Admin {
 	}
 
 	/**
-	 * Ce getter permet de recuperer l'email d'un administrateur
+	 * Ce getter permet de recuperer l'email d'un administrateur.
 	 * 
-	 * @return Un email de type String
+	 * @return email -String
+	 *
 	 * @author Gangneux Alexis
 	 */
 	public String getEmail() {
@@ -110,9 +119,10 @@ public class Admin {
 	}
 
 	/**
-	 * Ce setter permet de modifier l'email d'un administrateur
+	 * Ce setter permet de modifier l'email d'un administrateur.
 	 * 
 	 * @param email -String
+	 * 
 	 * @author Gangneux Alexis
 	 */
 	public void setEmail(String email) {
@@ -122,32 +132,29 @@ public class Admin {
 	// Operations
 
 	/**
-	 * Cette methode permet l'ajout d'une Entreprise a la base de donnee.
+	 * Cette methode permet l'ajout d'une Entreprise à la base de donnee.
 	 * L'entreprise ne doit pas exister dans la base de donnee pour que l'ajout
 	 * fonctionne.
 	 * 
-	 * @param siret          -Integer
-	 * @param numeroDeRue    -Integer
-	 * @param rue            -String
-	 * @param codePostal     -Integer
-	 * @param ville          -String
-	 * @param pays           -String
-	 * @param nom            -String
-	 * @param prenom         -String
-	 * @param numTelephone   -String
-	 * @param ListVehicule[] -Vehicule
-	 * @param ListTournee[]  -Tournee
-	 * @param ListClient[]   -Client
-	 * @param password       -String
-	 * @param vehicule       -Vehicule
-	 * @see ajouterEntreprise() -DAO
-	 * @author Gangneux Alexis
+	 * @param siret        -String
+	 * @param prenom       -String
+	 * @param nom          -String
+	 * @param numeroDeRue  -Integer
+	 * @param rue          -String
+	 * @param codePostal   -Integer
+	 * @param ville        -String
+	 * @param pays         -String
+	 * @param numTelephone -String
+	 * @param password     -String
 	 * @return boolean
+	 * @see ajouterEntreprise() -DAO
+	 * 
+	 * @author Gangneux Alexis
 	 */
 	public boolean ajouterEntreprise(String siret, String prenom, String nom, Integer numeroDeRue, String rue,
-			Integer codePostal, String ville, String pays, String numTelephone, String motsdepasses) {
+			Integer codePostal, String ville, String pays, String numTelephone, String password) {
 		Entreprise ent = instance.ajouterEntreprise(siret, prenom, nom, numeroDeRue, rue, codePostal, ville, pays,
-				numTelephone, motsdepasses, this.email);
+				numTelephone, password, this.email);
 		if (ent != null) {
 			return true;
 		} else {
@@ -160,11 +167,11 @@ public class Admin {
 	 * L'entreprise doit exister dans la base de donnee pour que la suppression
 	 * fonctionne.
 	 * 
-	 * @param Entreprise a supprimer -Entreprise
-	 * @return
-	 * @see supprimerEntreprise() -DAO
-	 * @author Gangneux Alexis
+	 * @param siret -String
 	 * @return boolean
+	 * @see supprimerEntreprise() -DAO
+	 * 
+	 * @author Gangneux Alexis
 	 */
 	public boolean supprimerEntreprise(String siret) {
 
@@ -178,7 +185,7 @@ public class Admin {
 	}
 
 	/**
-	 * Cette methode permet d'ajouter un Client a la base de donnee. Le Client ne
+	 * Cette methode permet d'ajouter un Client à la base de donnee. Le Client ne
 	 * doit pas exister dans la base de donnee pour que la methode fonctionne.
 	 * 
 	 * @param prenom       -String
@@ -189,10 +196,10 @@ public class Admin {
 	 * @param ville        -String
 	 * @param pays         -String
 	 * @param numTelephone -String
-	 * @param entreprise   -Entreprise
-	 * @author Gangneux Alexis
 	 * @return boolean
 	 * @see ajouterclient() -DAO
+	 * 
+	 * @author Gangneux Alexis
 	 */
 	public boolean ajouterClient(String prenom, String nom, Integer numeroDeRue, String rue, Integer codePostal,
 			String ville, String pays, String numTelephone) {
@@ -212,9 +219,10 @@ public class Admin {
 	 * client doit exister dans la base de donnee pour que la suppression
 	 * fonctionne.
 	 * 
-	 * @param Client a supprimer -Client
+	 * @param client -Client
 	 * @return boolean
 	 * @see delclient() -DAO
+	 * 
 	 * @author Gangneux Alexis
 	 */
 	public boolean supprimerClient(Client client) {
@@ -231,7 +239,7 @@ public class Admin {
 	/**
 	 * Cette methode permet de modifier les parametres d'un client.
 	 * 
-	 * @param Client       a modifier -Client
+	 * @param client       -Client
 	 * @param prenom       -String
 	 * @param nom          -String
 	 * @param numeroDeRue  -Integer
@@ -240,9 +248,10 @@ public class Admin {
 	 * @param ville        -String
 	 * @param pays         -String
 	 * @param numTelephone -String
-	 * @see modifclient() -DAO
-	 * @author Gangneux Alexis
 	 * @return boolean
+	 * @see modifclient() -DAO
+	 * 
+	 * @author Gangneux Alexis
 	 */
 	public boolean ModifClient(Client client, String prenom, String nom, Integer numeroDeRue, String rue,
 			Integer codePostal, String ville, String pays, String numTelephone) {
@@ -266,21 +275,22 @@ public class Admin {
 	/**
 	 * Cette methode permet de modifier les parametres d'une entreprise.
 	 * 
-	 * @param Entreprise   a modifier -Entreprise
+	 * @param entreprise   -Entreprise
+	 * @param prenom       -String
+	 * @param nom          -String
 	 * @param rue          -String
 	 * @param codePostal   -Integer
 	 * @param ville        -String
 	 * @param pays         -String
-	 * @param nom          -String
-	 * @param prenom       -String
 	 * @param numTelephone -String
 	 * @param password     -String
-	 * @see modifEntreprise() -DAO
-	 * @author Gangneux Alexis
 	 * @return boolean
+	 * @see modifEntreprise() -DAO
+	 * 
+	 * @author Gangneux Alexis
 	 */
 	public boolean ModifEntreprise(Entreprise entreprise, String prenom, String nom, Integer numeroDeRue, String rue,
-			Integer codePostal, String ville, String pays, String numTelephone, String motsdepasses) {
+			Integer codePostal, String ville, String pays, String numTelephone, String password) {
 		entreprise.setRue(rue);
 		entreprise.setPrenom(prenom);
 		entreprise.setNom(nom);
@@ -290,7 +300,7 @@ public class Admin {
 		entreprise.setVille(ville);
 		entreprise.setPays(pays);
 		entreprise.setNumTelephone(numTelephone);
-		entreprise.setMdp(motsdepasses);
+		entreprise.setMdp(password);
 		boolean b = instance.modifEntreprise(entreprise);
 
 		if (b) {

@@ -6,10 +6,10 @@ import java.sql.SQLException;
 import com.mysql.cj.jdbc.MysqlDataSource;
 
 /**
- * Cette classe sert a gerer la connection a la base de donnée, et faire en
+ * Cette classe sert à gerer la connection à la base de donnée, et faire en
  * sorte qu'il y ait une unique connexion.
  * 
- *
+ * @author Boisgard Julien
  */
 public class Singleton {
 
@@ -19,9 +19,10 @@ public class Singleton {
 	 * Ce constructeur permet de garantir une unique connexion à l'application cela
 	 * evite les doublons de connexions en même temps.
 	 * 
-	 * @author gangn
 	 * @param connect -Connection
 	 * @exception SQLException for Access denied
+	 * 
+	 * @author Gangneux Alexis
 	 */
 	private Singleton() {
 
@@ -44,8 +45,10 @@ public class Singleton {
 	 * Cette méthode permet de vérifier si une connexion existe avec la base de
 	 * donnée.
 	 * 
-	 * @return Une connextion de type connection
+	 * @return connect -Connection
 	 * @throws ClassNotFoundException
+	 * 
+	 * @author Gangneux Alexis
 	 */
 	public static Connection getInstance() {
 		if (connect == null) {
