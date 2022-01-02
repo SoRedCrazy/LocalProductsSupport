@@ -90,7 +90,7 @@ public class addCommandeControl {
 			Pane mainpane = loader.load();
 			addCommande.getChildren().setAll(mainpane);
 		} else {
-			titre.setText("erreur d'envoie");
+			titre.setText("Erreur d'envoie ou surpoids du camion");
 		}
 	}
 

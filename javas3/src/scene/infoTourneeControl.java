@@ -148,8 +148,11 @@ public class infoTourneeControl {
 		infoTournee.getChildren().setAll(mainpane);
 	}
 
-	public void itineraire() {
-
+	public void itineraire() throws IOException {
+		itineraireControl.setTournee(tournee);
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("itineraire.fxml"));
+		Pane mainpane = loader.load();
+		infoTournee.getChildren().setAll(mainpane);
 	}
 
 	public static void ChangeInterfaceModif(Pane mainpane) throws IOException {

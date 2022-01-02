@@ -9,7 +9,7 @@ import java.sql.Time;
  * @author Mechin Amaury
  */
 
-public class Commande {
+public class Commande implements Comparable<Commande> {
 
 	private Integer idCommande;
 	private String libelle;
@@ -196,6 +196,11 @@ public class Commande {
 	public String toString() {
 		return "Commande [idCommande=" + idCommande + ", libelle=" + libelle + ", poids=" + poids + ", heuredebut="
 				+ heuredebut + ", heurefin=" + heurefin + ", Client=" + Client + "]";
+	}
+
+	@Override
+	public int compareTo(Commande c) {
+		return this.poids.compareTo(c.getPoids());
 	}
 
 }
