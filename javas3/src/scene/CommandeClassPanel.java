@@ -2,6 +2,7 @@ package scene;
 
 import java.io.IOException;
 
+import JavaObject.Client;
 import JavaObject.Commande;
 import JavaObject.DAO;
 import JavaObject.Tournee;
@@ -16,9 +17,11 @@ public class CommandeClassPanel {
 	private int id;
 	private String libelle;
 	private int poids;
+	private String nom;
+	private String adress;
 	private Button modif;
 
-	public CommandeClassPanel(int id, String libelle, int poids) {
+	public CommandeClassPanel(int id, String libelle, int poids, Client c) {
 		super();
 		this.id = id;
 		this.libelle = libelle;
@@ -41,6 +44,9 @@ public class CommandeClassPanel {
 			}
 
 		});
+
+		this.nom = c.getNom() + " " + c.getPrenom();
+		this.adress = c.getNumeroDeRue() + " " + c.getRue() + " " + c.getCodePostal() + " " + c.getVille();
 	}
 
 	public static Tournee getTournee() {
