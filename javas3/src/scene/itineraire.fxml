@@ -15,9 +15,11 @@
       </Text>
       <TableView fx:id="tableCommande" layoutY="98.0" prefHeight="382.0" prefWidth="720.0">
         <columns>
-          <TableColumn fx:id="idcommande" prefWidth="138.0" text="id" />
-          <TableColumn fx:id="libelle" prefWidth="280.0" text="libellé" />
-            <TableColumn fx:id="poids" prefWidth="301.0" text="poids" />
+          <TableColumn fx:id="idcommande" prefWidth="55.0" text="id" />
+          <TableColumn fx:id="libelle" prefWidth="154.0" text="libellé" />
+            <TableColumn fx:id="poids" prefWidth="101.0" text="poids" />
+            <TableColumn fx:id="nom" minWidth="0.0" prefWidth="184.0" text="nom" />
+            <TableColumn fx:id="adresse" minWidth="0.0" prefWidth="225.0" text="adresse" />
         </columns>
       </TableView>
       <Text layoutX="29.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vous retour la list en fonction des distance de chacune (coming soon)" wrappingWidth="400.162109375" />

@@ -29,6 +29,10 @@ public class itineraireControl {
 	public TableColumn<CommandeClassPanel, String> libelle;
 	@FXML
 	public TableColumn<CommandeClassPanel, Integer> poids;
+	@FXML
+	public TableColumn<CommandeClassPanel, String> nom;
+	@FXML
+	public TableColumn<CommandeClassPanel, String> adresse;
 
 	DAO d = new DAO();
 
@@ -40,10 +44,13 @@ public class itineraireControl {
 		idcommande.setCellValueFactory(new PropertyValueFactory<CommandeClassPanel, Integer>("id"));
 		libelle.setCellValueFactory(new PropertyValueFactory<CommandeClassPanel, String>("libelle"));
 		poids.setCellValueFactory(new PropertyValueFactory<CommandeClassPanel, Integer>("poids"));
+		nom.setCellValueFactory(new PropertyValueFactory<CommandeClassPanel, String>("nom"));
+		adresse.setCellValueFactory(new PropertyValueFactory<CommandeClassPanel, String>("adress"));
 
 		ArrayList<CommandeClassPanel> commandeList = new ArrayList<CommandeClassPanel>();
 		for (Commande elemt : tclist) {
-			commandeList.add(new CommandeClassPanel(elemt.getIdCommande(), elemt.getLibelle(), elemt.getPoids()));
+			commandeList.add(new CommandeClassPanel(elemt.getIdCommande(), elemt.getLibelle(), elemt.getPoids(),
+					elemt.getClient()));
 		}
 		ObservableList<CommandeClassPanel> Ovehi = FXCollections.observableArrayList(commandeList);
 		tableCommande.setItems(Ovehi);

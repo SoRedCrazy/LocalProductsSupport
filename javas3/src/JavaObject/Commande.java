@@ -16,11 +16,11 @@ public class Commande implements Comparable<Commande> {
 	private Integer poids;
 	private Time heuredebut;
 	private Time heurefin;
-	private Client Client;
+	private Client client;
 	private int ancienpoids;
 
 	/**
-	 * Constructeur permet de créer une commande.
+	 * Constructeur permet de crï¿½er une commande.
 	 * 
 	 * @param idCommande -Integer
 	 * @param libelle    -String
@@ -38,11 +38,11 @@ public class Commande implements Comparable<Commande> {
 		this.poids = poids;
 		this.heuredebut = heuredebut;
 		this.heurefin = heurefin;
-		Client = client;
+		this.client = client;
 	}
 
 	/**
-	 * Permet de récupérer l'id de la commande.
+	 * Permet de rï¿½cupï¿½rer l'id de la commande.
 	 * 
 	 * @return idCommande -Integer
 	 * 
@@ -53,7 +53,7 @@ public class Commande implements Comparable<Commande> {
 	}
 
 	/**
-	 * Permet de définir l'id de la commande.
+	 * Permet de dï¿½finir l'id de la commande.
 	 * 
 	 * @param idCommande -Integer
 	 * 
@@ -64,7 +64,7 @@ public class Commande implements Comparable<Commande> {
 	}
 
 	/**
-	 * Permet de récupérer le libéllé de la commande.
+	 * Permet de rï¿½cupï¿½rer le libï¿½llï¿½ de la commande.
 	 * 
 	 * @return libelle -String
 	 * 
@@ -75,7 +75,7 @@ public class Commande implements Comparable<Commande> {
 	}
 
 	/**
-	 * Permet de définir le libelle de la commande.
+	 * Permet de dï¿½finir le libelle de la commande.
 	 * 
 	 * @param libelle -String
 	 * 
@@ -86,7 +86,7 @@ public class Commande implements Comparable<Commande> {
 	}
 
 	/**
-	 * Permet de récupérer le poids de la commande.
+	 * Permet de rï¿½cupï¿½rer le poids de la commande.
 	 * 
 	 * @return poids -Integer
 	 * 
@@ -97,7 +97,7 @@ public class Commande implements Comparable<Commande> {
 	}
 
 	/**
-	 * Permet de définir le poids de la commande.
+	 * Permet de dï¿½finir le poids de la commande.
 	 * 
 	 * @param poids -Integer
 	 * 
@@ -109,7 +109,7 @@ public class Commande implements Comparable<Commande> {
 	}
 
 	/**
-	 * Permet d'avoir l'ancien poids utiles à la base de donnee.
+	 * Permet d'avoir l'ancien poids utiles ï¿½ la base de donnee.
 	 * 
 	 * @param poids -int
 	 * 
@@ -120,7 +120,7 @@ public class Commande implements Comparable<Commande> {
 	}
 
 	/**
-	 * Permet de récupérer la date de la commande.
+	 * Permet de rï¿½cupï¿½rer la date de la commande.
 	 * 
 	 * @return heuredebut -Time
 	 * 
@@ -131,7 +131,7 @@ public class Commande implements Comparable<Commande> {
 	}
 
 	/**
-	 * Permet de définir la date de la commande.
+	 * Permet de dï¿½finir la date de la commande.
 	 * 
 	 * @param heuredebut -Time
 	 * 
@@ -142,7 +142,7 @@ public class Commande implements Comparable<Commande> {
 	}
 
 	/**
-	 * Permet de récupérer la date limite de la commande.
+	 * Permet de rï¿½cupï¿½rer la date limite de la commande.
 	 * 
 	 * @return heurefin -Time
 	 * 
@@ -153,7 +153,7 @@ public class Commande implements Comparable<Commande> {
 	}
 
 	/**
-	 * Permet de définir la date limite de la commande.
+	 * Permet de dï¿½finir la date limite de la commande.
 	 * 
 	 * @param heurefin -Time
 	 * 
@@ -164,25 +164,25 @@ public class Commande implements Comparable<Commande> {
 	}
 
 	/**
-	 * Permet de récupérer le client qui passe la commande.
+	 * Permet de rï¿½cupï¿½rer le client qui passe la commande.
 	 * 
 	 * @return client -Client
 	 * 
 	 * @author Mechin Amaury
 	 */
 	public Client getClient() {
-		return this.Client;
+		return this.client;
 	}
 
 	/**
-	 * Permet de définir le client qui passe la commande.
+	 * Permet de dï¿½finir le client qui passe la commande.
 	 * 
 	 * @param client -Client
 	 * 
 	 * @author Mechin Amaury
 	 */
 	public void setClient(Client Client) {
-		this.Client = Client;
+		this.client = Client;
 	}
 
 	/**
@@ -195,7 +195,7 @@ public class Commande implements Comparable<Commande> {
 	@Override
 	public String toString() {
 		return "Commande [idCommande=" + idCommande + ", libelle=" + libelle + ", poids=" + poids + ", heuredebut="
-				+ heuredebut + ", heurefin=" + heurefin + ", Client=" + Client + "]";
+				+ heuredebut + ", heurefin=" + heurefin + ", Client=" + client + "]";
 	}
 
 	@Override

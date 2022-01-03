@@ -3,6 +3,7 @@ package scene;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import JavaObject.Client;
 import JavaObject.Commande;
 import JavaObject.DAO;
 import JavaObject.Tournee;
@@ -42,6 +43,10 @@ public class infoTourneeControl {
 	public TableColumn<CommandeClassPanel, Integer> poids;
 	@FXML
 	public TableColumn<CommandeClassPanel, Button> modifier;
+	@FXML
+	public TableColumn<CommandeClassPanel, String> nom;
+	@FXML
+	public TableColumn<CommandeClassPanel, String> adresse;
 
 	DAO d = new DAO();
 
@@ -68,10 +73,14 @@ public class infoTourneeControl {
 		libelle.setCellValueFactory(new PropertyValueFactory<CommandeClassPanel, String>("libelle"));
 		poids.setCellValueFactory(new PropertyValueFactory<CommandeClassPanel, Integer>("poids"));
 		modifier.setCellValueFactory(new PropertyValueFactory<CommandeClassPanel, Button>("modif"));
+		nom.setCellValueFactory(new PropertyValueFactory<CommandeClassPanel, String>("nom"));
+		adresse.setCellValueFactory(new PropertyValueFactory<CommandeClassPanel, String>("adress"));
 
 		ArrayList<CommandeClassPanel> commandeList = new ArrayList<CommandeClassPanel>();
 		for (Commande elemt : tournee.getListCommande()) {
-			commandeList.add(new CommandeClassPanel(elemt.getIdCommande(), elemt.getLibelle(), elemt.getPoids()));
+			Client c = elemt.getClient();
+			commandeList.add(new CommandeClassPanel(elemt.getIdCommande(), elemt.getLibelle(), elemt.getPoids(),
+					elemt.getClient()));
 		}
 		ObservableList<CommandeClassPanel> Ovehi = FXCollections.observableArrayList(commandeList);
 		tableCommande.setItems(Ovehi);

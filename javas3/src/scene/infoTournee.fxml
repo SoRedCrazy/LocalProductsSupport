@@ -25,10 +25,12 @@
       <Text fx:id="poidCamion" layoutX="361.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Charge max du camion : $POIDSCAMION" />
       <TableView fx:id="tableCommande" layoutY="185.0" prefHeight="295.0" prefWidth="720.0">
         <columns>
-          <TableColumn fx:id="idcommande" prefWidth="83.0" text="id" />
-          <TableColumn fx:id="libelle" prefWidth="260.0" text="libellé" />
-            <TableColumn fx:id="poids" prefWidth="242.0" text="poids" />
-            <TableColumn fx:id="modifier" prefWidth="134.0" text="modfier" />
+          <TableColumn fx:id="idcommande" prefWidth="54.0" text="id" />
+          <TableColumn fx:id="libelle" prefWidth="134.0" text="libellé" />
+            <TableColumn fx:id="poids" minWidth="0.0" prefWidth="69.0" text="poids" />
+            <TableColumn fx:id="nom" minWidth="0.0" prefWidth="141.0" text="nom" />
+            <TableColumn fx:id="adresse" minWidth="0.0" prefWidth="184.0" text="adresse" />
+            <TableColumn fx:id="modifier" minWidth="7.0" prefWidth="136.0" text="modfier" />
         </columns>
       </TableView>
       <Button layoutX="242.0" layoutY="14.0" mnemonicParsing="false" onAction="#delCommandeButton" text="suprimer commande" />

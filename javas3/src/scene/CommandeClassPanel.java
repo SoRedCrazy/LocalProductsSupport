@@ -88,4 +88,20 @@ public class CommandeClassPanel {
 	public void setModif(Button modif) {
 		this.modif = modif;
 	}
+
+	public String getAdress() {
+		return adress;
+	}
+
+	public void setAdress(String adress) {
+		this.adress = adress;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
 }
