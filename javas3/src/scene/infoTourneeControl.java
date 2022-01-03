@@ -3,7 +3,6 @@ package scene;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import JavaObject.Client;
 import JavaObject.Commande;
 import JavaObject.DAO;
 import JavaObject.Tournee;
@@ -78,7 +77,6 @@ public class infoTourneeControl {
 
 		ArrayList<CommandeClassPanel> commandeList = new ArrayList<CommandeClassPanel>();
 		for (Commande elemt : tournee.getListCommande()) {
-			Client c = elemt.getClient();
 			commandeList.add(new CommandeClassPanel(elemt.getIdCommande(), elemt.getLibelle(), elemt.getPoids(),
 					elemt.getClient()));
 		}

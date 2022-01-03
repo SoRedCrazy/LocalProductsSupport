@@ -22,6 +22,6 @@
             <TableColumn fx:id="adresse" minWidth="0.0" prefWidth="225.0" text="adresse" />
         </columns>
       </TableView>
-      <Text layoutX="29.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vous retour la list en fonction des distance de chacune (coming soon)" wrappingWidth="400.162109375" />
+      <Text layoutX="29.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vous retour la list en fonction des distance de chacune (ne marche pas le compareto n'est pas lier a la distance mais au poids faute de temps )" wrappingWidth="400.162109375" />
    </children>
 </AnchorPane>
