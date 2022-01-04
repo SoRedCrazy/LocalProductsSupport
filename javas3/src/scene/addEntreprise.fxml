@@ -7,7 +7,7 @@
 
 <AnchorPane fx:id="addEntreprise" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scene.addEntrepriseControl">
    <children>
-      <Text fx:id="titre" layoutX="42.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajout de l'entreprise, merci de remplir les informations" wrappingWidth="497.13671875">
+      <Text fx:id="titre" layoutX="42.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter une entreprise, merci de remplir les informations" wrappingWidth="497.13671875">
          <font>
             <Font size="20.0" />
          </font>
@@ -95,7 +95,7 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <Text layoutX="10.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mots de passe" textAlignment="CENTER" wrappingWidth="155.13671875" GridPane.rowIndex="4">
+            <Text layoutX="10.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mot de passe" textAlignment="CENTER" wrappingWidth="155.13671875" GridPane.rowIndex="4">
                <font>
                   <Font size="18.0" />
                </font>
@@ -103,6 +103,6 @@
          </children>
       </GridPane>
       <Button layoutX="564.0" layoutY="392.0" mnemonicParsing="false" onAction="#addEntrepriseButton" prefHeight="58.0" prefWidth="97.0" text="Envoyer" />
-      <Button layoutX="91.0" layoutY="395.0" mnemonicParsing="false" onAction="#back" prefHeight="53.0" prefWidth="82.0" text="back" />
+      <Button layoutX="91.0" layoutY="395.0" mnemonicParsing="false" onAction="#back" prefHeight="53.0" prefWidth="82.0" text="Retour" />
    </children>
 </AnchorPane>

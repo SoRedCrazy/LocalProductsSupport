@@ -7,7 +7,7 @@
 
 <AnchorPane fx:id="infoTournee" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scene.infoTourneeControl">
    <children>
-      <Button layoutX="29.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonInfoTournee" text="Back" />
+      <Button layoutX="29.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonInfoTournee" text="Retour" />
       <Button layoutX="91.0" layoutY="14.0" mnemonicParsing="false" onAction="#addComandeButton" text="Ajouter une commande" />
       <Button layoutX="389.0" layoutY="14.0" mnemonicParsing="false" onAction="#deltourneeButton" text="Supprimer la tournee" />
       <Button layoutX="527.0" layoutY="14.0" mnemonicParsing="false" onAction="#modiftourneeButton" text="Modifier tournee" />
@@ -18,8 +18,8 @@
          </font>
       </Text>
       <Text fx:id="date" layoutX="41.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date : $DATE" />
-      <Text fx:id="heureDebut" layoutX="41.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Heure Debut :  $HEUREDEBUT" />
-      <Text fx:id="heureFin" layoutX="41.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Heure Fin :  $HEUREFIN" />
+      <Text fx:id="heureDebut" layoutX="41.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Heure de debut :  $HEUREDEBUT" />
+      <Text fx:id="heureFin" layoutX="41.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Heure de fin :  $HEUREFIN" />
       <Text fx:id="poid" layoutX="360.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Poids total de la tournee : $POIDS" />
       <Text fx:id="imma" layoutX="360.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Le camion : $IMMATRICULATION" />
       <Text fx:id="poidCamion" layoutX="361.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Charge max du camion : $POIDSCAMION" />

@@ -14,7 +14,7 @@
       <AnchorPane prefHeight="128.0" prefWidth="720.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="128.0" stroke="BLACK" strokeType="INSIDE" width="720.0" />
-            <Text fx:id="titre" layoutX="22.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello $USER ! Bienvenue ! Ajoute et modifie tes tournees.">
+            <Text fx:id="titre" layoutX="22.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bonjour $USER ! Bienvenue ! Ajoute et modifie tes tournees.">
                <font>
                   <Font size="20.0" />
                </font>
