@@ -7,7 +7,7 @@
 
 <AnchorPane fx:id="addVehicule" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scene.addVehiculeControl" >
    <children>
-      <Text fx:id="titre" layoutX="47.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Vehicule" wrappingWidth="289.13671875">
+      <Text fx:id="titre" layoutX="47.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter un vehicule" wrappingWidth="289.13671875">
          <font>
             <Font size="20.0" />
          </font>
@@ -47,6 +47,6 @@
          </children>
       </GridPane>
       <Button layoutX="552.0" layoutY="349.0" mnemonicParsing="false" onAction="#addVehiculeButton" prefHeight="55.0" prefWidth="121.0" text="Envoyer" />
-      <Button layoutX="86.0" layoutY="350.0" mnemonicParsing="false" onAction="#back" prefHeight="53.0" prefWidth="82.0" text="back" />
+      <Button layoutX="86.0" layoutY="350.0" mnemonicParsing="false" onAction="#back" prefHeight="53.0" prefWidth="82.0" text="Retour" />
    </children>
 </AnchorPane>
