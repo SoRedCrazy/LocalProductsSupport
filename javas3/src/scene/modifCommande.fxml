@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="modifCommande" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scene.modifCommandeControl">
+   <children>
+      <Text fx:id="titre" layoutX="34.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier la commande $IDCOMMANDE" wrappingWidth="545.13671875">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <TextField fx:id="libelle" layoutX="34.0" layoutY="198.0" promptText="poireau" />
+      <Text layoutX="34.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" />
+      <Text layoutX="232.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Poids ( en kilo )" />
+      <TextField fx:id="poid" layoutX="232.0" layoutY="198.0" promptText="1" />
+      <Text layoutX="34.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Heure de debut" />
+      <TextField fx:id="heureDebut" layoutX="34.0" layoutY="317.0" promptText="15:00:00" />
+      <Text layoutX="232.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Heure de fin" />
+      <TextField fx:id="heureFin" layoutX="232.0" layoutY="317.0" promptText="17:00:00" />
+      <Button layoutX="470.0" layoutY="389.0" mnemonicParsing="false" onAction="#modifCommandeButton" prefHeight="52.0" prefWidth="81.0" text="Envoyer" />
+      <Button layoutX="47.0" layoutY="388.0" mnemonicParsing="false" onAction="#back" prefHeight="53.0" prefWidth="82.0" text="Retour" />
+   </children>
+</AnchorPane>

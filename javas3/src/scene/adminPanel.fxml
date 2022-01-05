@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="adminPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scene.adminPanelControl">
+   <children>
+      <AnchorPane layoutX="-4.0" layoutY="-9.0" prefHeight="139.0" prefWidth="727.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="130.0" layoutX="3.0" layoutY="5.0" stroke="BLACK" strokeType="INSIDE" width="720.0" />
+            <Text fx:id="presentation" layoutX="22.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bonjour">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Button layoutX="168.0" layoutY="14.0" mnemonicParsing="false" onAction="#addTourneeAdminPanelButton" text="Ajouter une tournee" />
+            <Button layoutX="301.0" layoutY="14.0" mnemonicParsing="false" onAction="#addVehiculeAdminPanelButton" text="Ajouter un vehicule" />
+            <Button layoutX="18.0" layoutY="50.0" mnemonicParsing="false" onAction="#supprimerVehiculeAdminPanelButton" text="Supprimer un vehicule" />
+            <Button layoutX="556.0" layoutY="14.0" mnemonicParsing="false" onAction="#addClientAdminPanelButton" prefHeight="25.0" prefWidth="90.0" text="Ajouter client" />
+            <Button layoutX="161.0" layoutY="50.0" mnemonicParsing="false" onAction="#supprimerClientAdminPanelButton" text="Supprimer client" />
+            <Button layoutX="278.0" layoutY="50.0" mnemonicParsing="false" onAction="#supprimerEntrepriseAdminPanelButton" text="Supprimer entreprise" />
+            <Button layoutX="420.0" layoutY="50.0" mnemonicParsing="false" onAction="#modifEntrepriseAdminPanelButton" text="Modifier entreprise" />
+            <Button layoutX="554.0" layoutY="50.0" mnemonicParsing="false" onAction="#modifClientAdminPanelButton" text="Modifier client" />
+            <Button layoutX="433.0" layoutY="14.0" mnemonicParsing="false" onAction="#addEntrepriseAdminPanelButton" text="Ajouter entreprise" />
+         </children>
+      </AnchorPane>
+      <TableView fx:id="tbData" layoutY="122.0" prefHeight="361.0" prefWidth="720">
+        <columns>
+          <TableColumn fx:id="Id" prefWidth="212.0" text="id" />
+          <TableColumn fx:id="date" prefWidth="294.0" text="date" />
+           <TableColumn fx:id="plus" prefWidth="200.0" text="plus" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

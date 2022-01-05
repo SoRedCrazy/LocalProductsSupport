@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="addTourneeUser" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scene.addTourneeUserControl">
+   <children>
+      <Text fx:id="titre" layoutX="46.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter une tournee, merci de remplir les informations">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="46.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="184.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Heure de debut" wrappingWidth="112.13671875">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="330.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Heure de fin">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="473.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choisir le camion">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="date" layoutX="46.0" layoutY="163.0" prefHeight="25.0" prefWidth="100.0" promptText="15/06/2020" />
+      <TextField fx:id="heureDebut" layoutX="184.0" layoutY="163.0" prefHeight="25.0" prefWidth="100.0" promptText="15:00:00" />
+      <TextField fx:id="heureFin" layoutX="330.0" layoutY="163.0" prefHeight="25.0" prefWidth="100.0" promptText="17:00:00" />
+      <ComboBox fx:id="combolist" layoutX="473.0" layoutY="163.0" prefHeight="25.0" prefWidth="113.0" />
+      <Button layoutX="489.0" layoutY="248.0" mnemonicParsing="false" onAction="#addTourneeUserButton" prefHeight="53.0" prefWidth="82.0" text="Envoyer" />
+      <Button layoutX="87.0" layoutY="248.0" mnemonicParsing="false" onAction="#back" prefHeight="53.0" prefWidth="82.0" text="Retour" />
+   </children>
+</AnchorPane>
