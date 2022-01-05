@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.media.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="userPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scene.userPanelControl">
+   <children>
+      <AnchorPane prefHeight="128.0" prefWidth="720.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="128.0" stroke="BLACK" strokeType="INSIDE" width="720.0" />
+            <Text fx:id="titre" layoutX="22.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bonjour $USER ! Bienvenue ! Ajoute et modifie tes tournees.">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Button layoutX="22.0" layoutY="50.0" mnemonicParsing="false" onAction="#ajouterTourneeUserPanelButton" text="Ajouter une tournee" />
+            <Button layoutX="168.0" layoutY="50.0" mnemonicParsing="false" onAction="#ajouterVehiculeUserPanelButton" text="Ajouter un vehicule" />
+            <Button layoutX="308.0" layoutY="50.0" mnemonicParsing="false" onAction="#supprimerVehiculeUserPanelButton" text="Supprimer un vehicule" />
+         </children>
+      </AnchorPane>
+      <TableView fx:id="tbData" layoutY="125.0" prefHeight="359.0" prefWidth="720.0">
+         <columns>
+            <TableColumn fx:id="Id" prefWidth="212.0" text="id" />
+            <TableColumn fx:id="date" prefWidth="294.0" text="date" />
+            <TableColumn fx:id="plus" prefWidth="213.0" text="plus" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>
